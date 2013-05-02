@@ -1,0 +1,151 @@
+﻿body
+{
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+#commonMessage {
+  font-weight: bold;
+  color: #00ff00;
+  display: none;
+}
+
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+table 
+{
+    border-color: Black; 
+    width: 900px; 
+    margin-bottom: 0px;
+}
+
+.webGrid
+{
+    border-collapse:collapse;
+    border-color: Black; 
+    width: 900px; 
+    margin-bottom: 0px;    
+}
+
+.editor-label 
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field 
+{
+    margin:0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* ----------------------------------------------Column-------------------------------------*/
+
+#column{
+	display:block;
+	float:right;
+	width:300px;
+	}
+
+#column .holder{
+	display:block;
+	width:300px;
+	margin-bottom:20px;
+	}
+
+#column .holder p{
+	line-height:1.6em;
+	}
+
+#column .holder h2.title{
+	display:block;
+	width:100%;
+	height:65px;
+	margin:0;
+	padding:15px 0 0 0;
+	font-size:20px;
+	line-height:normal;
+	}
+
+#column .holder h2.title img{
+	float:left;
+	margin:-15px 8px 0 0;
+	padding:5px;
+	border:1px solid #666666;
+	}
+
+#column .holder p.readmore{
+	display:block;
+	width:100%;
+	font-weight:bold;
+	text-align:right;
+	line-height:normal;
+	}
+
+#column div.imgholder{
+	display:block;
+	width:290px;
+	margin:0 0 10px 0;
+	padding:4px;
+	color:#666666;
+	background-color:#F7F7F7;
+	border:1px solid #CCCCCC;
+	}
+	
+#column .subnav{display:block; width:250px; padding:25px; background-color:#F9F9F9; margin-bottom:30px;}

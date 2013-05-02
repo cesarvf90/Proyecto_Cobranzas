@@ -1,0 +1,1727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CobranzasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CobranzasModelStoreContainer">
+          <EntitySet Name="Acreedor" EntityType="CobranzasModel.Store.Acreedor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Actividad" EntityType="CobranzasModel.Store.Actividad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CalificacionDato" EntityType="CobranzasModel.Store.CalificacionDato" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cartera" EntityType="CobranzasModel.Store.Cartera" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cuota" EntityType="CobranzasModel.Store.Cuota" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DatoDeudor" EntityType="CobranzasModel.Store.DatoDeudor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DatoGestor" EntityType="CobranzasModel.Store.DatoGestor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Deuda" EntityType="CobranzasModel.Store.Deuda" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Deudor" EntityType="CobranzasModel.Store.Deudor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Gestor" EntityType="CobranzasModel.Store.Gestor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GestorXDeuda" EntityType="CobranzasModel.Store.GestorXDeuda" store:Type="Tables" store:Schema="dbo" store:Name="GestorXDeuda">
+            <DefiningQuery>SELECT 
+      [GestorXDeuda].[idGestor] AS [idGestor], 
+      [GestorXDeuda].[idDeuda] AS [idDeuda], 
+      [GestorXDeuda].[fechaAsignacion] AS [fechaAsignacion], 
+      [GestorXDeuda].[exito] AS [exito]
+      FROM [dbo].[GestorXDeuda] AS [GestorXDeuda]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GestorXGestor" EntityType="CobranzasModel.Store.GestorXGestor" store:Type="Tables" store:Schema="dbo" store:Name="GestorXGestor">
+            <DefiningQuery>SELECT 
+      [GestorXGestor].[idGestorSupervisor] AS [idGestorSupervisor], 
+      [GestorXGestor].[idGestorSupervisado] AS [idGestorSupervisado]
+      FROM [dbo].[GestorXGestor] AS [GestorXGestor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Parametro" EntityType="CobranzasModel.Store.Parametro" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Permiso" EntityType="CobranzasModel.Store.Permiso" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PoliticaCobranza" EntityType="CobranzasModel.Store.PoliticaCobranza" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PoliticaCobranzaXTipoActividad" EntityType="CobranzasModel.Store.PoliticaCobranzaXTipoActividad" store:Type="Tables" store:Schema="dbo" store:Name="PoliticaCobranzaXTipoActividad">
+            <DefiningQuery>SELECT 
+      [PoliticaCobranzaXTipoActividad].[idPoliticaCobranza] AS [idPoliticaCobranza], 
+      [PoliticaCobranzaXTipoActividad].[idTipoActividad] AS [idTipoActividad], 
+      [PoliticaCobranzaXTipoActividad].[numeroPaso] AS [numeroPaso], 
+      [PoliticaCobranzaXTipoActividad].[fechaInicio] AS [fechaInicio], 
+      [PoliticaCobranzaXTipoActividad].[fechaFin] AS [fechaFin]
+      FROM [dbo].[PoliticaCobranzaXTipoActividad] AS [PoliticaCobranzaXTipoActividad]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Refinanciacion" EntityType="CobranzasModel.Store.Refinanciacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rol" EntityType="CobranzasModel.Store.Rol" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RolXPermiso" EntityType="CobranzasModel.Store.RolXPermiso" store:Type="Tables" store:Schema="dbo" store:Name="RolXPermiso">
+            <DefiningQuery>SELECT 
+      [RolXPermiso].[idRol] AS [idRol], 
+      [RolXPermiso].[idPermiso] AS [idPermiso]
+      FROM [dbo].[RolXPermiso] AS [RolXPermiso]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sysdiagrams" EntityType="CobranzasModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TipoActividad" EntityType="CobranzasModel.Store.TipoActividad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Usuario" EntityType="CobranzasModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Actividad_Deuda" Association="CobranzasModel.Store.FK_Actividad_Deuda">
+            <End Role="Deuda" EntitySet="Deuda" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_TipoActividad" Association="CobranzasModel.Store.FK_Actividad_TipoActividad">
+            <End Role="TipoActividad" EntitySet="TipoActividad" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalificacionDato_DatoDeudor" Association="CobranzasModel.Store.FK_CalificacionDato_DatoDeudor">
+            <End Role="DatoDeudor" EntitySet="DatoDeudor" />
+            <End Role="CalificacionDato" EntitySet="CalificacionDato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalificacionDato_DatoGestor" Association="CobranzasModel.Store.FK_CalificacionDato_DatoGestor">
+            <End Role="DatoGestor" EntitySet="DatoGestor" />
+            <End Role="CalificacionDato" EntitySet="CalificacionDato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cartera_Acreedor" Association="CobranzasModel.Store.FK_Cartera_Acreedor">
+            <End Role="Acreedor" EntitySet="Acreedor" />
+            <End Role="Cartera" EntitySet="Cartera" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuota_Refinanciacion" Association="CobranzasModel.Store.FK_Cuota_Refinanciacion">
+            <End Role="Refinanciacion" EntitySet="Refinanciacion" />
+            <End Role="Cuota" EntitySet="Cuota" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deuda_Cartera1" Association="CobranzasModel.Store.FK_Deuda_Cartera1">
+            <End Role="Cartera" EntitySet="Cartera" />
+            <End Role="Deuda" EntitySet="Deuda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deuda_Deudor" Association="CobranzasModel.Store.FK_Deuda_Deudor">
+            <End Role="Deudor" EntitySet="Deudor" />
+            <End Role="Deuda" EntitySet="Deuda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GestorXDeuda_Deuda" Association="CobranzasModel.Store.FK_GestorXDeuda_Deuda">
+            <End Role="Deuda" EntitySet="Deuda" />
+            <End Role="GestorXDeuda" EntitySet="GestorXDeuda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GestorXDeuda_Gestor" Association="CobranzasModel.Store.FK_GestorXDeuda_Gestor">
+            <End Role="Gestor" EntitySet="Gestor" />
+            <End Role="GestorXDeuda" EntitySet="GestorXDeuda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GestorXGestor_Gestor" Association="CobranzasModel.Store.FK_GestorXGestor_Gestor">
+            <End Role="Gestor" EntitySet="Gestor" />
+            <End Role="GestorXGestor" EntitySet="GestorXGestor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GestorXGestor_Gestor1" Association="CobranzasModel.Store.FK_GestorXGestor_Gestor1">
+            <End Role="Gestor" EntitySet="Gestor" />
+            <End Role="GestorXGestor" EntitySet="GestorXGestor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PoliticaCobranza_Cartera" Association="CobranzasModel.Store.FK_PoliticaCobranza_Cartera">
+            <End Role="Cartera" EntitySet="Cartera" />
+            <End Role="PoliticaCobranza" EntitySet="PoliticaCobranza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza" Association="CobranzasModel.Store.FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza">
+            <End Role="PoliticaCobranza" EntitySet="PoliticaCobranza" />
+            <End Role="PoliticaCobranzaXTipoActividad" EntitySet="PoliticaCobranzaXTipoActividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PoliticaCobranzaXTipoActividad_TipoActividad" Association="CobranzasModel.Store.FK_PoliticaCobranzaXTipoActividad_TipoActividad">
+            <End Role="TipoActividad" EntitySet="TipoActividad" />
+            <End Role="PoliticaCobranzaXTipoActividad" EntitySet="PoliticaCobranzaXTipoActividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refinanciacion_Actividad" Association="CobranzasModel.Store.FK_Refinanciacion_Actividad">
+            <End Role="Actividad" EntitySet="Actividad" />
+            <End Role="Refinanciacion" EntitySet="Refinanciacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refinanciacion_Deuda" Association="CobranzasModel.Store.FK_Refinanciacion_Deuda">
+            <End Role="Deuda" EntitySet="Deuda" />
+            <End Role="Refinanciacion" EntitySet="Refinanciacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolXPermiso_Permiso" Association="CobranzasModel.Store.FK_RolXPermiso_Permiso">
+            <End Role="Permiso" EntitySet="Permiso" />
+            <End Role="RolXPermiso" EntitySet="RolXPermiso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolXPermiso_Rol" Association="CobranzasModel.Store.FK_RolXPermiso_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolXPermiso" EntitySet="RolXPermiso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Acreedor" Association="CobranzasModel.Store.FK_Usuario_Acreedor">
+            <End Role="Acreedor" EntitySet="Acreedor" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Gestor" Association="CobranzasModel.Store.FK_Usuario_Gestor">
+            <End Role="Gestor" EntitySet="Gestor" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="CobranzasModel.Store.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Acreedor">
+          <Key>
+            <PropertyRef Name="idAcreedor" />
+          </Key>
+          <Property Name="idAcreedor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="razonSocial" Type="nvarchar" MaxLength="50" />
+          <Property Name="ruc" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="rubro" Type="int" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="idActividad" />
+          </Key>
+          <Property Name="idActividad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoActividad" Type="int" Nullable="false" />
+          <Property Name="idDeuda" Type="int" Nullable="false" />
+          <Property Name="idGestor" Type="int" Nullable="false" />
+          <Property Name="idResultado" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="detalles" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="CalificacionDato">
+          <Key>
+            <PropertyRef Name="idCalificacion" />
+          </Key>
+          <Property Name="idCalificacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idDato" Type="int" Nullable="false" />
+          <Property Name="valorCalificacion" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="valorDato" Type="nvarchar" MaxLength="50" />
+          <Property Name="valorDatoMinimo" Type="decimal" Scale="2" />
+          <Property Name="valorDatoMaximo" Type="decimal" Scale="2" />
+        </EntityType>
+        <EntityType Name="Cartera">
+          <Key>
+            <PropertyRef Name="idCartera" />
+          </Key>
+          <Property Name="idCartera" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idAcreedor" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="esVencida" Type="int" Nullable="false" />
+          <Property Name="porcentajeGanancia" Type="int" Nullable="false" />
+          <Property Name="detalles" Type="nvarchar" MaxLength="250" />
+          <Property Name="cantidadDeudas" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuota">
+          <Key>
+            <PropertyRef Name="idCuota" />
+          </Key>
+          <Property Name="idCuota" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idRefinanciacion" Type="int" Nullable="false" />
+          <Property Name="fechaPactada" Type="datetime" Nullable="false" />
+          <Property Name="fechaPago" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DatoDeudor">
+          <Key>
+            <PropertyRef Name="idDato" />
+          </Key>
+          <Property Name="idDato" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DatoGestor">
+          <Key>
+            <PropertyRef Name="idDato" />
+          </Key>
+          <Property Name="idDato" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Deuda">
+          <Key>
+            <PropertyRef Name="idDeuda" />
+          </Key>
+          <Property Name="idDeuda" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idDeudor" Type="int" Nullable="false" />
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="idCartera" Type="int" Nullable="false" />
+          <Property Name="idTipoDeuda" Type="int" Nullable="false" />
+          <Property Name="monto" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="fechaInicio" Type="datetime" />
+          <Property Name="moneda" Type="int" Nullable="false" />
+          <Property Name="esCuota" Type="int" Nullable="false" />
+          <Property Name="dificultad" Type="int" />
+          <Property Name="pagada" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deudor">
+          <Key>
+            <PropertyRef Name="idDeudor" />
+          </Key>
+          <Property Name="idDeudor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="apellidoPaterno" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="apellidoMaterno" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="tipoDocumento" Type="int" Nullable="false" />
+          <Property Name="numeroDocumneto" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="telefonoPersonal" Type="nvarchar" MaxLength="15" />
+          <Property Name="telefonoDomicilio" Type="nvarchar" MaxLength="15" />
+          <Property Name="telefonoTrabajo" Type="nvarchar" MaxLength="15" />
+          <Property Name="correo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="poseeTrabajo" Type="int" />
+          <Property Name="fechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="numeroTotalDeudas" Type="int" Nullable="false" />
+          <Property Name="totalAdeudado" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="estadoCivil" Type="int" />
+          <Property Name="numeroHijos" Type="int" />
+          <Property Name="sexo" Type="int" />
+          <Property Name="detalles" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Gestor">
+          <Key>
+            <PropertyRef Name="idGestor" />
+          </Key>
+          <Property Name="idGestor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idNivelGestor" Type="int" Nullable="false" />
+          <Property Name="idTipoGestor" Type="int" Nullable="false" />
+          <Property Name="nombres" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="apellidoPaterno" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="apellidoMaterno" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="deudasRecuperadas" Type="int" />
+          <Property Name="disponible" Type="int" Nullable="false" />
+          <Property Name="tipoDocumento" Type="int" Nullable="false" />
+          <Property Name="numeroDocumento" Type="nvarchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'cobranzasdb1.dbo.GestorXDeuda' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="GestorXDeuda">
+          <Key>
+            <PropertyRef Name="idGestor" />
+            <PropertyRef Name="idDeuda" />
+            <PropertyRef Name="fechaAsignacion" />
+            <PropertyRef Name="exito" />
+          </Key>
+          <Property Name="idGestor" Type="int" Nullable="false" />
+          <Property Name="idDeuda" Type="int" Nullable="false" />
+          <Property Name="fechaAsignacion" Type="datetime" Nullable="false" />
+          <Property Name="exito" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'cobranzasdb1.dbo.GestorXGestor' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="GestorXGestor">
+          <Key>
+            <PropertyRef Name="idGestorSupervisor" />
+            <PropertyRef Name="idGestorSupervisado" />
+          </Key>
+          <Property Name="idGestorSupervisor" Type="int" Nullable="false" />
+          <Property Name="idGestorSupervisado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parametro">
+          <Key>
+            <PropertyRef Name="idParametro" />
+          </Key>
+          <Property Name="idParametro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="valor" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="valorNum" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="idPadre" Type="int" />
+          <Property Name="codUnico" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="idPermiso" />
+          </Key>
+          <Property Name="idPermiso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="funcionalidad" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="descripcion" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PoliticaCobranza">
+          <Key>
+            <PropertyRef Name="idPoliticaCobranza" />
+          </Key>
+          <Property Name="idPoliticaCobranza" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idCartera" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" Nullable="false" MaxLength="50" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="100" />
+          <Property Name="obligatoria" Type="int" Nullable="false" />
+          <Property Name="interesRefinanciacion" Type="decimal" Scale="2" />
+          <Property Name="maximoCuotasRefinanciacion" Type="int" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'cobranzasdb1.dbo.PoliticaCobranzaXTipoActividad' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="PoliticaCobranzaXTipoActividad">
+          <Key>
+            <PropertyRef Name="idPoliticaCobranza" />
+            <PropertyRef Name="idTipoActividad" />
+            <PropertyRef Name="numeroPaso" />
+            <PropertyRef Name="fechaInicio" />
+            <PropertyRef Name="fechaFin" />
+          </Key>
+          <Property Name="idPoliticaCobranza" Type="int" Nullable="false" />
+          <Property Name="idTipoActividad" Type="int" Nullable="false" />
+          <Property Name="numeroPaso" Type="int" Nullable="false" />
+          <Property Name="fechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="fechaFin" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Refinanciacion">
+          <Key>
+            <PropertyRef Name="idRefinanciacion" />
+          </Key>
+          <Property Name="idRefinanciacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idActividad" Type="int" Nullable="false" />
+          <Property Name="idDeuda" Type="int" Nullable="false" />
+          <Property Name="numeroCuotas" Type="int" Nullable="false" />
+          <Property Name="montoCuota" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="moneda" Type="int" Nullable="false" />
+          <Property Name="fechaRefinanciacion" Type="datetime" Nullable="false" />
+          <Property Name="periodicidadMeses" Type="int" Nullable="false" />
+          <Property Name="interes" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="150" />
+          <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'cobranzasdb1.dbo.RolXPermiso' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="RolXPermiso">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="idPermiso" />
+          </Key>
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="idPermiso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoActividad">
+          <Key>
+            <PropertyRef Name="idTipoActividad" />
+          </Key>
+          <Property Name="idTipoActividad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="descripcion" Type="nvarchar" Nullable="false" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idAcreedor" Type="int" />
+          <Property Name="idGestor" Type="int" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="nombreUsuario" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="contrasena" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="tipoUsuario" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="correo" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Actividad_Deuda">
+          <End Role="Deuda" Type="CobranzasModel.Store.Deuda" Multiplicity="1" />
+          <End Role="Actividad" Type="CobranzasModel.Store.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deuda">
+              <PropertyRef Name="idDeuda" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="idDeuda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_TipoActividad">
+          <End Role="TipoActividad" Type="CobranzasModel.Store.TipoActividad" Multiplicity="1" />
+          <End Role="Actividad" Type="CobranzasModel.Store.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoActividad">
+              <PropertyRef Name="idTipoActividad" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="idTipoActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalificacionDato_DatoDeudor">
+          <End Role="DatoDeudor" Type="CobranzasModel.Store.DatoDeudor" Multiplicity="1" />
+          <End Role="CalificacionDato" Type="CobranzasModel.Store.CalificacionDato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatoDeudor">
+              <PropertyRef Name="idDato" />
+            </Principal>
+            <Dependent Role="CalificacionDato">
+              <PropertyRef Name="idDato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalificacionDato_DatoGestor">
+          <End Role="DatoGestor" Type="CobranzasModel.Store.DatoGestor" Multiplicity="1" />
+          <End Role="CalificacionDato" Type="CobranzasModel.Store.CalificacionDato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatoGestor">
+              <PropertyRef Name="idDato" />
+            </Principal>
+            <Dependent Role="CalificacionDato">
+              <PropertyRef Name="idDato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cartera_Acreedor">
+          <End Role="Acreedor" Type="CobranzasModel.Store.Acreedor" Multiplicity="1" />
+          <End Role="Cartera" Type="CobranzasModel.Store.Cartera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acreedor">
+              <PropertyRef Name="idAcreedor" />
+            </Principal>
+            <Dependent Role="Cartera">
+              <PropertyRef Name="idAcreedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuota_Refinanciacion">
+          <End Role="Refinanciacion" Type="CobranzasModel.Store.Refinanciacion" Multiplicity="1" />
+          <End Role="Cuota" Type="CobranzasModel.Store.Cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Refinanciacion">
+              <PropertyRef Name="idRefinanciacion" />
+            </Principal>
+            <Dependent Role="Cuota">
+              <PropertyRef Name="idRefinanciacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deuda_Cartera1">
+          <End Role="Cartera" Type="CobranzasModel.Store.Cartera" Multiplicity="1" />
+          <End Role="Deuda" Type="CobranzasModel.Store.Deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cartera">
+              <PropertyRef Name="idCartera" />
+            </Principal>
+            <Dependent Role="Deuda">
+              <PropertyRef Name="idCartera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deuda_Deudor">
+          <End Role="Deudor" Type="CobranzasModel.Store.Deudor" Multiplicity="1" />
+          <End Role="Deuda" Type="CobranzasModel.Store.Deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deudor">
+              <PropertyRef Name="idDeudor" />
+            </Principal>
+            <Dependent Role="Deuda">
+              <PropertyRef Name="idDeudor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GestorXDeuda_Deuda">
+          <End Role="Deuda" Type="CobranzasModel.Store.Deuda" Multiplicity="1" />
+          <End Role="GestorXDeuda" Type="CobranzasModel.Store.GestorXDeuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deuda">
+              <PropertyRef Name="idDeuda" />
+            </Principal>
+            <Dependent Role="GestorXDeuda">
+              <PropertyRef Name="idDeuda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GestorXDeuda_Gestor">
+          <End Role="Gestor" Type="CobranzasModel.Store.Gestor" Multiplicity="1" />
+          <End Role="GestorXDeuda" Type="CobranzasModel.Store.GestorXDeuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestor">
+              <PropertyRef Name="idGestor" />
+            </Principal>
+            <Dependent Role="GestorXDeuda">
+              <PropertyRef Name="idGestor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GestorXGestor_Gestor">
+          <End Role="Gestor" Type="CobranzasModel.Store.Gestor" Multiplicity="1" />
+          <End Role="GestorXGestor" Type="CobranzasModel.Store.GestorXGestor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestor">
+              <PropertyRef Name="idGestor" />
+            </Principal>
+            <Dependent Role="GestorXGestor">
+              <PropertyRef Name="idGestorSupervisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GestorXGestor_Gestor1">
+          <End Role="Gestor" Type="CobranzasModel.Store.Gestor" Multiplicity="1" />
+          <End Role="GestorXGestor" Type="CobranzasModel.Store.GestorXGestor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestor">
+              <PropertyRef Name="idGestor" />
+            </Principal>
+            <Dependent Role="GestorXGestor">
+              <PropertyRef Name="idGestorSupervisado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PoliticaCobranza_Cartera">
+          <End Role="Cartera" Type="CobranzasModel.Store.Cartera" Multiplicity="1" />
+          <End Role="PoliticaCobranza" Type="CobranzasModel.Store.PoliticaCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cartera">
+              <PropertyRef Name="idCartera" />
+            </Principal>
+            <Dependent Role="PoliticaCobranza">
+              <PropertyRef Name="idCartera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza">
+          <End Role="PoliticaCobranza" Type="CobranzasModel.Store.PoliticaCobranza" Multiplicity="1" />
+          <End Role="PoliticaCobranzaXTipoActividad" Type="CobranzasModel.Store.PoliticaCobranzaXTipoActividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoliticaCobranza">
+              <PropertyRef Name="idPoliticaCobranza" />
+            </Principal>
+            <Dependent Role="PoliticaCobranzaXTipoActividad">
+              <PropertyRef Name="idPoliticaCobranza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PoliticaCobranzaXTipoActividad_TipoActividad">
+          <End Role="TipoActividad" Type="CobranzasModel.Store.TipoActividad" Multiplicity="1" />
+          <End Role="PoliticaCobranzaXTipoActividad" Type="CobranzasModel.Store.PoliticaCobranzaXTipoActividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoActividad">
+              <PropertyRef Name="idTipoActividad" />
+            </Principal>
+            <Dependent Role="PoliticaCobranzaXTipoActividad">
+              <PropertyRef Name="idTipoActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refinanciacion_Actividad">
+          <End Role="Actividad" Type="CobranzasModel.Store.Actividad" Multiplicity="1" />
+          <End Role="Refinanciacion" Type="CobranzasModel.Store.Refinanciacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividad">
+              <PropertyRef Name="idActividad" />
+            </Principal>
+            <Dependent Role="Refinanciacion">
+              <PropertyRef Name="idActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refinanciacion_Deuda">
+          <End Role="Deuda" Type="CobranzasModel.Store.Deuda" Multiplicity="1" />
+          <End Role="Refinanciacion" Type="CobranzasModel.Store.Refinanciacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deuda">
+              <PropertyRef Name="idDeuda" />
+            </Principal>
+            <Dependent Role="Refinanciacion">
+              <PropertyRef Name="idDeuda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolXPermiso_Permiso">
+          <End Role="Permiso" Type="CobranzasModel.Store.Permiso" Multiplicity="1" />
+          <End Role="RolXPermiso" Type="CobranzasModel.Store.RolXPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="idPermiso" />
+            </Principal>
+            <Dependent Role="RolXPermiso">
+              <PropertyRef Name="idPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolXPermiso_Rol">
+          <End Role="Rol" Type="CobranzasModel.Store.Rol" Multiplicity="1" />
+          <End Role="RolXPermiso" Type="CobranzasModel.Store.RolXPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="RolXPermiso">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Acreedor">
+          <End Role="Acreedor" Type="CobranzasModel.Store.Acreedor" Multiplicity="0..1" />
+          <End Role="Usuario" Type="CobranzasModel.Store.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acreedor">
+              <PropertyRef Name="idAcreedor" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idAcreedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Gestor">
+          <End Role="Gestor" Type="CobranzasModel.Store.Gestor" Multiplicity="0..1" />
+          <End Role="Usuario" Type="CobranzasModel.Store.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestor">
+              <PropertyRef Name="idGestor" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idGestor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Rol">
+          <End Role="Rol" Type="CobranzasModel.Store.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="CobranzasModel.Store.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CobranzasModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CobranzasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Acreedors" EntityType="CobranzasModel.Acreedor" />
+          <EntitySet Name="Actividads" EntityType="CobranzasModel.Actividad" />
+          <EntitySet Name="CalificacionDatoes" EntityType="CobranzasModel.CalificacionDato" />
+          <EntitySet Name="Carteras" EntityType="CobranzasModel.Cartera" />
+          <EntitySet Name="Cuotas" EntityType="CobranzasModel.Cuota" />
+          <EntitySet Name="DatoDeudors" EntityType="CobranzasModel.DatoDeudor" />
+          <EntitySet Name="DatoGestors" EntityType="CobranzasModel.DatoGestor" />
+          <EntitySet Name="Deudas" EntityType="CobranzasModel.Deuda" />
+          <EntitySet Name="Deudors" EntityType="CobranzasModel.Deudor" />
+          <EntitySet Name="Gestors" EntityType="CobranzasModel.Gestor" />
+          <EntitySet Name="GestorXDeudas" EntityType="CobranzasModel.GestorXDeuda" />
+          <EntitySet Name="Parametroes" EntityType="CobranzasModel.Parametro" />
+          <EntitySet Name="Permisoes" EntityType="CobranzasModel.Permiso" />
+          <EntitySet Name="PoliticaCobranzas" EntityType="CobranzasModel.PoliticaCobranza" />
+          <EntitySet Name="PoliticaCobranzaXTipoActividads" EntityType="CobranzasModel.PoliticaCobranzaXTipoActividad" />
+          <EntitySet Name="Refinanciacions" EntityType="CobranzasModel.Refinanciacion" />
+          <EntitySet Name="Rols" EntityType="CobranzasModel.Rol" />
+          <EntitySet Name="sysdiagrams" EntityType="CobranzasModel.sysdiagram" />
+          <EntitySet Name="TipoActividads" EntityType="CobranzasModel.TipoActividad" />
+          <EntitySet Name="Usuarios" EntityType="CobranzasModel.Usuario" />
+          <AssociationSet Name="FK_Cartera_Acreedor" Association="CobranzasModel.FK_Cartera_Acreedor">
+            <End Role="Acreedor" EntitySet="Acreedors" />
+            <End Role="Cartera" EntitySet="Carteras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Acreedor" Association="CobranzasModel.FK_Usuario_Acreedor">
+            <End Role="Acreedor" EntitySet="Acreedors" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Deuda" Association="CobranzasModel.FK_Actividad_Deuda">
+            <End Role="Deuda" EntitySet="Deudas" />
+            <End Role="Actividad" EntitySet="Actividads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_TipoActividad" Association="CobranzasModel.FK_Actividad_TipoActividad">
+            <End Role="TipoActividad" EntitySet="TipoActividads" />
+            <End Role="Actividad" EntitySet="Actividads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refinanciacion_Actividad" Association="CobranzasModel.FK_Refinanciacion_Actividad">
+            <End Role="Actividad" EntitySet="Actividads" />
+            <End Role="Refinanciacion" EntitySet="Refinanciacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalificacionDato_DatoDeudor" Association="CobranzasModel.FK_CalificacionDato_DatoDeudor">
+            <End Role="DatoDeudor" EntitySet="DatoDeudors" />
+            <End Role="CalificacionDato" EntitySet="CalificacionDatoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalificacionDato_DatoGestor" Association="CobranzasModel.FK_CalificacionDato_DatoGestor">
+            <End Role="DatoGestor" EntitySet="DatoGestors" />
+            <End Role="CalificacionDato" EntitySet="CalificacionDatoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deuda_Cartera1" Association="CobranzasModel.FK_Deuda_Cartera1">
+            <End Role="Cartera" EntitySet="Carteras" />
+            <End Role="Deuda" EntitySet="Deudas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PoliticaCobranza_Cartera" Association="CobranzasModel.FK_PoliticaCobranza_Cartera">
+            <End Role="Cartera" EntitySet="Carteras" />
+            <End Role="PoliticaCobranza" EntitySet="PoliticaCobranzas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuota_Refinanciacion" Association="CobranzasModel.FK_Cuota_Refinanciacion">
+            <End Role="Refinanciacion" EntitySet="Refinanciacions" />
+            <End Role="Cuota" EntitySet="Cuotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deuda_Deudor" Association="CobranzasModel.FK_Deuda_Deudor">
+            <End Role="Deudor" EntitySet="Deudors" />
+            <End Role="Deuda" EntitySet="Deudas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GestorXDeuda_Deuda" Association="CobranzasModel.FK_GestorXDeuda_Deuda">
+            <End Role="Deuda" EntitySet="Deudas" />
+            <End Role="GestorXDeuda" EntitySet="GestorXDeudas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refinanciacion_Deuda" Association="CobranzasModel.FK_Refinanciacion_Deuda">
+            <End Role="Deuda" EntitySet="Deudas" />
+            <End Role="Refinanciacion" EntitySet="Refinanciacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GestorXDeuda_Gestor" Association="CobranzasModel.FK_GestorXDeuda_Gestor">
+            <End Role="Gestor" EntitySet="Gestors" />
+            <End Role="GestorXDeuda" EntitySet="GestorXDeudas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Gestor" Association="CobranzasModel.FK_Usuario_Gestor">
+            <End Role="Gestor" EntitySet="Gestors" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza" Association="CobranzasModel.FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza">
+            <End Role="PoliticaCobranza" EntitySet="PoliticaCobranzas" />
+            <End Role="PoliticaCobranzaXTipoActividad" EntitySet="PoliticaCobranzaXTipoActividads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PoliticaCobranzaXTipoActividad_TipoActividad" Association="CobranzasModel.FK_PoliticaCobranzaXTipoActividad_TipoActividad">
+            <End Role="TipoActividad" EntitySet="TipoActividads" />
+            <End Role="PoliticaCobranzaXTipoActividad" EntitySet="PoliticaCobranzaXTipoActividads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="CobranzasModel.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="GestorXGestor" Association="CobranzasModel.GestorXGestor">
+            <End Role="Gestor" EntitySet="Gestors" />
+            <End Role="Gestor1" EntitySet="Gestors" />
+          </AssociationSet>
+          <AssociationSet Name="RolXPermiso" Association="CobranzasModel.RolXPermiso">
+            <End Role="Permiso" EntitySet="Permisoes" />
+            <End Role="Rol" EntitySet="Rols" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Acreedor">
+          <Key>
+            <PropertyRef Name="idAcreedor" />
+          </Key>
+          <Property Name="idAcreedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="razonSocial" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ruc" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="rubro" Type="Int32" Nullable="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Carteras" Relationship="CobranzasModel.FK_Cartera_Acreedor" FromRole="Acreedor" ToRole="Cartera" />
+          <NavigationProperty Name="Usuarios" Relationship="CobranzasModel.FK_Usuario_Acreedor" FromRole="Acreedor" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="idActividad" />
+          </Key>
+          <Property Name="idActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoActividad" Type="Int32" Nullable="false" />
+          <Property Name="idDeuda" Type="Int32" Nullable="false" />
+          <Property Name="idGestor" Type="Int32" Nullable="false" />
+          <Property Name="idResultado" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="detalles" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Deuda" Relationship="CobranzasModel.FK_Actividad_Deuda" FromRole="Actividad" ToRole="Deuda" />
+          <NavigationProperty Name="TipoActividad" Relationship="CobranzasModel.FK_Actividad_TipoActividad" FromRole="Actividad" ToRole="TipoActividad" />
+          <NavigationProperty Name="Refinanciacions" Relationship="CobranzasModel.FK_Refinanciacion_Actividad" FromRole="Actividad" ToRole="Refinanciacion" />
+        </EntityType>
+        <EntityType Name="CalificacionDato">
+          <Key>
+            <PropertyRef Name="idCalificacion" />
+          </Key>
+          <Property Name="idCalificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDato" Type="Int32" Nullable="false" />
+          <Property Name="valorCalificacion" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="valorDato" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="valorDatoMinimo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="valorDatoMaximo" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="DatoDeudor" Relationship="CobranzasModel.FK_CalificacionDato_DatoDeudor" FromRole="CalificacionDato" ToRole="DatoDeudor" />
+          <NavigationProperty Name="DatoGestor" Relationship="CobranzasModel.FK_CalificacionDato_DatoGestor" FromRole="CalificacionDato" ToRole="DatoGestor" />
+        </EntityType>
+        <EntityType Name="Cartera">
+          <Key>
+            <PropertyRef Name="idCartera" />
+          </Key>
+          <Property Name="idCartera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAcreedor" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="esVencida" Type="Int32" Nullable="false" />
+          <Property Name="porcentajeGanancia" Type="Int32" Nullable="false" />
+          <Property Name="detalles" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="cantidadDeudas" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Acreedor" Relationship="CobranzasModel.FK_Cartera_Acreedor" FromRole="Cartera" ToRole="Acreedor" />
+          <NavigationProperty Name="Deudas" Relationship="CobranzasModel.FK_Deuda_Cartera1" FromRole="Cartera" ToRole="Deuda" />
+          <NavigationProperty Name="PoliticaCobranzas" Relationship="CobranzasModel.FK_PoliticaCobranza_Cartera" FromRole="Cartera" ToRole="PoliticaCobranza" />
+        </EntityType>
+        <EntityType Name="Cuota">
+          <Key>
+            <PropertyRef Name="idCuota" />
+          </Key>
+          <Property Name="idCuota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRefinanciacion" Type="Int32" Nullable="false" />
+          <Property Name="fechaPactada" Type="DateTime" Nullable="false" />
+          <Property Name="fechaPago" Type="DateTime" />
+          <NavigationProperty Name="Refinanciacion" Relationship="CobranzasModel.FK_Cuota_Refinanciacion" FromRole="Cuota" ToRole="Refinanciacion" />
+        </EntityType>
+        <EntityType Name="DatoDeudor">
+          <Key>
+            <PropertyRef Name="idDato" />
+          </Key>
+          <Property Name="idDato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CalificacionDatoes" Relationship="CobranzasModel.FK_CalificacionDato_DatoDeudor" FromRole="DatoDeudor" ToRole="CalificacionDato" />
+        </EntityType>
+        <EntityType Name="DatoGestor">
+          <Key>
+            <PropertyRef Name="idDato" />
+          </Key>
+          <Property Name="idDato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CalificacionDatoes" Relationship="CobranzasModel.FK_CalificacionDato_DatoGestor" FromRole="DatoGestor" ToRole="CalificacionDato" />
+        </EntityType>
+        <EntityType Name="Deuda">
+          <Key>
+            <PropertyRef Name="idDeuda" />
+          </Key>
+          <Property Name="idDeuda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDeudor" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="idCartera" Type="Int32" Nullable="false" />
+          <Property Name="idTipoDeuda" Type="Int32" Nullable="false" />
+          <Property Name="monto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="fechaInicio" Type="DateTime" />
+          <Property Name="moneda" Type="Int32" Nullable="false" />
+          <Property Name="esCuota" Type="Int32" Nullable="false" />
+          <Property Name="dificultad" Type="Int32" />
+          <Property Name="pagada" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actividads" Relationship="CobranzasModel.FK_Actividad_Deuda" FromRole="Deuda" ToRole="Actividad" />
+          <NavigationProperty Name="Cartera" Relationship="CobranzasModel.FK_Deuda_Cartera1" FromRole="Deuda" ToRole="Cartera" />
+          <NavigationProperty Name="Deudor" Relationship="CobranzasModel.FK_Deuda_Deudor" FromRole="Deuda" ToRole="Deudor" />
+          <NavigationProperty Name="GestorXDeudas" Relationship="CobranzasModel.FK_GestorXDeuda_Deuda" FromRole="Deuda" ToRole="GestorXDeuda" />
+          <NavigationProperty Name="Refinanciacions" Relationship="CobranzasModel.FK_Refinanciacion_Deuda" FromRole="Deuda" ToRole="Refinanciacion" />
+        </EntityType>
+        <EntityType Name="Deudor">
+          <Key>
+            <PropertyRef Name="idDeudor" />
+          </Key>
+          <Property Name="idDeudor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="apellidoPaterno" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="apellidoMaterno" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="tipoDocumento" Type="Int32" Nullable="false" />
+          <Property Name="numeroDocumneto" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="telefonoPersonal" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="telefonoDomicilio" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="telefonoTrabajo" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="correo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="poseeTrabajo" Type="Int32" />
+          <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" />
+          <Property Name="numeroTotalDeudas" Type="Int32" Nullable="false" />
+          <Property Name="totalAdeudado" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="estadoCivil" Type="Int32" />
+          <Property Name="numeroHijos" Type="Int32" />
+          <Property Name="sexo" Type="Int32" />
+          <Property Name="detalles" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Deudas" Relationship="CobranzasModel.FK_Deuda_Deudor" FromRole="Deudor" ToRole="Deuda" />
+        </EntityType>
+        <EntityType Name="Gestor">
+          <Key>
+            <PropertyRef Name="idGestor" />
+          </Key>
+          <Property Name="idGestor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idNivelGestor" Type="Int32" Nullable="false" />
+          <Property Name="idTipoGestor" Type="Int32" Nullable="false" />
+          <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="apellidoPaterno" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="apellidoMaterno" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="fechaIngreso" Type="DateTime" Nullable="false" />
+          <Property Name="deudasRecuperadas" Type="Int32" />
+          <Property Name="disponible" Type="Int32" Nullable="false" />
+          <Property Name="tipoDocumento" Type="Int32" Nullable="false" />
+          <Property Name="numeroDocumento" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="GestorXDeudas" Relationship="CobranzasModel.FK_GestorXDeuda_Gestor" FromRole="Gestor" ToRole="GestorXDeuda" />
+          <NavigationProperty Name="Usuarios" Relationship="CobranzasModel.FK_Usuario_Gestor" FromRole="Gestor" ToRole="Usuario" />
+          <NavigationProperty Name="Gestor1" Relationship="CobranzasModel.GestorXGestor" FromRole="Gestor" ToRole="Gestor1" />
+          <NavigationProperty Name="Gestors" Relationship="CobranzasModel.GestorXGestor" FromRole="Gestor1" ToRole="Gestor" />
+        </EntityType>
+        <EntityType Name="GestorXDeuda">
+          <Key>
+            <PropertyRef Name="idGestor" />
+            <PropertyRef Name="idDeuda" />
+            <PropertyRef Name="fechaAsignacion" />
+            <PropertyRef Name="exito" />
+          </Key>
+          <Property Name="idGestor" Type="Int32" Nullable="false" />
+          <Property Name="idDeuda" Type="Int32" Nullable="false" />
+          <Property Name="fechaAsignacion" Type="DateTime" Nullable="false" />
+          <Property Name="exito" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Deuda" Relationship="CobranzasModel.FK_GestorXDeuda_Deuda" FromRole="GestorXDeuda" ToRole="Deuda" />
+          <NavigationProperty Name="Gestor" Relationship="CobranzasModel.FK_GestorXDeuda_Gestor" FromRole="GestorXDeuda" ToRole="Gestor" />
+        </EntityType>
+        <EntityType Name="Parametro">
+          <Key>
+            <PropertyRef Name="idParametro" />
+          </Key>
+          <Property Name="idParametro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="valor" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="valorNum" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="idPadre" Type="Int32" />
+          <Property Name="codUnico" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="idPermiso" />
+          </Key>
+          <Property Name="idPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="funcionalidad" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Rols" Relationship="CobranzasModel.RolXPermiso" FromRole="Permiso" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="PoliticaCobranza">
+          <Key>
+            <PropertyRef Name="idPoliticaCobranza" />
+          </Key>
+          <Property Name="idPoliticaCobranza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCartera" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="descripcion" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="obligatoria" Type="Int32" Nullable="false" />
+          <Property Name="interesRefinanciacion" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="maximoCuotasRefinanciacion" Type="Int32" />
+          <NavigationProperty Name="Cartera" Relationship="CobranzasModel.FK_PoliticaCobranza_Cartera" FromRole="PoliticaCobranza" ToRole="Cartera" />
+          <NavigationProperty Name="PoliticaCobranzaXTipoActividads" Relationship="CobranzasModel.FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza" FromRole="PoliticaCobranza" ToRole="PoliticaCobranzaXTipoActividad" />
+        </EntityType>
+        <EntityType Name="PoliticaCobranzaXTipoActividad">
+          <Key>
+            <PropertyRef Name="idPoliticaCobranza" />
+            <PropertyRef Name="idTipoActividad" />
+            <PropertyRef Name="numeroPaso" />
+            <PropertyRef Name="fechaInicio" />
+            <PropertyRef Name="fechaFin" />
+          </Key>
+          <Property Name="idPoliticaCobranza" Type="Int32" Nullable="false" />
+          <Property Name="idTipoActividad" Type="Int32" Nullable="false" />
+          <Property Name="numeroPaso" Type="Int32" Nullable="false" />
+          <Property Name="fechaInicio" Type="DateTime" Nullable="false" />
+          <Property Name="fechaFin" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="PoliticaCobranza" Relationship="CobranzasModel.FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza" FromRole="PoliticaCobranzaXTipoActividad" ToRole="PoliticaCobranza" />
+          <NavigationProperty Name="TipoActividad" Relationship="CobranzasModel.FK_PoliticaCobranzaXTipoActividad_TipoActividad" FromRole="PoliticaCobranzaXTipoActividad" ToRole="TipoActividad" />
+        </EntityType>
+        <EntityType Name="Refinanciacion">
+          <Key>
+            <PropertyRef Name="idRefinanciacion" />
+          </Key>
+          <Property Name="idRefinanciacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idActividad" Type="Int32" Nullable="false" />
+          <Property Name="idDeuda" Type="Int32" Nullable="false" />
+          <Property Name="numeroCuotas" Type="Int32" Nullable="false" />
+          <Property Name="montoCuota" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="moneda" Type="Int32" Nullable="false" />
+          <Property Name="fechaRefinanciacion" Type="DateTime" Nullable="false" />
+          <Property Name="periodicidadMeses" Type="Int32" Nullable="false" />
+          <Property Name="interes" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Actividad" Relationship="CobranzasModel.FK_Refinanciacion_Actividad" FromRole="Refinanciacion" ToRole="Actividad" />
+          <NavigationProperty Name="Cuotas" Relationship="CobranzasModel.FK_Cuota_Refinanciacion" FromRole="Refinanciacion" ToRole="Cuota" />
+          <NavigationProperty Name="Deuda" Relationship="CobranzasModel.FK_Refinanciacion_Deuda" FromRole="Refinanciacion" ToRole="Deuda" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="descripcion" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="CobranzasModel.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+          <NavigationProperty Name="Permisoes" Relationship="CobranzasModel.RolXPermiso" FromRole="Rol" ToRole="Permiso" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TipoActividad">
+          <Key>
+            <PropertyRef Name="idTipoActividad" />
+          </Key>
+          <Property Name="idTipoActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Actividads" Relationship="CobranzasModel.FK_Actividad_TipoActividad" FromRole="TipoActividad" ToRole="Actividad" />
+          <NavigationProperty Name="PoliticaCobranzaXTipoActividads" Relationship="CobranzasModel.FK_PoliticaCobranzaXTipoActividad_TipoActividad" FromRole="TipoActividad" ToRole="PoliticaCobranzaXTipoActividad" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAcreedor" Type="Int32" />
+          <Property Name="idGestor" Type="Int32" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="nombreUsuario" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="tipoUsuario" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="correo" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Acreedor" Relationship="CobranzasModel.FK_Usuario_Acreedor" FromRole="Usuario" ToRole="Acreedor" />
+          <NavigationProperty Name="Gestor" Relationship="CobranzasModel.FK_Usuario_Gestor" FromRole="Usuario" ToRole="Gestor" />
+          <NavigationProperty Name="Rol" Relationship="CobranzasModel.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK_Cartera_Acreedor">
+          <End Role="Acreedor" Type="CobranzasModel.Acreedor" Multiplicity="1" />
+          <End Role="Cartera" Type="CobranzasModel.Cartera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acreedor">
+              <PropertyRef Name="idAcreedor" />
+            </Principal>
+            <Dependent Role="Cartera">
+              <PropertyRef Name="idAcreedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Acreedor">
+          <End Role="Acreedor" Type="CobranzasModel.Acreedor" Multiplicity="0..1" />
+          <End Role="Usuario" Type="CobranzasModel.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acreedor">
+              <PropertyRef Name="idAcreedor" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idAcreedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Deuda">
+          <End Role="Deuda" Type="CobranzasModel.Deuda" Multiplicity="1" />
+          <End Role="Actividad" Type="CobranzasModel.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deuda">
+              <PropertyRef Name="idDeuda" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="idDeuda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_TipoActividad">
+          <End Role="TipoActividad" Type="CobranzasModel.TipoActividad" Multiplicity="1" />
+          <End Role="Actividad" Type="CobranzasModel.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoActividad">
+              <PropertyRef Name="idTipoActividad" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="idTipoActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refinanciacion_Actividad">
+          <End Role="Actividad" Type="CobranzasModel.Actividad" Multiplicity="1" />
+          <End Role="Refinanciacion" Type="CobranzasModel.Refinanciacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividad">
+              <PropertyRef Name="idActividad" />
+            </Principal>
+            <Dependent Role="Refinanciacion">
+              <PropertyRef Name="idActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalificacionDato_DatoDeudor">
+          <End Role="DatoDeudor" Type="CobranzasModel.DatoDeudor" Multiplicity="1" />
+          <End Role="CalificacionDato" Type="CobranzasModel.CalificacionDato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatoDeudor">
+              <PropertyRef Name="idDato" />
+            </Principal>
+            <Dependent Role="CalificacionDato">
+              <PropertyRef Name="idDato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalificacionDato_DatoGestor">
+          <End Role="DatoGestor" Type="CobranzasModel.DatoGestor" Multiplicity="1" />
+          <End Role="CalificacionDato" Type="CobranzasModel.CalificacionDato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatoGestor">
+              <PropertyRef Name="idDato" />
+            </Principal>
+            <Dependent Role="CalificacionDato">
+              <PropertyRef Name="idDato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deuda_Cartera1">
+          <End Role="Cartera" Type="CobranzasModel.Cartera" Multiplicity="1" />
+          <End Role="Deuda" Type="CobranzasModel.Deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cartera">
+              <PropertyRef Name="idCartera" />
+            </Principal>
+            <Dependent Role="Deuda">
+              <PropertyRef Name="idCartera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PoliticaCobranza_Cartera">
+          <End Role="Cartera" Type="CobranzasModel.Cartera" Multiplicity="1" />
+          <End Role="PoliticaCobranza" Type="CobranzasModel.PoliticaCobranza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cartera">
+              <PropertyRef Name="idCartera" />
+            </Principal>
+            <Dependent Role="PoliticaCobranza">
+              <PropertyRef Name="idCartera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuota_Refinanciacion">
+          <End Role="Refinanciacion" Type="CobranzasModel.Refinanciacion" Multiplicity="1" />
+          <End Role="Cuota" Type="CobranzasModel.Cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Refinanciacion">
+              <PropertyRef Name="idRefinanciacion" />
+            </Principal>
+            <Dependent Role="Cuota">
+              <PropertyRef Name="idRefinanciacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deuda_Deudor">
+          <End Role="Deudor" Type="CobranzasModel.Deudor" Multiplicity="1" />
+          <End Role="Deuda" Type="CobranzasModel.Deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deudor">
+              <PropertyRef Name="idDeudor" />
+            </Principal>
+            <Dependent Role="Deuda">
+              <PropertyRef Name="idDeudor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GestorXDeuda_Deuda">
+          <End Role="Deuda" Type="CobranzasModel.Deuda" Multiplicity="1" />
+          <End Role="GestorXDeuda" Type="CobranzasModel.GestorXDeuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deuda">
+              <PropertyRef Name="idDeuda" />
+            </Principal>
+            <Dependent Role="GestorXDeuda">
+              <PropertyRef Name="idDeuda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refinanciacion_Deuda">
+          <End Role="Deuda" Type="CobranzasModel.Deuda" Multiplicity="1" />
+          <End Role="Refinanciacion" Type="CobranzasModel.Refinanciacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deuda">
+              <PropertyRef Name="idDeuda" />
+            </Principal>
+            <Dependent Role="Refinanciacion">
+              <PropertyRef Name="idDeuda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GestorXDeuda_Gestor">
+          <End Role="Gestor" Type="CobranzasModel.Gestor" Multiplicity="1" />
+          <End Role="GestorXDeuda" Type="CobranzasModel.GestorXDeuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestor">
+              <PropertyRef Name="idGestor" />
+            </Principal>
+            <Dependent Role="GestorXDeuda">
+              <PropertyRef Name="idGestor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Gestor">
+          <End Role="Gestor" Type="CobranzasModel.Gestor" Multiplicity="0..1" />
+          <End Role="Usuario" Type="CobranzasModel.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestor">
+              <PropertyRef Name="idGestor" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idGestor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza">
+          <End Role="PoliticaCobranza" Type="CobranzasModel.PoliticaCobranza" Multiplicity="1" />
+          <End Role="PoliticaCobranzaXTipoActividad" Type="CobranzasModel.PoliticaCobranzaXTipoActividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoliticaCobranza">
+              <PropertyRef Name="idPoliticaCobranza" />
+            </Principal>
+            <Dependent Role="PoliticaCobranzaXTipoActividad">
+              <PropertyRef Name="idPoliticaCobranza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PoliticaCobranzaXTipoActividad_TipoActividad">
+          <End Role="TipoActividad" Type="CobranzasModel.TipoActividad" Multiplicity="1" />
+          <End Role="PoliticaCobranzaXTipoActividad" Type="CobranzasModel.PoliticaCobranzaXTipoActividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoActividad">
+              <PropertyRef Name="idTipoActividad" />
+            </Principal>
+            <Dependent Role="PoliticaCobranzaXTipoActividad">
+              <PropertyRef Name="idTipoActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Rol">
+          <End Role="Rol" Type="CobranzasModel.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="CobranzasModel.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GestorXGestor">
+          <End Role="Gestor" Type="CobranzasModel.Gestor" Multiplicity="*" />
+          <End Role="Gestor1" Type="CobranzasModel.Gestor" Multiplicity="*" />
+        </Association>
+        <Association Name="RolXPermiso">
+          <End Role="Permiso" Type="CobranzasModel.Permiso" Multiplicity="*" />
+          <End Role="Rol" Type="CobranzasModel.Rol" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CobranzasModelStoreContainer" CdmEntityContainer="CobranzasEntities">
+          <EntitySetMapping Name="Acreedors">
+            <EntityTypeMapping TypeName="CobranzasModel.Acreedor">
+              <MappingFragment StoreEntitySet="Acreedor">
+                <ScalarProperty Name="idAcreedor" ColumnName="idAcreedor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="razonSocial" ColumnName="razonSocial" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="rubro" ColumnName="rubro" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actividads">
+            <EntityTypeMapping TypeName="CobranzasModel.Actividad">
+              <MappingFragment StoreEntitySet="Actividad">
+                <ScalarProperty Name="idActividad" ColumnName="idActividad" />
+                <ScalarProperty Name="idTipoActividad" ColumnName="idTipoActividad" />
+                <ScalarProperty Name="idDeuda" ColumnName="idDeuda" />
+                <ScalarProperty Name="idGestor" ColumnName="idGestor" />
+                <ScalarProperty Name="idResultado" ColumnName="idResultado" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CalificacionDatoes">
+            <EntityTypeMapping TypeName="CobranzasModel.CalificacionDato">
+              <MappingFragment StoreEntitySet="CalificacionDato">
+                <ScalarProperty Name="idCalificacion" ColumnName="idCalificacion" />
+                <ScalarProperty Name="idDato" ColumnName="idDato" />
+                <ScalarProperty Name="valorCalificacion" ColumnName="valorCalificacion" />
+                <ScalarProperty Name="valorDato" ColumnName="valorDato" />
+                <ScalarProperty Name="valorDatoMinimo" ColumnName="valorDatoMinimo" />
+                <ScalarProperty Name="valorDatoMaximo" ColumnName="valorDatoMaximo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carteras">
+            <EntityTypeMapping TypeName="CobranzasModel.Cartera">
+              <MappingFragment StoreEntitySet="Cartera">
+                <ScalarProperty Name="idCartera" ColumnName="idCartera" />
+                <ScalarProperty Name="idAcreedor" ColumnName="idAcreedor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="esVencida" ColumnName="esVencida" />
+                <ScalarProperty Name="porcentajeGanancia" ColumnName="porcentajeGanancia" />
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
+                <ScalarProperty Name="cantidadDeudas" ColumnName="cantidadDeudas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuotas">
+            <EntityTypeMapping TypeName="CobranzasModel.Cuota">
+              <MappingFragment StoreEntitySet="Cuota">
+                <ScalarProperty Name="idCuota" ColumnName="idCuota" />
+                <ScalarProperty Name="idRefinanciacion" ColumnName="idRefinanciacion" />
+                <ScalarProperty Name="fechaPactada" ColumnName="fechaPactada" />
+                <ScalarProperty Name="fechaPago" ColumnName="fechaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatoDeudors">
+            <EntityTypeMapping TypeName="CobranzasModel.DatoDeudor">
+              <MappingFragment StoreEntitySet="DatoDeudor">
+                <ScalarProperty Name="idDato" ColumnName="idDato" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatoGestors">
+            <EntityTypeMapping TypeName="CobranzasModel.DatoGestor">
+              <MappingFragment StoreEntitySet="DatoGestor">
+                <ScalarProperty Name="idDato" ColumnName="idDato" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deudas">
+            <EntityTypeMapping TypeName="CobranzasModel.Deuda">
+              <MappingFragment StoreEntitySet="Deuda">
+                <ScalarProperty Name="idDeuda" ColumnName="idDeuda" />
+                <ScalarProperty Name="idDeudor" ColumnName="idDeudor" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="idCartera" ColumnName="idCartera" />
+                <ScalarProperty Name="idTipoDeuda" ColumnName="idTipoDeuda" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="moneda" ColumnName="moneda" />
+                <ScalarProperty Name="esCuota" ColumnName="esCuota" />
+                <ScalarProperty Name="dificultad" ColumnName="dificultad" />
+                <ScalarProperty Name="pagada" ColumnName="pagada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deudors">
+            <EntityTypeMapping TypeName="CobranzasModel.Deudor">
+              <MappingFragment StoreEntitySet="Deudor">
+                <ScalarProperty Name="idDeudor" ColumnName="idDeudor" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
+                <ScalarProperty Name="numeroDocumneto" ColumnName="numeroDocumneto" />
+                <ScalarProperty Name="telefonoPersonal" ColumnName="telefonoPersonal" />
+                <ScalarProperty Name="telefonoDomicilio" ColumnName="telefonoDomicilio" />
+                <ScalarProperty Name="telefonoTrabajo" ColumnName="telefonoTrabajo" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="poseeTrabajo" ColumnName="poseeTrabajo" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="numeroTotalDeudas" ColumnName="numeroTotalDeudas" />
+                <ScalarProperty Name="totalAdeudado" ColumnName="totalAdeudado" />
+                <ScalarProperty Name="estadoCivil" ColumnName="estadoCivil" />
+                <ScalarProperty Name="numeroHijos" ColumnName="numeroHijos" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gestors">
+            <EntityTypeMapping TypeName="CobranzasModel.Gestor">
+              <MappingFragment StoreEntitySet="Gestor">
+                <ScalarProperty Name="idGestor" ColumnName="idGestor" />
+                <ScalarProperty Name="idNivelGestor" ColumnName="idNivelGestor" />
+                <ScalarProperty Name="idTipoGestor" ColumnName="idTipoGestor" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+                <ScalarProperty Name="deudasRecuperadas" ColumnName="deudasRecuperadas" />
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+                <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
+                <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GestorXDeudas">
+            <EntityTypeMapping TypeName="CobranzasModel.GestorXDeuda">
+              <MappingFragment StoreEntitySet="GestorXDeuda">
+                <ScalarProperty Name="idGestor" ColumnName="idGestor" />
+                <ScalarProperty Name="idDeuda" ColumnName="idDeuda" />
+                <ScalarProperty Name="fechaAsignacion" ColumnName="fechaAsignacion" />
+                <ScalarProperty Name="exito" ColumnName="exito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parametroes">
+            <EntityTypeMapping TypeName="CobranzasModel.Parametro">
+              <MappingFragment StoreEntitySet="Parametro">
+                <ScalarProperty Name="idParametro" ColumnName="idParametro" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="valorNum" ColumnName="valorNum" />
+                <ScalarProperty Name="idPadre" ColumnName="idPadre" />
+                <ScalarProperty Name="codUnico" ColumnName="codUnico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisoes">
+            <EntityTypeMapping TypeName="CobranzasModel.Permiso">
+              <MappingFragment StoreEntitySet="Permiso">
+                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="funcionalidad" ColumnName="funcionalidad" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoliticaCobranzas">
+            <EntityTypeMapping TypeName="CobranzasModel.PoliticaCobranza">
+              <MappingFragment StoreEntitySet="PoliticaCobranza">
+                <ScalarProperty Name="idPoliticaCobranza" ColumnName="idPoliticaCobranza" />
+                <ScalarProperty Name="idCartera" ColumnName="idCartera" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="obligatoria" ColumnName="obligatoria" />
+                <ScalarProperty Name="interesRefinanciacion" ColumnName="interesRefinanciacion" />
+                <ScalarProperty Name="maximoCuotasRefinanciacion" ColumnName="maximoCuotasRefinanciacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoliticaCobranzaXTipoActividads">
+            <EntityTypeMapping TypeName="CobranzasModel.PoliticaCobranzaXTipoActividad">
+              <MappingFragment StoreEntitySet="PoliticaCobranzaXTipoActividad">
+                <ScalarProperty Name="idPoliticaCobranza" ColumnName="idPoliticaCobranza" />
+                <ScalarProperty Name="idTipoActividad" ColumnName="idTipoActividad" />
+                <ScalarProperty Name="numeroPaso" ColumnName="numeroPaso" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Refinanciacions">
+            <EntityTypeMapping TypeName="CobranzasModel.Refinanciacion">
+              <MappingFragment StoreEntitySet="Refinanciacion">
+                <ScalarProperty Name="idRefinanciacion" ColumnName="idRefinanciacion" />
+                <ScalarProperty Name="idActividad" ColumnName="idActividad" />
+                <ScalarProperty Name="idDeuda" ColumnName="idDeuda" />
+                <ScalarProperty Name="numeroCuotas" ColumnName="numeroCuotas" />
+                <ScalarProperty Name="montoCuota" ColumnName="montoCuota" />
+                <ScalarProperty Name="moneda" ColumnName="moneda" />
+                <ScalarProperty Name="fechaRefinanciacion" ColumnName="fechaRefinanciacion" />
+                <ScalarProperty Name="periodicidadMeses" ColumnName="periodicidadMeses" />
+                <ScalarProperty Name="interes" ColumnName="interes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rols">
+            <EntityTypeMapping TypeName="CobranzasModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CobranzasModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoActividads">
+            <EntityTypeMapping TypeName="CobranzasModel.TipoActividad">
+              <MappingFragment StoreEntitySet="TipoActividad">
+                <ScalarProperty Name="idTipoActividad" ColumnName="idTipoActividad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="CobranzasModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idAcreedor" ColumnName="idAcreedor" />
+                <ScalarProperty Name="idGestor" ColumnName="idGestor" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="GestorXGestor" TypeName="CobranzasModel.GestorXGestor" StoreEntitySet="GestorXGestor">
+            <EndProperty Name="Gestor">
+              <ScalarProperty Name="idGestor" ColumnName="idGestorSupervisor" />
+            </EndProperty>
+            <EndProperty Name="Gestor1">
+              <ScalarProperty Name="idGestor" ColumnName="idGestorSupervisado" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RolXPermiso" TypeName="CobranzasModel.RolXPermiso" StoreEntitySet="RolXPermiso">
+            <EndProperty Name="Permiso">
+              <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+            </EndProperty>
+            <EndProperty Name="Rol">
+              <ScalarProperty Name="idRol" ColumnName="idRol" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="CobranzasModel">
+        <EntityTypeShape EntityType="CobranzasModel.Acreedor" Width="1.5" PointX="0.75" PointY="7" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Actividad" Width="1.5" PointX="7.5" PointY="7" Height="2.9417936197916648" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.CalificacionDato" Width="1.5" PointX="10" PointY="1" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Cartera" Width="1.5" PointX="3" PointY="7" Height="2.9417936197916648" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Cuota" Width="1.5" PointX="15" PointY="7.5" Height="1.9802864583333344" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.DatoDeudor" Width="1.5" PointX="7.75" PointY="1.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.DatoGestor" Width="1.5" PointX="7.75" PointY="4.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Deuda" Width="1.5" PointX="5.25" PointY="6.375" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Deudor" Width="1.5" PointX="3" PointY="17" Height="4.8648079427083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Gestor" Width="1.5" PointX="0.75" PointY="1" Height="3.9033007812500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.GestorXDeuda" Width="1.5" PointX="10.5" PointY="7.375" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Parametro" Width="1.5" PointX="9.75" PointY="10.75" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Permiso" Width="1.5" PointX="1.5" PointY="13.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.PoliticaCobranza" Width="1.5" PointX="5.25" PointY="11.875" Height="2.749492187499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.PoliticaCobranzaXTipoActividad" Width="1.5" PointX="7.5" PointY="12.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Refinanciacion" Width="1.5" PointX="12.75" PointY="6.75" Height="3.3263964843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Rol" Width="1.5" PointX="0.75" PointY="10.625" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.sysdiagram" Width="1.5" PointX="11.75" PointY="11.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.TipoActividad" Width="1.5" PointX="5.25" PointY="3.5" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CobranzasModel.Usuario" Width="1.5" PointX="3" PointY="2.75" Height="3.3263964843750031" IsExpanded="true" />
+        <AssociationConnector Association="CobranzasModel.FK_Cartera_Acreedor" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.37474609375" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="8.37474609375" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="8.37474609375" />
+          <ConnectorPoint PointX="3" PointY="8.37474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Usuario_Acreedor" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7" />
+          <ConnectorPoint PointX="2.625" PointY="6.625" />
+          <ConnectorPoint PointX="2.625" PointY="4.4131982421875016" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="4.4131982421875007" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="4.4131982421875016" />
+          <ConnectorPoint PointX="3" PointY="4.4131982421875016" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Actividad_Deuda" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="8.4708968098958319" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="8.4708968098958319" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="8.4708968098958319" />
+          <ConnectorPoint PointX="7.5" PointY="8.4708968098958319" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Actividad_TipoActividad" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="3.90625" />
+          <ConnectorPoint PointX="7.59375" PointY="3.90625" />
+          <ConnectorPoint PointX="7.59375" PointY="7" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Refinanciacion_Actividad" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="9.7759407552083335" />
+          <ConnectorPoint PointX="11.166666666666666" PointY="9.7759407552083335" />
+          <ConnectorPoint PointX="11.333333333333334" PointY="9.7759407552083335" />
+          <ConnectorPoint PointX="12.75" PointY="9.7759407552083335" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_CalificacionDato_DatoDeudor" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="2.172841796875" />
+          <ConnectorPoint PointX="10" PointY="2.172841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_CalificacionDato_DatoGestor" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="5.172841796875" />
+          <ConnectorPoint PointX="10.75" PointY="5.172841796875" />
+          <ConnectorPoint PointX="10.75" PointY="3.5571907552083335" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Deuda_Cartera1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.4708968098958319" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="8.4708968098958319" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="8.4708968098958319" />
+          <ConnectorPoint PointX="5.25" PointY="8.4708968098958319" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_PoliticaCobranza_Cartera" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.78125" PointY="9.9417936197916639" />
+          <ConnectorPoint PointX="3.78125" PointY="13.249746093749998" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="13.249746093749998" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="13.249746093749998" />
+          <ConnectorPoint PointX="5.25" PointY="13.249746093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Cuota_Refinanciacion" ManuallyRouted="false">
+          <ConnectorPoint PointX="14.25" PointY="8.4901432291666676" />
+          <ConnectorPoint PointX="15" PointY="8.4901432291666676" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Deuda_Deudor" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="17.001152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="16.626152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="7.3916964049479148" />
+          <ConnectorPoint PointX="5.25" PointY="7.3916964049479148" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_GestorXDeuda_Deuda" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="10.237447916666666" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="10.237447916666666" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="10.237447916666666" />
+          <ConnectorPoint PointX="11.25" PointY="10.237447916666666" />
+          <ConnectorPoint PointX="11.25" PointY="9.5475878906250031" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Refinanciacion_Deuda" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="6.84375" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="6.8437499999999991" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="6.84375" />
+          <ConnectorPoint PointX="7.510416666666667" PointY="6.8437499999999991" />
+          <ConnectorPoint PointX="7.677083333333333" PointY="6.84375" />
+          <ConnectorPoint PointX="11.166666666666666" PointY="6.8437499999999991" />
+          <ConnectorPoint PointX="11.333333333333334" PointY="6.84375" />
+          <ConnectorPoint PointX="12.75" PointY="6.84375" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_GestorXDeuda_Gestor" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.7065996210937504" />
+          <ConnectorPoint PointX="2.75" PointY="2.7065996210937504" />
+          <ConnectorPoint PointX="2.75" PointY="6.22068359375" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="6.2206835937499987" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="6.22068359375" />
+          <ConnectorPoint PointX="7.510416666666667" PointY="6.2206835937499987" />
+          <ConnectorPoint PointX="7.677083333333333" PointY="6.22068359375" />
+          <ConnectorPoint PointX="11.25" PointY="6.22068359375" />
+          <ConnectorPoint PointX="11.25" PointY="7.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Usuario_Gestor" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.5190991210937508" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="3.5190991210937503" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="3.5190991210937508" />
+          <ConnectorPoint PointX="3" PointY="3.5190991210937508" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="13.307444661458334" />
+          <ConnectorPoint PointX="7.5" PointY="13.307444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_PoliticaCobranzaXTipoActividad_TipoActividad" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="5.4802864583333388" />
+          <ConnectorPoint PointX="7.125" PointY="5.8552864583333388" />
+          <ConnectorPoint PointX="7.125" PointY="12.684970330729165" />
+          <ConnectorPoint PointX="7.5" PointY="12.684970330729165" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.FK_Usuario_Rol" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.688460538461539" />
+          <ConnectorPoint PointX="2.6875" PointY="10.250960538461539" />
+          <ConnectorPoint PointX="2.6875" PointY="5.2760493632812455" />
+          <ConnectorPoint PointX="3" PointY="5.2760493632812455" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.GestorXGestor" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.9033007812500031" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="5.1533007812500031" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="5.1533007812500031" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.9033007812500031" />
+        </AssociationConnector>
+        <AssociationConnector Association="CobranzasModel.RolXPermiso" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.875" PointY="13.75" />
+          <ConnectorPoint PointX="1.875" PointY="12.797587890624996" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
