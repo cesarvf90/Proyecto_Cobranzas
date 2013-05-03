@@ -17,7 +17,7 @@ namespace RecaudaSoft.Models
         public int idParametro { get; set; }
         public string tipo { get; set; }
         public string valor { get; set; }
-        public decimal valorNum { get; set; }
+        public Nullable<decimal> valorNum { get; set; }
         public Nullable<int> idPadre { get; set; }
         public string codUnico { get; set; }
     }

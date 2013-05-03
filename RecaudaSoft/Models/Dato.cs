@@ -12,14 +12,15 @@ namespace RecaudaSoft.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DatoDeudor
+    public partial class Dato
     {
-        public DatoDeudor()
+        public Dato()
         {
             this.CalificacionDatoes = new HashSet<CalificacionDato>();
         }
     
         public int idDato { get; set; }
+        public string tipo { get; set; }
         public string nombre { get; set; }
     
         public virtual ICollection<CalificacionDato> CalificacionDatoes { get; set; }

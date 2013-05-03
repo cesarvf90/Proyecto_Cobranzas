@@ -90,10 +90,7 @@
     <Compile Include="Models\Cuota.cs">
       <DependentUpon>ModeloCobranzas.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatoDeudor.cs">
-      <DependentUpon>ModeloCobranzas.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DatoGestor.cs">
+    <Compile Include="Models\Dato.cs">
       <DependentUpon>ModeloCobranzas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Deuda.cs">
@@ -148,7 +145,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\cobranzasdb1.mdf" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -225,6 +221,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
     <EntityDeploy Include="Models\CobranzasModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CobranzasModel.Designer.cs</LastGenOutput>
@@ -239,7 +241,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModeloCobranzas.cs</LastGenOutput>
     </None>
-    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -30,8 +30,7 @@ namespace RecaudaSoft.Models
         public DbSet<CalificacionDato> CalificacionDatoes { get; set; }
         public DbSet<Cartera> Carteras { get; set; }
         public DbSet<Cuota> Cuotas { get; set; }
-        public DbSet<DatoDeudor> DatoDeudors { get; set; }
-        public DbSet<DatoGestor> DatoGestors { get; set; }
+        public DbSet<Dato> Datoes { get; set; }
         public DbSet<Deuda> Deudas { get; set; }
         public DbSet<Deudor> Deudors { get; set; }
         public DbSet<Gestor> Gestors { get; set; }

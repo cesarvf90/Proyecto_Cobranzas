@@ -21,7 +21,6 @@ namespace RecaudaSoft.Models
         public Nullable<decimal> valorDatoMinimo { get; set; }
         public Nullable<decimal> valorDatoMaximo { get; set; }
     
-        public virtual DatoDeudor DatoDeudor { get; set; }
-        public virtual DatoGestor DatoGestor { get; set; }
+        public virtual Dato Dato { get; set; }
     }
 }
