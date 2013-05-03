@@ -1,0 +1,69 @@
+﻿@model IEnumerable<RecaudaSoft.Models.Cartera>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            idCartera
+        </th>
+        <th>
+            idAcreedor
+        </th>
+        <th>
+            nombre
+        </th>
+        <th>
+            esVencida
+        </th>
+        <th>
+            porcentajeGanancia
+        </th>
+        <th>
+            detalles
+        </th>
+        <th>
+            cantidadDeudas
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idCartera)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idAcreedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esVencida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentajeGanancia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.detalles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadDeudas)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
