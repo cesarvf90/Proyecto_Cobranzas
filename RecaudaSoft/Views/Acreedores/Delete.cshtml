@@ -1,0 +1,53 @@
+﻿@model RecaudaSoft.Models.Acreedor
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Acreedor</legend>
+
+    <div class="display-label">idAcreedor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idAcreedor)
+    </div>
+
+    <div class="display-label">nombre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">razonSocial</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.razonSocial)
+    </div>
+
+    <div class="display-label">ruc</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ruc)
+    </div>
+
+    <div class="display-label">direccion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.direccion)
+    </div>
+
+    <div class="display-label">rubro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rubro)
+    </div>
+
+    <div class="display-label">telefono</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefono)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

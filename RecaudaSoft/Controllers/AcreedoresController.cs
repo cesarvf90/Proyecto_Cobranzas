@@ -7,21 +7,21 @@ using RecaudaSoft.Models;
 
 namespace RecaudaSoft.Controllers
 {
-    public class CarterasController : Controller
+    public class AcreedoresController : Controller
     {
         //
-        // GET: /Carteras/
+        // GET: /Acreedores/
 
         public ActionResult Index()
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Carteras.ToList());
+                return View(db.Acreedors.ToList());
             }
         }
 
         //
-        // GET: /Carteras/Details/5
+        // GET: /Acreedores/Details/5
 
         public ActionResult Details(int id)
         {
@@ -29,7 +29,7 @@ namespace RecaudaSoft.Controllers
         }
 
         //
-        // GET: /Carteras/Create
+        // GET: /Acreedores/Create
 
         public ActionResult Create()
         {
@@ -37,16 +37,16 @@ namespace RecaudaSoft.Controllers
         } 
 
         //
-        // POST: /Carteras/Create
+        // POST: /Acreedores/Create
 
         [HttpPost]
-        public ActionResult Create(Cartera cartera)
+        public ActionResult Create(Acreedor acreedor)
         {
             try
             {
                 using (var db = new CobranzasEntities())
                 {
-                    db.Carteras.Add(cartera);
+                    db.Acreedors.Add(acreedor);
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -58,27 +58,27 @@ namespace RecaudaSoft.Controllers
         }
         
         //
-        // GET: /Carteras/Edit/5
+        // GET: /Acreedores/Edit/5
  
         public ActionResult Edit(int id)
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Carteras.Find(id));
+                return View(db.Acreedors.Find(id));
             }
         }
 
         //
-        // POST: /Carteras/Edit/5
+        // POST: /Acreedores/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, Cartera cartera)
+        public ActionResult Edit(int id, Acreedor acreedor)
         {
             try
             {
                 using (var db = new CobranzasEntities())
                 {
-                    db.Entry(cartera).State = System.Data.EntityState.Modified;
+                    db.Entry(acreedor).State = System.Data.EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -90,27 +90,27 @@ namespace RecaudaSoft.Controllers
         }
 
         //
-        // GET: /Carteras/Delete/5
+        // GET: /Acreedores/Delete/5
  
         public ActionResult Delete(int id)
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Carteras.Find(id));
+                return View(db.Acreedors.Find(id));
             }
         }
 
         //
-        // POST: /Carteras/Delete/5
+        // POST: /Acreedores/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, Cartera cartera)
+        public ActionResult Delete(int id, Acreedor acreedor)
         {
             try
             {
                 using (var db = new CobranzasEntities())
                 {
-                    db.Entry(cartera).State = System.Data.EntityState.Deleted;
+                    db.Entry(acreedor).State = System.Data.EntityState.Deleted;
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");

@@ -1,0 +1,81 @@
+﻿@model RecaudaSoft.Models.Acreedor
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Acreedor</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idAcreedor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.idAcreedor)
+            @Html.ValidationMessageFor(model => model.idAcreedor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombre)
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.razonSocial)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.razonSocial)
+            @Html.ValidationMessageFor(model => model.razonSocial)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ruc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ruc)
+            @Html.ValidationMessageFor(model => model.ruc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.direccion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.direccion)
+            @Html.ValidationMessageFor(model => model.direccion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.rubro)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.rubro)
+            @Html.ValidationMessageFor(model => model.rubro)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.telefono)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.telefono)
+            @Html.ValidationMessageFor(model => model.telefono)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

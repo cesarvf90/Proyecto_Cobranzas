@@ -65,7 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AcreedoresController.cs" />
     <Compile Include="Controllers\CarterasController.cs" />
+    <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -246,6 +248,14 @@
     <Content Include="Views\Carteras\Create.cshtml" />
     <Content Include="Views\Carteras\Edit.cshtml" />
     <Content Include="Views\Carteras\Delete.cshtml" />
+    <Content Include="Views\Acreedores\Create.cshtml" />
+    <Content Include="Views\Acreedores\Edit.cshtml" />
+    <Content Include="Views\Acreedores\Delete.cshtml" />
+    <Content Include="Views\Colaboradores\Index.cshtml" />
+    <Content Include="Views\Colaboradores\Create.cshtml" />
+    <Content Include="Views\Colaboradores\Edit.cshtml" />
+    <Content Include="Views\Colaboradores\Delete.cshtml" />
+    <Content Include="Views\Acreedores\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

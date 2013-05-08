@@ -1,0 +1,93 @@
+﻿@model IEnumerable<RecaudaSoft.Models.Gestor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            idGestor
+        </th>
+        <th>
+            idNivelGestor
+        </th>
+        <th>
+            idTipoGestor
+        </th>
+        <th>
+            nombres
+        </th>
+        <th>
+            apellidoPaterno
+        </th>
+        <th>
+            apellidoMaterno
+        </th>
+        <th>
+            fechaIngreso
+        </th>
+        <th>
+            deudasRecuperadas
+        </th>
+        <th>
+            disponible
+        </th>
+        <th>
+            tipoDocumento
+        </th>
+        <th>
+            numeroDocumento
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idNivelGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idTipoGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidoPaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidoMaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deudasRecuperadas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disponible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numeroDocumento)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,113 @@
+﻿@model RecaudaSoft.Models.Gestor
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Gestor</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idGestor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.idGestor)
+            @Html.ValidationMessageFor(model => model.idGestor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idNivelGestor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.idNivelGestor)
+            @Html.ValidationMessageFor(model => model.idNivelGestor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idTipoGestor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.idTipoGestor)
+            @Html.ValidationMessageFor(model => model.idTipoGestor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombres)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombres)
+            @Html.ValidationMessageFor(model => model.nombres)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.apellidoPaterno)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.apellidoPaterno)
+            @Html.ValidationMessageFor(model => model.apellidoPaterno)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.apellidoMaterno)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.apellidoMaterno)
+            @Html.ValidationMessageFor(model => model.apellidoMaterno)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fechaIngreso)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fechaIngreso)
+            @Html.ValidationMessageFor(model => model.fechaIngreso)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.deudasRecuperadas)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.deudasRecuperadas)
+            @Html.ValidationMessageFor(model => model.deudasRecuperadas)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.disponible)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.disponible)
+            @Html.ValidationMessageFor(model => model.disponible)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tipoDocumento)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tipoDocumento)
+            @Html.ValidationMessageFor(model => model.tipoDocumento)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.numeroDocumento)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.numeroDocumento)
+            @Html.ValidationMessageFor(model => model.numeroDocumento)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
