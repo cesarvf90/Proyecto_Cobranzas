@@ -1,0 +1,53 @@
+﻿@model RecaudaSoft.Models.Cartera
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Cartera</legend>
+
+    <div class="display-label">idCartera</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idCartera)
+    </div>
+
+    <div class="display-label">idAcreedor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idAcreedor)
+    </div>
+
+    <div class="display-label">nombre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">esVencida</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.esVencida)
+    </div>
+
+    <div class="display-label">porcentajeGanancia</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.porcentajeGanancia)
+    </div>
+
+    <div class="display-label">detalles</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.detalles)
+    </div>
+
+    <div class="display-label">cantidadDeudas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cantidadDeudas)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

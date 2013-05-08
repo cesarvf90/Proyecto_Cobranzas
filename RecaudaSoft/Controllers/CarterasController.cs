@@ -41,12 +41,15 @@ namespace RecaudaSoft.Controllers
         // POST: /Carteras/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Cartera cartera)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                using (var db = new CobranzasEntities())
+                {
+                    db.Carteras.Add(cartera);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -60,20 +63,26 @@ namespace RecaudaSoft.Controllers
  
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var db = new CobranzasEntities())
+            {
+                return View(db.Carteras.Find(id));
+            }
         }
 
         //
         // POST: /Carteras/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Cartera cartera)
         {
             try
             {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                using (var db = new CobranzasEntities())
+                {
+                    db.Entry(cartera).State = System.Data.EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
@@ -86,19 +95,25 @@ namespace RecaudaSoft.Controllers
  
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var db = new CobranzasEntities())
+            {
+                return View(db.Carteras.Find(id));
+            }
         }
 
         //
         // POST: /Carteras/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Cartera cartera)
         {
             try
             {
-                // TODO: Add delete logic here
- 
+                using (var db = new CobranzasEntities())
+                {
+                    db.Entry(cartera).State = System.Data.EntityState.Deleted;
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

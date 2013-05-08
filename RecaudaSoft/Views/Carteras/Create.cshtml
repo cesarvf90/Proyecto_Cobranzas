@@ -1,0 +1,81 @@
+﻿@model RecaudaSoft.Models.Cartera
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Cartera</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idCartera)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.idCartera)
+            @Html.ValidationMessageFor(model => model.idCartera)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idAcreedor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.idAcreedor)
+            @Html.ValidationMessageFor(model => model.idAcreedor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombre)
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.esVencida)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.esVencida)
+            @Html.ValidationMessageFor(model => model.esVencida)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.porcentajeGanancia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.porcentajeGanancia)
+            @Html.ValidationMessageFor(model => model.porcentajeGanancia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.detalles)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.detalles)
+            @Html.ValidationMessageFor(model => model.detalles)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cantidadDeudas)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cantidadDeudas)
+            @Html.ValidationMessageFor(model => model.cantidadDeudas)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
