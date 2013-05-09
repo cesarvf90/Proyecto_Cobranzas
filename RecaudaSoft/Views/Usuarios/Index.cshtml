@@ -1,0 +1,81 @@
+﻿@model IEnumerable<RecaudaSoft.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            idUsuario
+        </th>
+        <th>
+            idAcreedor
+        </th>
+        <th>
+            idGestor
+        </th>
+        <th>
+            idRol
+        </th>
+        <th>
+            nombreUsuario
+        </th>
+        <th>
+            contrasena
+        </th>
+        <th>
+            tipoUsuario
+        </th>
+        <th>
+            estado
+        </th>
+        <th>
+            correo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idAcreedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idRol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contrasena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idUsuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.idUsuario })
+        </td>
+    </tr>
+}
+
+</table>

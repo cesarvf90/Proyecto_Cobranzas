@@ -1,0 +1,63 @@
+﻿@model RecaudaSoft.Models.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Usuario</legend>
+
+    <div class="display-label">idUsuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idUsuario)
+    </div>
+
+    <div class="display-label">idAcreedor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idAcreedor)
+    </div>
+
+    <div class="display-label">idGestor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idGestor)
+    </div>
+
+    <div class="display-label">idRol</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idRol)
+    </div>
+
+    <div class="display-label">nombreUsuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombreUsuario)
+    </div>
+
+    <div class="display-label">contrasena</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.contrasena)
+    </div>
+
+    <div class="display-label">tipoUsuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tipoUsuario)
+    </div>
+
+    <div class="display-label">estado</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.estado)
+    </div>
+
+    <div class="display-label">correo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.correo)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
