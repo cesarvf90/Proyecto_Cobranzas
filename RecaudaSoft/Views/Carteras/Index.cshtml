@@ -4,33 +4,33 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Carteras</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar nueva cartera", "Create")
 </p>
-<table>
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
     <tr>
         <th>
-            idCartera
+            ID
         </th>
         <th>
-            idAcreedor
+            ID Acreedor
         </th>
         <th>
-            nombre
+            Nombre
         </th>
         <th>
-            esVencida
+            Tipo
         </th>
         <th>
-            porcentajeGanancia
+            Porcentaje ganancia
         </th>
         <th>
-            detalles
+            Detalles
         </th>
         <th>
-            cantidadDeudas
+            Cantidad de Deudas
         </th>
         <th></th>
     </tr>
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.cantidadDeudas)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idCartera }) |
-            @Html.ActionLink("Details", "Details", new { id = item.idCartera }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idCartera })
+            <a href = "/TiposActividad/Edit?id=@item.idCartera"><img border="0" src="@Href("~/Content/Images/edit.jpg")"></a>
+            <a href = "/TiposActividad/Delete?id=@item.idCartera"><img border="0" src="@Href("~/Content/Images/delete.jpg")"></a>
+            <a href = "/TiposActividad/Details?id=@item.idCartera"><img border="0" src="@Href("~/Content/Images/ojo_jpg.jpg")"></a>
         </td>
     </tr>
 }

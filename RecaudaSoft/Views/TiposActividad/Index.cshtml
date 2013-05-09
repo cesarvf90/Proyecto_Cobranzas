@@ -54,11 +54,9 @@
             @Html.DisplayFor(modelItem => item.codUnico)
         </td>
         <td>
-            <!--@Html.ActionLink("Edit", "Edit", new {  id=item.idParametro }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idParametro}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idParametro })-->
             <a href = "/TiposActividad/Edit?id=@item.idParametro"><img border="0" src="@Href("~/Content/Images/edit.jpg")"></a>
             <a href = "/TiposActividad/Delete?id=@item.idParametro"><img border="0" src="@Href("~/Content/Images/delete.jpg")"></a>
+            <a href = "/TiposActividad/Details?id=@item.idParametro"><img border="0" src="@Href("~/Content/Images/ojo_jpg.jpg")"></a>
         </td>
     </tr>
 }

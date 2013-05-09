@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Nueva Cartera</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -13,14 +13,6 @@
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Cartera</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.idCartera)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.idCartera)
-            @Html.ValidationMessageFor(model => model.idCartera)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.idAcreedor)
@@ -42,7 +34,7 @@
             @Html.LabelFor(model => model.esVencida)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.esVencida)
+            @Html.DropDownList("esVencida", "Seleccione")
             @Html.ValidationMessageFor(model => model.esVencida)
         </div>
 
@@ -71,11 +63,11 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Registrar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index")
 </div>
