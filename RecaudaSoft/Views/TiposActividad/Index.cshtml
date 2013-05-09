@@ -4,58 +4,61 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tipos de Actividad de Cobro</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar nuevo", "Create")
 </p>
-<table>
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
     <tr>
-        <th>
-            idParametro
+        <th style="font-weight: bold; width: 100px;" align="center">
+            ID
         </th>
-        <th>
-            tipo
+        <th style="font-weight: bold; width: 150px;" align="center">
+            Tipo
         </th>
-        <th>
-            valor
+        <th style="font-weight: bold; width: 150px;" align="center">
+            Valor
         </th>
-        <th>
-            valorNum
+        <th style="font-weight: bold; width: 100px;" align="center">
+            Valor Núm.
         </th>
-        <th>
-            idPadre
+        <th style="font-weight: bold; width: 100px;" align="center">
+            ID padre
         </th>
-        <th>
-            codUnico
+        <th style="font-weight: bold; width: 100px;" align="center">
+            ID único
         </th>
-        <th></th>
+        <th style="font-weight: bold; width: 50px;" align="center">
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.idParametro)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.tipo)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.valor)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.valorNum)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.idPadre)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.codUnico)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.idParametro }) |
+            <!--@Html.ActionLink("Edit", "Edit", new {  id=item.idParametro }) |
             @Html.ActionLink("Details", "Details", new { id=item.idParametro}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idParametro })
+            @Html.ActionLink("Delete", "Delete", new { id=item.idParametro })-->
+            <a href = "/TiposActividad/Edit?id=@item.idParametro"><img border="0" src="@Href("~/Content/Images/edit.jpg")"></a>
+            <a href = "/TiposActividad/Delete?id=@item.idParametro"><img border="0" src="@Href("~/Content/Images/delete.jpg")"></a>
         </td>
     </tr>
 }

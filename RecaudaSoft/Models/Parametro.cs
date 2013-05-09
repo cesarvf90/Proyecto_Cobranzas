@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace RecaudaSoft.Models
 {
     using System;
@@ -15,6 +17,7 @@ namespace RecaudaSoft.Models
     public partial class Parametro
     {
         public int idParametro { get; set; }
+        [DisplayName("Tipo")]
         public string tipo { get; set; }
         public string valor { get; set; }
         public Nullable<decimal> valorNum { get; set; }

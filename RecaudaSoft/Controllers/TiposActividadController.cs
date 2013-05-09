@@ -16,7 +16,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Parametroes.ToList());
+                return View(db.Parametroes.Where(t => t.tipo == "TIPO_ACTIVIDAD").ToList());
             }
         }
 
