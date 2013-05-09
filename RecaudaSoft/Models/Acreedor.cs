@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace RecaudaSoft.Models
 {
     using System;
@@ -19,13 +21,19 @@ namespace RecaudaSoft.Models
             this.Carteras = new HashSet<Cartera>();
             this.Usuarios = new HashSet<Usuario>();
         }
-    
+        [DisplayName("Id")]
         public int idAcreedor { get; set; }
+        [DisplayName("Nombre")]
         public string nombre { get; set; }
+        [DisplayName("Razón social")]
         public string razonSocial { get; set; }
+        [DisplayName("RUC")]
         public string ruc { get; set; }
+        [DisplayName("Dirección")]
         public string direccion { get; set; }
+        [DisplayName("Rubro")]
         public int rubro { get; set; }
+        [DisplayName("Teléfono")]
         public string telefono { get; set; }
     
         public virtual ICollection<Cartera> Carteras { get; set; }

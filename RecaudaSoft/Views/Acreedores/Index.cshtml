@@ -9,28 +9,28 @@
 <p>
     @Html.ActionLink("Nuevo acreedor", "Create")
 </p>
-<table>
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
     <tr>
         <th>
-            idAcreedor
+            ID
         </th>
         <th>
-            nombre
+            Nombre
         </th>
         <th>
-            razonSocial
+            Razón Social
         </th>
         <th>
-            ruc
+            RUC
         </th>
         <th>
-            direccion
+            Dirección
         </th>
         <th>
-            rubro
+            Rubro
         </th>
         <th>
-            telefono
+            Teléfono
         </th>
         <th></th>
     </tr>
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.telefono)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idAcreedor }) |
-            @Html.ActionLink("Details", "Details", new { id = item.idAcreedor }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idAcreedor })
+            <a href = "/TiposActividad/Edit?id=@item.idAcreedor"><img border="0" src="@Href("~/Content/Images/edit.jpg")"></a>
+            <a href = "/TiposActividad/Delete?id=@item.idAcreedor"><img border="0" src="@Href("~/Content/Images/delete.jpg")"></a>
+            <a href = "/TiposActividad/Details?id=@item.idAcreedor"><img border="0" src="@Href("~/Content/Images/ojo_jpg.jpg")"></a>
         </td>
     </tr>
 }

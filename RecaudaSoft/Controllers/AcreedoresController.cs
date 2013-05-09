@@ -33,7 +33,11 @@ namespace RecaudaSoft.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            using (var db = new CobranzasEntities())
+            {
+                ViewBag.rubro = new SelectList(db.Parametroes.Where(p => p.tipo == "RUBRO_ACREEDOR"), "idParametro", "valor").ToList();
+                return View();
+            }
         } 
 
         //
