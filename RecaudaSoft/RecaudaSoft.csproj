@@ -68,7 +68,9 @@
     <Compile Include="Controllers\AcreedoresController.cs" />
     <Compile Include="Controllers\CarterasController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
+    <Compile Include="Controllers\ConfiguracionNivelesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TiposActividadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -256,6 +258,10 @@
     <Content Include="Views\Colaboradores\Edit.cshtml" />
     <Content Include="Views\Colaboradores\Delete.cshtml" />
     <Content Include="Views\Acreedores\Index.cshtml" />
+    <Content Include="Views\TiposActividad\Create.cshtml" />
+    <Content Include="Views\TiposActividad\Edit.cshtml" />
+    <Content Include="Views\TiposActividad\Delete.cshtml" />
+    <Content Include="Views\TiposActividad\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

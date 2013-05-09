@@ -1,0 +1,48 @@
+﻿@model RecaudaSoft.Models.Parametro
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Parametro</legend>
+
+    <div class="display-label">idParametro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idParametro)
+    </div>
+
+    <div class="display-label">tipo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tipo)
+    </div>
+
+    <div class="display-label">valor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.valor)
+    </div>
+
+    <div class="display-label">valorNum</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.valorNum)
+    </div>
+
+    <div class="display-label">idPadre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idPadre)
+    </div>
+
+    <div class="display-label">codUnico</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.codUnico)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
