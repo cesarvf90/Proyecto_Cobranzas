@@ -36,6 +36,7 @@ namespace RecaudaSoft.Controllers
             using (var db = new CobranzasEntities())
             {
                 ViewBag.esVencida = new SelectList(db.Parametroes.Where(p => p.tipo == "TIPO_CARTERA"), "idParametro", "valor").ToList();
+                ViewBag.idAcreedor = new SelectList(db.Acreedors, "idAcreedor", "nombre").ToList();
                 return View();
             }
         }

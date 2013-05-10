@@ -18,7 +18,8 @@
             @Html.LabelFor(model => model.idAcreedor)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.idAcreedor)
+            <!--@Html.EditorFor(model => model.idAcreedor)-->
+            @Html.DropDownList("idAcreedor", "Seleccione")
             @Html.ValidationMessageFor(model => model.idAcreedor)
         </div>
 

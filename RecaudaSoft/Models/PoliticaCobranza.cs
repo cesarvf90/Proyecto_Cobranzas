@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace RecaudaSoft.Models
 {
     using System;
@@ -18,16 +20,24 @@ namespace RecaudaSoft.Models
         {
             this.PoliticaCobranzaXTipoActividads = new HashSet<PoliticaCobranzaXTipoActividad>();
         }
-    
+
+        [DisplayName("ID Política de Cobranza")]
         public int idPoliticaCobranza { get; set; }
+        [DisplayName("ID Cartera")]
         public int idCartera { get; set; }
+        [DisplayName("Nombre")]
         public string nombre { get; set; }
+        [DisplayName("Descripción")]
         public string descripcion { get; set; }
+        [DisplayName("Tipo")]
         public int obligatoria { get; set; }
+        [DisplayName("Interés de refinanciamiento")]
         public Nullable<decimal> interesRefinanciacion { get; set; }
+        [DisplayName("Máximo cuotas de refinanciamiento")]
         public Nullable<int> maximoCuotasRefinanciacion { get; set; }
-    
+        [DisplayName("Cartera")]
         public virtual Cartera Cartera { get; set; }
+        [DisplayName("Actividades")]
         public virtual ICollection<PoliticaCobranzaXTipoActividad> PoliticaCobranzaXTipoActividads { get; set; }
     }
 }
