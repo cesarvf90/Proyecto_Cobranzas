@@ -16,7 +16,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Carteras.ToList());
+                return View(db.Carteras.Include("Acreedor").ToList());
             }
         }
 
