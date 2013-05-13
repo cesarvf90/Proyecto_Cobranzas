@@ -16,12 +16,17 @@ namespace RecaudaSoft.Models
     
     public partial class Parametro
     {
+        [DisplayName("Id")]
         public int idParametro { get; set; }
         [DisplayName("Tipo")]
         public string tipo { get; set; }
+        [DisplayName("Valor")]
         public string valor { get; set; }
+        [DisplayName("Valor Numérico")]
         public Nullable<decimal> valorNum { get; set; }
+        [DisplayName("Id Padre")]
         public Nullable<int> idPadre { get; set; }
+        [DisplayName("Código único")]   
         public string codUnico { get; set; }
     }
 }

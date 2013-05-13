@@ -6,7 +6,6 @@
 //    Los cambios manuales en este archivo se sobrescribirán si se regenera el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
 using System.ComponentModel;
 
 namespace RecaudaSoft.Models
@@ -35,8 +34,10 @@ namespace RecaudaSoft.Models
         public int rubro { get; set; }
         [DisplayName("Teléfono")]
         public string telefono { get; set; }
-    
+
+        [DisplayName("Carteras")]
         public virtual ICollection<Cartera> Carteras { get; set; }
+        [DisplayName("Usuarios")]
         public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

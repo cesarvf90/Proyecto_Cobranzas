@@ -6,6 +6,7 @@
 //    Los cambios manuales en este archivo se sobrescribirán si se regenera el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel;
 
 namespace RecaudaSoft.Models
 {
@@ -14,11 +15,15 @@ namespace RecaudaSoft.Models
     
     public partial class Cuota
     {
+        [DisplayName("Id")]
         public int idCuota { get; set; }
+        [DisplayName("Id Refinanciación")]
         public int idRefinanciacion { get; set; }
+        [DisplayName("Fecha pactada")]
         public System.DateTime fechaPactada { get; set; }
+        [DisplayName("Fecha de pago")]
         public Nullable<System.DateTime> fechaPago { get; set; }
-    
+        [DisplayName("Refinanciación")]
         public virtual Refinanciacion Refinanciacion { get; set; }
     }
 }

@@ -6,6 +6,7 @@
 //    Los cambios manuales en este archivo se sobrescribirán si se regenera el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel;
 
 namespace RecaudaSoft.Models
 {
@@ -18,17 +19,26 @@ namespace RecaudaSoft.Models
         {
             this.Refinanciacions = new HashSet<Refinanciacion>();
         }
-    
+
+        [DisplayName("Id")]
         public int idActividad { get; set; }
+        [DisplayName("Id Tipo Actividad")]
         public int idTipoActividad { get; set; }
+        [DisplayName("Id Deuda")]
         public int idDeuda { get; set; }
+        [DisplayName("Id Gestor")]
         public int idGestor { get; set; }
+        [DisplayName("Id Resultado")]
         public int idResultado { get; set; }
+        [DisplayName("Fecha")]
         public System.DateTime fecha { get; set; }
+        [DisplayName("Detalles")]
         public string detalles { get; set; }
-    
+        [DisplayName("Detalles")]
         public virtual Deuda Deuda { get; set; }
+        [DisplayName("Tipo Actividad")]
         public virtual TipoActividad TipoActividad { get; set; }
+        [DisplayName("Refinanciaciones")]
         public virtual ICollection<Refinanciacion> Refinanciacions { get; set; }
     }
 }
