@@ -4,17 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<!--
-<head>
-    <link href="@Url.Content("~/Content/themes/templatemo_338_grand_mini/templatemo_style.css")" rel="stylesheet" type="text/css" />
-</head>
--->
+<h2>Cargar cartera de deudas</h2>
 
-<h2>Carteras</h2>
-
-<p>
-    @Html.ActionLink("Registrar nueva cartera", "Create")
-</p>
 <table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
     <tr>
         <th>
@@ -38,7 +29,6 @@
         <th>
             Cantidad de Deudas
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -50,7 +40,7 @@
             @Html.DisplayFor(modelItem => item.Acreedor.nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.nombre)
+            <a href = "/CargaCarteras/SubirArchivo?id=@item.idCartera">@Html.DisplayFor(modelItem => item.nombre)</a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Parametro.valor)
@@ -63,11 +53,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.cantidadDeudas)
-        </td>
-        <td>
-            <a href = "/Carteras/Edit?id=@item.idCartera"><img border="0" src="@Href("~/Content/Images/edit.jpg")"></a>
-            <a href = "/Carteras/Delete?id=@item.idCartera"><img border="0" src="@Href("~/Content/Images/delete.jpg")"></a>
-            <a href = "/Carteras/Details?id=@item.idCartera"><img border="0" src="@Href("~/Content/Images/ojo_jpg.jpg")"></a>
         </td>
     </tr>
 }

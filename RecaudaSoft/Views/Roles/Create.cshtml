@@ -8,19 +8,20 @@
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#navigation ul a').click(function () {
+            $('#navigation ul a').removeClass('selected');
+            $(this).addClass('selected');
+            $('#content_changer').html('You have selected ' + $(this).html());
+        });
+    });
+</script>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Rol</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.idRol)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.idRol)
-            @Html.ValidationMessageFor(model => model.idRol)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.nombre)
@@ -50,8 +51,26 @@
             <input type="submit" value="Registrar" />
         </p>
     </fieldset>
+    
+    <h2>Permisos de acceso</h2>
+    
+    <fieldset>
+        <legend>Permisos por módulo</legend>
+        <ul id="navigation">
+		        <li><a href="javascript:void(0);" id="tab1" class="selected">Tab 1</a></li>
+		        <li><a href="javascript:void(0);" id="tab2">Tab 2</a></li>
+		        <li><a href="javascript:void(0);" id="tab3">Tab 3</a></li>
+		        <li><a href="javascript:void(0);" id="tab4">Tab 4</a></li>
+		        <li><a href="javascript:void(0);" id="tab5">Tab 5</a></li>
+	    </ul>
+
+        <div id="content">
+	        <p id="content_changer">You have selected Tab 1</p>
+        </div>
+    </fieldset>
 }
 
 <div>
     @Html.ActionLink("Regresar", "Index")
 </div>
+

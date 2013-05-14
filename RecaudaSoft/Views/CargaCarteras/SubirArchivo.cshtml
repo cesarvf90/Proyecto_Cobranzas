@@ -1,0 +1,79 @@
+﻿@model RecaudaSoft.Models.Cartera
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Subir archivo de deudas</h2>
+
+<fieldset>
+    <legend>Información de la Cartera</legend>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.idCartera)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idCartera)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.idAcreedor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Acreedor.nombre)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.esVencida)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Parametro.valor)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.porcentajeGanancia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.porcentajeGanancia)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.detalles)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.detalles)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.cantidadDeudas)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cantidadDeudas)
+    </div>
+    
+    <div style="color:#0000FF; padding-top: 20px">
+        <h3>Cargar archivo</h3>
+        <p>Por favor, seleccione un archivo en formato excel con la información de las deudas que desea asociar a esta cartera</p>
+        <form action="/CargaCarteras/SubirArchivo" enctype="multipart/form-data" method="post">
+            <input type="file" id="excelFile" name="excelFile" />
+            <input type="submit" value="Cargar archivo"/>
+        </form>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Regresar", "Index")
+</p>
+
+<script type="text/javascript">
+    function show_alert() {
+        var msg = "Mensaje de prueba";
+        alert(msg);
+    }
+</script>

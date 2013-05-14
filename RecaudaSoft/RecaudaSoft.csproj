@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AcreedoresController.cs" />
+    <Compile Include="Controllers\CargaCarterasController.cs" />
     <Compile Include="Controllers\CarterasController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\ConfiguracionNivelesController.cs" />
@@ -264,6 +265,9 @@
     <Content Include="Content\themes\templatemo_338_grand_mini\images\twitter.png" />
     <Content Include="Content\themes\templatemo_338_grand_mini\templatemo_style.css" />
     <Content Include="Global.asax" />
+    <Content Include="obj\Debug\RecaudaSoft.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\RecaudaSoft.dll" />
+    <Content Include="obj\Debug\RecaudaSoft.pdb" />
     <Content Include="obj\Debug\TempPE\Models.CobranzasModel.Designer.cs.dll" />
     <Content Include="obj\Debug\TempPE\Models.ModeloCobranzas.cs.dll" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
@@ -359,6 +363,10 @@
     <Content Include="Views\TiposActividad\Create.cshtml" />
     <Content Include="Views\TiposActividad\Edit.cshtml" />
     <Content Include="Views\TiposActividad\Delete.cshtml" />
+    <Content Include="Views\Shared\_Layout_default.cshtml" />
+    <Content Include="Views\CargaCarteras\Index.cshtml" />
+    <Content Include="Views\CargaCarteras\SubirArchivo.cshtml" />
+    <Content Include="Views\CargaCarteras\ProcesarArchivoExitoso.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
