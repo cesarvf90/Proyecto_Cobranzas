@@ -24,7 +24,9 @@ namespace RecaudaSoft.Models
         public int rubro { get; set; }
         [DisplayName("Teléfono")]
         public string telefono { get; set; }
-
+        
+        [DisplayName("Rubro")]
+        public virtual Parametro Parametro { get; set; } //Rubro
         [DisplayName("Carteras")]
         public virtual ICollection<Cartera> Carteras { get; set; }
         [DisplayName("Usuarios")]

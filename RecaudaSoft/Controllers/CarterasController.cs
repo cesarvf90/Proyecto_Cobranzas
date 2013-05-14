@@ -19,7 +19,6 @@ namespace RecaudaSoft.Controllers
                 var listaCarteras = db.Carteras.Include("Acreedor");
                 listaCarteras = listaCarteras.Include("Parametro");
                 return View(listaCarteras.ToList());
-                //return View(db.Carteras.Include("Acreedor").ToList());
             }
         }
 
@@ -72,7 +71,13 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Carteras.Find(id));
+                var listaCarteras = db.Carteras.Include("Parametro").Include("Acreedor");
+                Cartera cartera = listaCarteras.First(a => a.idCartera == id);
+
+                ViewBag.esVencida = new SelectList(db.Parametroes.Where(p => p.tipo == "TIPO_CARTERA"), "idParametro", "valor", cartera.esVencida).ToList();
+                ViewBag.idAcreedor = new SelectList(db.Acreedors, "idAcreedor", "nombre", cartera.idAcreedor).ToList();
+
+                return View(cartera);
             }
         }
 
@@ -104,7 +109,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Carteras.Find(id));
+                return View(db.Carteras.Include("Parametro").Include("Acreedor").First(a => a.idCartera == id));
             }
         }
 

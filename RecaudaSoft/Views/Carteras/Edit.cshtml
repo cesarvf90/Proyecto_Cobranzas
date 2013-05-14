@@ -26,7 +26,7 @@
             @Html.LabelFor(model => model.idAcreedor)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.idAcreedor)
+            @Html.DropDownList("idAcreedor", String.Empty)
             @Html.ValidationMessageFor(model => model.idAcreedor)
         </div>
 
@@ -42,7 +42,7 @@
             @Html.LabelFor(model => model.esVencida)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.esVencida)
+           @Html.DropDownList("esVencida", String.Empty)
             @Html.ValidationMessageFor(model => model.esVencida)
         </div>
 

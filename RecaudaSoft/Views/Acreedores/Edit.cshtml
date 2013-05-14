@@ -58,7 +58,7 @@
             @Html.LabelFor(model => model.rubro)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.rubro)
+            @Html.DropDownList("rubro", String.Empty)
             @Html.ValidationMessageFor(model => model.rubro)
         </div>
 
@@ -71,11 +71,11 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Guardar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index")
 </div>

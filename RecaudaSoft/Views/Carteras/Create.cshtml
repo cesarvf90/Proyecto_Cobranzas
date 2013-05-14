@@ -15,10 +15,9 @@
         <legend>Cartera</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.idAcreedor)
+            @Html.LabelFor(model => model.Acreedor)
         </div>
         <div class="editor-field">
-            <!--@Html.EditorFor(model => model.idAcreedor)-->
             @Html.DropDownList("idAcreedor", "Seleccione")
             @Html.ValidationMessageFor(model => model.idAcreedor)
         </div>

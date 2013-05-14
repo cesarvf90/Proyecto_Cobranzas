@@ -28,6 +28,8 @@ namespace RecaudaSoft.Models
 
         [DisplayName("Acreedor")]
         public virtual Acreedor Acreedor { get; set; }
+        [DisplayName("Tipo")]
+        public virtual Parametro Parametro { get; set; }
         [DisplayName("Deudas")]
         public virtual ICollection<Deuda> Deudas { get; set; }
         [DisplayName("Políticas de Cobranza")]

@@ -16,7 +16,8 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Acreedors.ToList());
+                var listaAcreedores = db.Acreedors.Include("Parametro");
+                return View(listaAcreedores.ToList());
             }
         }
 
@@ -68,7 +69,12 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Acreedors.Find(id));
+                var listaAcreedores = db.Acreedors.Include("Parametro");
+                Acreedor acreedor = listaAcreedores.First(a => a.idAcreedor == id);
+
+                ViewBag.rubro = new SelectList(db.Parametroes.Where(p => p.tipo == "RUBRO_ACREEDOR"), "idParametro", "valor", acreedor.rubro).ToList();
+
+                return View(acreedor);
             }
         }
 
@@ -100,7 +106,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Acreedors.Find(id));
+                return View(db.Acreedors.Include("Parametro").First(a => a.idAcreedor == id));
             }
         }
 
