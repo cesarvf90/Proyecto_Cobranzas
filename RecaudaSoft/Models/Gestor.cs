@@ -34,12 +34,12 @@ namespace RecaudaSoft.Models
         public int tipoDocumento { get; set; }
         public string numeroDocumento { get; set; }
     
+        public virtual Parametro Parametro { get; set; }
+        public virtual Parametro Parametro1 { get; set; }
+        public virtual Parametro Parametro2 { get; set; }
         public virtual ICollection<GestorXDeuda> GestorXDeudas { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
         public virtual ICollection<Gestor> Gestor1 { get; set; }
         public virtual ICollection<Gestor> Gestors { get; set; }
-        public virtual Parametro Parametro { get; set; }
-        public virtual Parametro Parametro1 { get; set; }
-        public virtual Parametro Parametro2 { get; set; }
     }
 }

@@ -29,8 +29,8 @@ namespace RecaudaSoft.Models
         public int cantidadDeudas { get; set; }
     
         public virtual Acreedor Acreedor { get; set; }
+        public virtual Parametro Parametro { get; set; }
         public virtual ICollection<Deuda> Deudas { get; set; }
         public virtual ICollection<PoliticaCobranza> PoliticaCobranzas { get; set; }
-        public virtual Parametro Parametro { get; set; }
     }
 }

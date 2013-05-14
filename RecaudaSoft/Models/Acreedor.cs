@@ -28,8 +28,8 @@ namespace RecaudaSoft.Models
         public int rubro { get; set; }
         public string telefono { get; set; }
     
+        public virtual Parametro Parametro { get; set; }
         public virtual ICollection<Cartera> Carteras { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
-        public virtual Parametro Parametro { get; set; }
     }
 }

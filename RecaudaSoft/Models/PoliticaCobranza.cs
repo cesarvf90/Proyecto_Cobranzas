@@ -26,6 +26,7 @@ namespace RecaudaSoft.Models
         public int obligatoria { get; set; }
         public Nullable<decimal> interesRefinanciacion { get; set; }
         public Nullable<int> maximoCuotasRefinanciacion { get; set; }
+        public Nullable<decimal> interesDiarioPropio { get; set; }
     
         public virtual Cartera Cartera { get; set; }
         public virtual ICollection<PoliticaCobranzaXTipoActividad> PoliticaCobranzaXTipoActividads { get; set; }

@@ -25,19 +25,19 @@ namespace RecaudaSoft.Models
         public int idDeudor { get; set; }
         public int idProducto { get; set; }
         public int idCartera { get; set; }
-        public int idTipoDeuda { get; set; }
         public decimal monto { get; set; }
         public Nullable<System.DateTime> fechaInicio { get; set; }
         public int moneda { get; set; }
         public int esCuota { get; set; }
-        public Nullable<int> dificultad { get; set; }
+        public Nullable<decimal> dificultad { get; set; }
         public int pagada { get; set; }
+        public Nullable<decimal> montoPagado { get; set; }
     
         public virtual ICollection<Actividad> Actividads { get; set; }
         public virtual Cartera Cartera { get; set; }
         public virtual Deudor Deudor { get; set; }
+        public virtual Parametro Parametro { get; set; }
         public virtual ICollection<GestorXDeuda> GestorXDeudas { get; set; }
         public virtual ICollection<Refinanciacion> Refinanciacions { get; set; }
-        public virtual Parametro Parametro { get; set; }
     }
 }

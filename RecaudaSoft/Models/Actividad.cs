@@ -28,8 +28,8 @@ namespace RecaudaSoft.Models
         public string detalles { get; set; }
     
         public virtual Deuda Deuda { get; set; }
+        public virtual Parametro Parametro { get; set; }
         public virtual TipoActividad TipoActividad { get; set; }
         public virtual ICollection<Refinanciacion> Refinanciacions { get; set; }
-        public virtual Parametro Parametro { get; set; }
     }
 }
