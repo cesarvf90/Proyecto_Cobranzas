@@ -346,10 +346,6 @@
     <Content Include="Views\Colaboradores\Edit.cshtml" />
     <Content Include="Views\Colaboradores\Delete.cshtml" />
     <Content Include="Views\Acreedores\Index.cshtml" />
-    <Content Include="Views\TiposActividad\Create.cshtml" />
-    <Content Include="Views\TiposActividad\Edit.cshtml" />
-    <Content Include="Views\TiposActividad\Delete.cshtml" />
-    <Content Include="Views\TiposActividad\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
@@ -359,6 +355,10 @@
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Delete.cshtml" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Views\TiposActividad\Index.cshtml" />
+    <Content Include="Views\TiposActividad\Create.cshtml" />
+    <Content Include="Views\TiposActividad\Edit.cshtml" />
+    <Content Include="Views\TiposActividad\Delete.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

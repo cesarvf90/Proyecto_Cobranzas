@@ -4,35 +4,43 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar rol</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Estás seguro que deseas eliminar esta rol?</h3>
 <fieldset>
     <legend>Rol</legend>
 
-    <div class="display-label">idRol</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.idRol)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.idRol)
     </div>
 
-    <div class="display-label">nombre</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.nombre)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.nombre)
     </div>
 
-    <div class="display-label">descripcion</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.descripcion)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.descripcion)
     </div>
 
-    <div class="display-label">estado</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.estado)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.estado)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Regresar", "Index")
     </p>
 }

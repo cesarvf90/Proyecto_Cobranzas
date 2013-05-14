@@ -1,48 +1,41 @@
-﻿@model RecaudaSoft.Models.Parametro
+﻿@model RecaudaSoft.Models.TipoActividad
 
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Elimimar Tipo de actividad de cobro</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Estás seguro que deseas eliminar este tipo de actividad?</h3>
 <fieldset>
-    <legend>Parametro</legend>
+    <legend>Tipo de Actividad</legend>
 
-    <div class="display-label">idParametro</div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.idTipoActividad)
+    </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.idParametro)
+        @Html.DisplayFor(model => model.idTipoActividad)
     </div>
 
-    <div class="display-label">tipo</div>
+    
+    <div class="editor-label">
+        @Html.LabelFor(model => model.nombre)
+    </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.tipo)
+        @Html.DisplayFor(model => model.nombre)
     </div>
 
-    <div class="display-label">valor</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.valor)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.descripcion)
     </div>
-
-    <div class="display-label">valorNum</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.valorNum)
-    </div>
-
-    <div class="display-label">idPadre</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.idPadre)
-    </div>
-
-    <div class="display-label">codUnico</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.codUnico)
+        @Html.DisplayFor(model => model.descripcion)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Regresar", "Index")
     </p>
 }

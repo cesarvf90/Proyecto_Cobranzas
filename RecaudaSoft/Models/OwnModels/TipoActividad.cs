@@ -10,7 +10,7 @@ namespace RecaudaSoft.Models
 
     public class TipoActividadMetaData
     {
-        [DisplayName("Cuotas")]            
+        [DisplayName("Id")]            
         public int idTipoActividad { get; set; }
         [DisplayName("Nombre")]
         public string nombre { get; set; }

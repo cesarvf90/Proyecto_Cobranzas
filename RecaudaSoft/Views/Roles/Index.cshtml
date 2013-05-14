@@ -4,24 +4,24 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Roles</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar nuevo rol", "Create")
 </p>
-<table>
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
     <tr>
         <th>
-            idRol
+            Id
         </th>
         <th>
-            nombre
+            Nombre
         </th>
         <th>
-            descripcion
+            Descripción
         </th>
         <th>
-            estado
+            Estado
         </th>
         <th></th>
     </tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.estado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idRol }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idRol }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idRol })
+            <a href = "/Roles/Edit?id=@item.idRol"><img border="0" src="@Href("~/Content/Images/edit.jpg")"></a>
+            <a href = "/Roles/Delete?id=@item.idRol"><img border="0" src="@Href("~/Content/Images/delete.jpg")"></a>
+            <a href = "/Roles/Details?id=@item.idRol"><img border="0" src="@Href("~/Content/Images/ojo_jpg.jpg")"></a>
         </td>
     </tr>
 }

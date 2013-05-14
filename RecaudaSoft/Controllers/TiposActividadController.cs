@@ -16,7 +16,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Parametroes.Where(t => t.tipo == "TIPO_ACTIVIDAD").ToList());
+                return View(db.TipoActividads.ToList());
             }
         }
 
@@ -40,13 +40,13 @@ namespace RecaudaSoft.Controllers
         // POST: /TiposActividad/Create
 
         [HttpPost]
-        public ActionResult Create(Parametro tipoActividad)
+        public ActionResult Create(TipoActividad tipoActividad)
         {
             try
             {
                 using (var db = new CobranzasEntities())
                 {
-                    db.Parametroes.Add(tipoActividad);
+                    db.TipoActividads.Add(tipoActividad);
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -64,7 +64,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Parametroes.Find(id));
+                return View(db.TipoActividads.Find(id));
             }
         }
 
@@ -72,7 +72,7 @@ namespace RecaudaSoft.Controllers
         // POST: /TiposActividad/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, Parametro tipoActividad)
+        public ActionResult Edit(int id, TipoActividad tipoActividad)
             {
             try
             {
@@ -96,7 +96,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Parametroes.Find(id));
+                return View(db.TipoActividads.Find(id));
             }
         }
 
@@ -104,7 +104,7 @@ namespace RecaudaSoft.Controllers
         // POST: /TiposActividad/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, Parametro tipoActvidad)
+        public ActionResult Delete(int id, TipoActividad tipoActvidad)
         {
          try
             {
