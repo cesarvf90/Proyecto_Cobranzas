@@ -123,7 +123,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloCobranzas.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OwnModels\Actividad.cs" />
+    <Compile Include="Models\OwnModels\CalificacionDato.cs" />
     <Compile Include="Models\OwnModels\Cartera.cs" />
+    <Compile Include="Models\OwnModels\Cuota.cs" />
+    <Compile Include="Models\OwnModels\Dato.cs" />
+    <Compile Include="Models\OwnModels\Deuda.cs" />
+    <Compile Include="Models\OwnModels\Deudor.cs" />
+    <Compile Include="Models\OwnModels\Gestor.cs" />
+    <Compile Include="Models\OwnModels\GestorXDeuda.cs" />
+    <Compile Include="Models\OwnModels\Parametro.cs" />
+    <Compile Include="Models\OwnModels\Permiso.cs" />
+    <Compile Include="Models\OwnModels\PoliticaCobranza.cs" />
+    <Compile Include="Models\OwnModels\PoliticaCobranzaXTipoActividad.cs" />
+    <Compile Include="Models\OwnModels\Refinanciacion.cs" />
+    <Compile Include="Models\OwnModels\Rol.cs" />
+    <Compile Include="Models\OwnModels\TipoActividad.cs" />
+    <Compile Include="Models\OwnModels\Usuario.cs" />
     <Compile Include="Models\Parametro.cs">
       <DependentUpon>ModeloCobranzas.tt</DependentUpon>
     </Compile>
