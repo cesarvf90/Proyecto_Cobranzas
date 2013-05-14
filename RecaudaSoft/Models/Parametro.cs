@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel;
-
 namespace RecaudaSoft.Models
 {
     using System;
@@ -16,17 +14,38 @@ namespace RecaudaSoft.Models
     
     public partial class Parametro
     {
-        [DisplayName("Id")]
+        public Parametro()
+        {
+            this.Acreedors = new HashSet<Acreedor>();
+            this.Actividads = new HashSet<Actividad>();
+            this.Carteras = new HashSet<Cartera>();
+            this.Deudas = new HashSet<Deuda>();
+            this.Deudors = new HashSet<Deudor>();
+            this.Deudors1 = new HashSet<Deudor>();
+            this.Deudors2 = new HashSet<Deudor>();
+            this.Gestors = new HashSet<Gestor>();
+            this.Gestors1 = new HashSet<Gestor>();
+            this.Gestors2 = new HashSet<Gestor>();
+            this.Refinanciacions = new HashSet<Refinanciacion>();
+        }
+    
         public int idParametro { get; set; }
-        [DisplayName("Tipo")]
         public string tipo { get; set; }
-        [DisplayName("Valor")]
         public string valor { get; set; }
-        [DisplayName("Valor Numérico")]
         public Nullable<decimal> valorNum { get; set; }
-        [DisplayName("Id Padre")]
         public Nullable<int> idPadre { get; set; }
-        [DisplayName("Código único")]   
         public string codUnico { get; set; }
+    
+        public virtual ICollection<Acreedor> Acreedors { get; set; }
+        public virtual ICollection<Actividad> Actividads { get; set; }
+        public virtual ICollection<Cartera> Carteras { get; set; }
+        public virtual ICollection<Deuda> Deudas { get; set; }
+        public virtual ICollection<Deudor> Deudors { get; set; }
+        public virtual ICollection<Deudor> Deudors1 { get; set; }
+        public virtual ICollection<Deudor> Deudors2 { get; set; }
+        public virtual ICollection<Gestor> Gestors { get; set; }
+        public virtual ICollection<Gestor> Gestors1 { get; set; }
+        public virtual ICollection<Gestor> Gestors2 { get; set; }
+        public virtual ICollection<Refinanciacion> Refinanciacions { get; set; }
     }
 }

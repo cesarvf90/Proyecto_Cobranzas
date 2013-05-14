@@ -11,7 +11,6 @@ namespace RecaudaSoft.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     
     public partial class Dato
     {
@@ -19,14 +18,11 @@ namespace RecaudaSoft.Models
         {
             this.CalificacionDatoes = new HashSet<CalificacionDato>();
         }
-        
-        [DisplayName("Id")]
+    
         public int idDato { get; set; }
-        [DisplayName("Tipo")]
         public string tipo { get; set; }
-        [DisplayName("Nombre")]
         public string nombre { get; set; }
-        [DisplayName("Calificaciones del dato")]
+    
         public virtual ICollection<CalificacionDato> CalificacionDatoes { get; set; }
     }
 }

@@ -32,10 +32,5 @@ namespace RecaudaSoft.Models
         public virtual ICollection<Deuda> Deudas { get; set; }
         [DisplayName("Políticas de Cobranza")]
         public virtual ICollection<PoliticaCobranza> PoliticaCobranzas { get; set; }
-        // Ejemplo de como asociar con la tabla parametro
-        [NotMapped]
-        [ForeignKey("esVencida")]
-        [DisplayName("Tipo")]
-        public virtual Parametro pEsVencida { get; set; }
     }
 }

@@ -6,7 +6,6 @@
 //    Los cambios manuales en este archivo se sobrescribirán si se regenera el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel;
 
 namespace RecaudaSoft.Models
 {
@@ -20,18 +19,13 @@ namespace RecaudaSoft.Models
             this.Usuarios = new HashSet<Usuario>();
             this.Permisoes = new HashSet<Permiso>();
         }
-
-        [DisplayName("ID Rol")]
+    
         public int idRol { get; set; }
-        [DisplayName("Nombre")]
         public string nombre { get; set; }
-        [DisplayName("Descripción")]
         public string descripcion { get; set; }
-        [DisplayName("Estado")]
         public int estado { get; set; }
-        [DisplayName("Usuarios")]
+    
         public virtual ICollection<Usuario> Usuarios { get; set; }
-        [DisplayName("Permisos")]
         public virtual ICollection<Permiso> Permisoes { get; set; }
     }
 }

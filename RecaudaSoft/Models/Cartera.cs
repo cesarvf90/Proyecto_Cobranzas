@@ -6,8 +6,6 @@
 //    Los cambios manuales en este archivo se sobrescribirán si se regenera el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 
 namespace RecaudaSoft.Models
 {
@@ -21,31 +19,18 @@ namespace RecaudaSoft.Models
             this.Deudas = new HashSet<Deuda>();
             this.PoliticaCobranzas = new HashSet<PoliticaCobranza>();
         }
-
-        [DisplayName("Id")]
+    
         public int idCartera { get; set; }
-        [DisplayName("Id Acreedor")]
         public int idAcreedor { get; set; }
-        [DisplayName("Nombre")]
         public string nombre { get; set; }
-        [DisplayName("Tipo")]
         public int esVencida { get; set; }
-        [DisplayName("Porcentaje ganancia")]
         public int porcentajeGanancia { get; set; }
-        [DisplayName("Detalles")]
         public string detalles { get; set; }
-        [DisplayName("Cantidad de deudas")]
         public int cantidadDeudas { get; set; }
-
-        [DisplayName("Acreedor")]
+    
         public virtual Acreedor Acreedor { get; set; }
-        [DisplayName("Deudas")]
         public virtual ICollection<Deuda> Deudas { get; set; }
-        [DisplayName("Políticas de Cobranza")]
         public virtual ICollection<PoliticaCobranza> PoliticaCobranzas { get; set; }
-        [NotMapped]
-        [ForeignKey("esVencida")]
-        [DisplayName("Tipo")]
-        public virtual Parametro pEsVencida { get; set; }
+        public virtual Parametro Parametro { get; set; }
     }
 }
