@@ -7,42 +7,42 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar nuevo colaborador", "Create")
 </p>
-<table>
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
     <tr>
         <th>
-            idGestor
+            Id
         </th>
         <th>
-            idNivelGestor
+            Nivel
         </th>
         <th>
-            idTipoGestor
+            Tipo
         </th>
         <th>
-            nombres
+            Nombres
         </th>
         <th>
-            apellidoPaterno
+            Apellido Paterno
         </th>
         <th>
-            apellidoMaterno
+            Apellido Materno
         </th>
         <th>
-            fechaIngreso
+            Fecha de ingreso
         </th>
         <th>
-            deudasRecuperadas
+            Deudas recuperadas
         </th>
         <th>
-            disponible
+            Disponible
         </th>
         <th>
-            tipoDocumento
+            Tipo Documento
         </th>
         <th>
-            numeroDocumento
+            Número Documento
         </th>
         <th></th>
     </tr>
@@ -53,10 +53,10 @@
             @Html.DisplayFor(modelItem => item.idGestor)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.idNivelGestor)
+            @Html.DisplayFor(modelItem => item.Parametro.valor)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.idTipoGestor)
+            @Html.DisplayFor(modelItem => item.Parametro2.valor)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.nombres)
@@ -77,15 +77,15 @@
             @Html.DisplayFor(modelItem => item.disponible)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tipoDocumento)
+            @Html.DisplayFor(modelItem => item.Parametro1.valor)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.numeroDocumento)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idGestor }) |
-            @Html.ActionLink("Details", "Details", new { id = item.idGestor }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idGestor })
+            <a href = "/Colaboradores/Edit?id=@item.idGestor"><img border="0" src="@Href("~/Content/Images/edit.jpg")"></a>
+            <a href = "/Colaboradores/Delete?id=@item.idGestor"><img border="0" src="@Href("~/Content/Images/delete.jpg")"></a>
+            <a href = "/Colaboradores/Details?id=@item.idGestor"><img border="0" src="@Href("~/Content/Images/ojo_jpg.jpg")"></a>
         </td>
     </tr>
 }

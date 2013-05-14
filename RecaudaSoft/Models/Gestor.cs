@@ -41,5 +41,11 @@ namespace RecaudaSoft.Models
         public virtual ICollection<Usuario> Usuarios { get; set; }
         public virtual ICollection<Gestor> Gestor1 { get; set; }
         public virtual ICollection<Gestor> Gestors { get; set; }
+
+        /*
+        public virtual Parametro NivelGestor { get; set; }
+        public virtual Parametro TipoDocumento { get; set; }
+        public virtual Parametro TipoGestor { get; set; }
+         * */
     }
 }

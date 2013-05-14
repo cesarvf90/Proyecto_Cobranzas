@@ -16,7 +16,10 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Gestors.ToList());
+                var listaGestores = db.Gestors.Include("Parametro");
+                listaGestores = listaGestores.Include("Parametro1");
+                listaGestores = listaGestores.Include("Parametro2");
+                return View(listaGestores.ToList());
             }
         }
 
@@ -33,7 +36,13 @@ namespace RecaudaSoft.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            using (var db = new CobranzasEntities())
+            {
+                ViewBag.idNivelGestor = new SelectList(db.Parametroes.Where(p => p.tipo == "NIVEL_GESTOR"), "idParametro", "valor").ToList();
+                ViewBag.idTipoGestor = new SelectList(db.Parametroes.Where(p => p.tipo == "TIPO_GESTOR"), "idParametro", "valor").ToList();
+                ViewBag.tipoDocumento = new SelectList(db.Parametroes.Where(p => p.tipo == "TIPO_DOCUMENTO"), "idParametro", "valor").ToList();
+                return View();
+            }
         } 
 
         //
@@ -46,6 +55,7 @@ namespace RecaudaSoft.Controllers
             {
                 using (var db = new CobranzasEntities())
                 {
+                    gestor.disponible = 1;
                     db.Gestors.Add(gestor);
                     db.SaveChanges();
                 }
@@ -64,7 +74,14 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Gestors.Find(id));
+                var listaGestores = db.Gestors.Include("Parametro").Include("Parametro1").Include("Parametro2");
+                Gestor gestor = listaGestores.First(a => a.idGestor == id);
+
+                ViewBag.idNivelGestor = new SelectList(db.Parametroes.Where(p => p.tipo == "NIVEL_GESTOR"), "idParametro", "valor", gestor.idNivelGestor).ToList();
+                ViewBag.idTipoGestor = new SelectList(db.Parametroes.Where(p => p.tipo == "TIPO_GESTOR"), "idParametro", "valor", gestor.idTipoGestor).ToList();
+                ViewBag.tipoDocumento = new SelectList(db.Parametroes.Where(p => p.tipo == "TIPO_DOCUMENTO"), "idParametro", "valor", gestor.tipoDocumento).ToList();
+
+                return View(gestor);
             }
         }
 
@@ -96,7 +113,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                return View(db.Gestors.Find(id));
+                return View(db.Gestors.Include("Parametro").Include("Parametro1").Include("Parametro2").First(a => a.idGestor == id));
             }
         }
 

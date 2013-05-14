@@ -4,70 +4,92 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar colaborador</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Estás seguro que deseas eliminar este colaborador?</h3>
 <fieldset>
-    <legend>Gestor</legend>
+    <legend>Colabodrador</legend>
 
-    <div class="display-label">idGestor</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.idGestor)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.idGestor)
     </div>
 
-    <div class="display-label">idNivelGestor</div>
+     <div class="display-label">
+        @Html.LabelFor(model => model.Parametro)
+    </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.idNivelGestor)
+        @Html.DisplayFor(model => model.Parametro.valor)
     </div>
 
-    <div class="display-label">idTipoGestor</div>
+     <div class="display-label">
+        @Html.LabelFor(model => model.Parametro2)
+    </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.idTipoGestor)
+        @Html.DisplayFor(model => model.Parametro2.valor)
     </div>
 
-    <div class="display-label">nombres</div>
+     <div class="display-label">
+        @Html.LabelFor(model => model.nombres)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.nombres)
     </div>
 
-    <div class="display-label">apellidoPaterno</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.apellidoPaterno)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.apellidoPaterno)
     </div>
 
-    <div class="display-label">apellidoMaterno</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.apellidoMaterno)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.apellidoMaterno)
     </div>
 
-    <div class="display-label">fechaIngreso</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.fechaIngreso)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.fechaIngreso)
     </div>
 
-    <div class="display-label">deudasRecuperadas</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.deudasRecuperadas)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.deudasRecuperadas)
     </div>
 
-    <div class="display-label">disponible</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.disponible)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.disponible)
     </div>
 
-    <div class="display-label">tipoDocumento</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.Parametro1)
+    </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.tipoDocumento)
+        @Html.DisplayFor(model => model.Parametro1.valor)
     </div>
 
-    <div class="display-label">numeroDocumento</div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.numeroDocumento)
+    </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.numeroDocumento)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Elminar" /> |
+        @Html.ActionLink("Regresar", "Index")
     </p>
 }

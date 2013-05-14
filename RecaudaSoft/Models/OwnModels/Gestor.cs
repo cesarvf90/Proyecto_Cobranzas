@@ -26,13 +26,19 @@ namespace RecaudaSoft.Models
         public System.DateTime fechaIngreso { get; set; }
         [DisplayName("Deudas recuperadas")]
         public Nullable<int> deudasRecuperadas { get; set; }
-        [DisplayName("Disponibles")]
+        [DisplayName("Disponible")]
         public int disponible { get; set; }
         [DisplayName("Tipo de documento")]
         public int tipoDocumento { get; set; }
         [DisplayName("Número de documento")]
         public string numeroDocumento { get; set; }
 
+        [DisplayName("Nivel")]
+        public virtual Parametro Parametro { get; set; }
+        [DisplayName("Tipo de documento")]
+        public virtual Parametro Parametro1 { get; set; }
+        [DisplayName("Tipo")]
+        public virtual Parametro Parametro2 { get; set; }
         [DisplayName("Deudas asignadas")]
         public virtual ICollection<GestorXDeuda> GestorXDeudas { get; set; }
         [DisplayName("Usuarios")]
@@ -41,5 +47,35 @@ namespace RecaudaSoft.Models
         public virtual ICollection<Gestor> Gestor1 { get; set; }
         [DisplayName("Gestores asignados")]
         public virtual ICollection<Gestor> Gestors { get; set; }
+
+        /*
+        [DisplayName("Nivel")]
+        public virtual Parametro NivelGestor { 
+        get {
+            return Parametro;
+            } 
+        set {
+            Parametro = value;
+            }
+        }
+        [DisplayName("Tipo de documento")]
+        public virtual Parametro TipoDocumento { 
+        get {
+            return Parametro1;
+            } 
+        set {
+            Parametro1 = value;
+            }
+        }
+        [DisplayName("Tipo")]
+        public virtual Parametro TipoGestor { 
+        get {
+            return Parametro2;
+            } 
+        set {
+            Parametro2 = value;
+            }
+        }
+         * */
     }
 }
