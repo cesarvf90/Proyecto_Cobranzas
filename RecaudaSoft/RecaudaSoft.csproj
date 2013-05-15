@@ -367,6 +367,7 @@
     <Content Include="Views\CargaCarteras\Index.cshtml" />
     <Content Include="Views\CargaCarteras\SubirArchivo.cshtml" />
     <Content Include="Views\CargaCarteras\ProcesarArchivoExitoso.cshtml" />
+    <None Include="UploadedExcelDocuments\Cartera.xlsx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
