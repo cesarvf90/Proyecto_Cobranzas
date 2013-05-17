@@ -4,11 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RecaudaSoft.Models;
+using System.Data;
+using System.Data.OleDb;
+using RecaudaSoft.Utils;
 
 namespace RecaudaSoft.Controllers
 {
     public class CargaCarterasController : Controller
     {
+
+        int idCarteraSeleccionada;
+
         //
         // GET: /CargaCarteras/
 
@@ -29,6 +35,8 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
+                idCarteraSeleccionada = id;
+
                 var listaCarteras = db.Carteras.Include("Parametro").Include("Acreedor");
                 Cartera cartera = listaCarteras.First(a => a.idCartera == id);
 
@@ -42,39 +50,69 @@ namespace RecaudaSoft.Controllers
         [HttpPost]
         public ActionResult SubirArchivo(HttpPostedFileBase excelFile)
         {
-            if (excelFile != null)
-            {
-                //Save the uploaded file to the disc.
-                string savedFileName = "~/UploadedExcelDocuments/" + excelFile.FileName;
-                excelFile.SaveAs(Server.MapPath(savedFileName));
-
-                //Create a connection string to access the Excel file using the ACE provider.
-                //This is for Excel 2007. 2003 uses an older driver.
-
-                var connectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 12.0;", Server.MapPath(savedFileName));
-                
-                //Fill the dataset with information from the Hoja1 worksheet.
-                /*
-                var adapter = new OleDbDataAdapter("SELECT * FROM [Hoja1$]", connectionString);
-                var ds = new DataSet();
-                adapter.Fill(ds, "results");
-                DataTable data = ds.Tables["results"];
-
-                //Create a new list of People.
-                var people = new List<Person>();
-                for (int i = 0; i < data.Rows.Count - 1; i++)
+            using (var db = new CobranzasEntities()) {
+                if (excelFile != null)
                 {
-                    Person newPerson = new Person();
-                    newPerson.Id = data.Rows[i].Field<double?>("Id");
-                    newPerson.Name = data.Rows[i].Field<string>("Name");
-                    newPerson.LastName = data.Rows[i].Field<string>("LastName");
-                    newPerson.DateOfBirth = data.Rows[i].Field<DateTime?>("DateOfBirth");                   
-                    people.Add(newPerson);
+                    //Save the uploaded file to the disc.
+                    string savedFileName = "~/UploadedExcelDocuments/" + excelFile.FileName;
+                    excelFile.SaveAs(Server.MapPath(savedFileName));
+
+                    //Create a connection string to access the Excel file using the ACE provider.
+                    //This is for Excel 2007. 2003 uses an older driver.
+
+                    var connectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 12.0;", Server.MapPath(savedFileName));
+                
+                    // Leer informacion de la cartera
+
+                    // Leer una por una 
+                
+                    // las deudas 
+                    // los deudores asociados a las mismas
+                    // insertar la deuda en la BD
+                    // insertar el deudor en la BD
+
+                    //Fill the dataset with information from the Hoja1 worksheet.
+                
+                    // TODO cambiar hoja1 por un nombre mas significativo
+                    var adapter = new OleDbDataAdapter("SELECT * FROM [Hoja1$]", connectionString);
+                
+                    var ds = new DataSet();
+                    adapter.Fill(ds, "results");
+                    DataTable data = ds.Tables["results"];
+
+                    // TODO mejorar para que pueda leer nulos luego si es necesario haciendo cambios a la BD
+                    var listaDeudas = new List<Deuda>();
+                    for (int i = 0; i < data.Rows.Count - 1; i++)
+                    {
+                        //data.Rows[fila][columna]
+                        Deuda deuda = new Deuda();
+                        string productoDeuda = data.Rows[i].Field<string>("Producto");
+                        deuda.idProducto = db.Parametroes.First(p => p.tipo == "PRODUCTO_DEUDA" && p.valor == productoDeuda).idParametro;
+                        double montoDouble = data.Rows[i].Field<double>("Monto");
+                        deuda.monto = Convert.ToDecimal(montoDouble);
+                        string valorMoneda = data.Rows[i].Field<string>("Moneda");
+                        deuda.moneda = db.Parametroes.First(p => p.tipo == "MONEDA" && p.codUnico == valorMoneda).idParametro;
+                        //deuda.Parametro = moneda; //TODO evaluar si es necesaria esta linea
+                        string esCuota = data.Rows[i].Field<string>("Es Cuota");
+                        if (esCuota == "Sí") {
+                            deuda.esCuota = 1;
+                        } else if (esCuota == "No") {
+                            deuda.esCuota = 0;
+                        }
+
+                        // Se aniaden los datos propios de todas las deudas de la cartera procesada
+                        deuda.fechaInicio = DateTime.Today;
+                        deuda.idCartera = idCarteraSeleccionada;
+
+                        listaDeudas.Add(deuda);
+                        db.Deudas.Add(deuda);
+                        db.SaveChanges();
+                    }
+
+                    return View("ProcesarArchivoExitoso");
                 }
-                */
-                return View("ProcesarArchivoExitoso");
+                return View();
             }
-            return View();
         }
 
         //

@@ -18,8 +18,6 @@ namespace RecaudaSoft.Models
         public int idProducto { get; set; }
         [DisplayName("Id Cartera")]
         public int idCartera { get; set; }
-        [DisplayName("Id Tipo deuda")]
-        public int idTipoDeuda { get; set; }
         [DisplayName("Monto")]
         public decimal monto { get; set; }
         [DisplayName("Fecha inicio")]
@@ -32,6 +30,8 @@ namespace RecaudaSoft.Models
         public Nullable<int> dificultad { get; set; }
         [DisplayName("Pagada")]
         public int pagada { get; set; }
+        [DisplayName("Monto pagado")]
+        public Nullable<decimal> montoPagado { get; set; }
 
         [DisplayName("Actividades")]
         public virtual ICollection<Actividad> Actividads { get; set; }
@@ -39,6 +39,8 @@ namespace RecaudaSoft.Models
         public virtual Cartera Cartera { get; set; }
         [DisplayName("Deudor")]
         public virtual Deudor Deudor { get; set; }
+        [DisplayName("Moneda")]
+        public virtual Parametro Parametro { get; set; }
         [DisplayName("Gestores asignados")]
         public virtual ICollection<GestorXDeuda> GestorXDeudas { get; set; }
         [DisplayName("Refinanciaciones")]
