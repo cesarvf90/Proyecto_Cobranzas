@@ -4,39 +4,39 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Usuarios</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
     <tr>
         <th>
-            idUsuario
+            Id
         </th>
         <th>
-            idAcreedor
+            Id Acreedor
         </th>
         <th>
-            idGestor
+            Id Gestor
         </th>
         <th>
-            idRol
+            Id Rol
         </th>
         <th>
-            nombreUsuario
+            Nombre usuario
         </th>
         <th>
-            contrasena
+            Contraseña
         </th>
         <th>
-            tipoUsuario
+            Tipo
         </th>
         <th>
-            estado
+            Estado
         </th>
         <th>
-            correo
+            Correo electrónico
         </th>
         <th></th>
     </tr>
@@ -71,9 +71,9 @@
             @Html.DisplayFor(modelItem => item.correo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idUsuario }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idUsuario })
+            <a href = "/Usuarios/Edit?id=@item.idUsuario"><img border="0" src="@Href("~/Content/Images/edit.jpg")"></a>
+            <a href = "/Usuarios/Delete?id=@item.idUsuario"><img border="0" src="@Href("~/Content/Images/delete.jpg")"></a>
+            <a href = "/Usuarios/Details?id=@item.idUsuario"><img border="0" src="@Href("~/Content/Images/ojo_jpg.jpg")"></a>
         </td>
     </tr>
 }

@@ -13,11 +13,11 @@ namespace RecaudaSoft.Models
     {
         [DisplayName("Id")]
         public int idUsuario { get; set; }
-        [DisplayName("Acreedores")]
+        [DisplayName("Id Acreedor")]
         public Nullable<int> idAcreedor { get; set; }
-        [DisplayName("ID Gestor")]
+        [DisplayName("Id Gestor")]
         public Nullable<int> idGestor { get; set; }
-        [DisplayName("ID Rol")]
+        [DisplayName("Id Rol")]
         public int idRol { get; set; }
         [DisplayName("Nombre usuario")]
         public string nombreUsuario { get; set; }

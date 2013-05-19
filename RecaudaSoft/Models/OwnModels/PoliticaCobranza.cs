@@ -24,6 +24,8 @@ namespace RecaudaSoft.Models
         public Nullable<decimal> interesRefinanciacion { get; set; }
         [DisplayName("Máximo cuotas de refinanciación")]
         public Nullable<int> maximoCuotasRefinanciacion { get; set; }
+        [DisplayName("Interés diario propio")]
+        public Nullable<decimal> interesDiarioPropio { get; set; }
 
         [DisplayName("Cartera")]
         public virtual Cartera Cartera { get; set; }

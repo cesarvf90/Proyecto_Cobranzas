@@ -70,6 +70,7 @@
     <Compile Include="Controllers\CarterasController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\ConfiguracionNivelesController.cs" />
+    <Compile Include="Controllers\ConfiguracionPoliticaCobranzaController.cs" />
     <Compile Include="Controllers\ConsultaCarterasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistroAvanceController.cs" />
@@ -378,6 +379,9 @@
     <Content Include="Views\RegistroAvance\Details.cshtml" />
     <Content Include="Views\RegistroAvance\RegistrarActividad.cshtml" />
     <Content Include="Views\RegistroAvance\Edit.cshtml" />
+    <Content Include="Views\ConfiguracionPoliticaCobranza\Index.cshtml" />
+    <Content Include="Views\ConfiguracionPoliticaCobranza\Details.cshtml" />
+    <Content Include="Views\ConfiguracionPoliticaCobranza\RegistrarPolitica.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
