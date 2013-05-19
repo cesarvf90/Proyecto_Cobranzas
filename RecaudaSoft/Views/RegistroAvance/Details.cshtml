@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Información de la deuda</h2>
 
 <fieldset>
     <legend>Deuda</legend>
@@ -87,6 +87,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Registrar actividad", "RegistrarActividad", new { id=Model.idDeuda }) |
+    @Html.ActionLink("Registrar actividad", "RegistrarActividad") |
     @Html.ActionLink("Regresar", "Index")
 </p>

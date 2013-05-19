@@ -39,10 +39,15 @@ namespace RecaudaSoft.Controllers
         
         //
         // GET: /RegistroAvance/Edit/5
-
-        public ActionResult RegistrarActividad(int id)
+        // Se envia como parametro el id de la deuda
+        public ActionResult RegistrarActividad()
         {
-            return View();
+            using (var db = new CobranzasEntities())
+            {
+                ViewBag.idTipoActividad = new SelectList(db.TipoActividads, "idTipoActividad", "nombre").ToList();
+                ViewBag.idResultado = new SelectList(db.Parametroes.Where(p => p.tipo == "RESULTADO_ACTIVIDAD"), "idParametro", "valor").ToList();
+                return View();
+            }
         }
 
         [HttpPost]

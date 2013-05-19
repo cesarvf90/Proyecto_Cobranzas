@@ -15,34 +15,18 @@
         <legend>Actividad</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.idActividad)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.idActividad)
-            @Html.ValidationMessageFor(model => model.idActividad)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.idTipoActividad)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.idTipoActividad)
+            @Html.DropDownList("idTipoActividad", "Seleccione")
             @Html.ValidationMessageFor(model => model.idTipoActividad)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.idGestor)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.idGestor)
-            @Html.ValidationMessageFor(model => model.idGestor)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.idResultado)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.idResultado)
+            @Html.DropDownList("idResultado", "Seleccione")
             @Html.ValidationMessageFor(model => model.idResultado)
         </div>
 
