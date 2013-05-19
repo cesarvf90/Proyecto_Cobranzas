@@ -1,0 +1,64 @@
+﻿@model RecaudaSoft.Models.Cartera
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Cartera</legend>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idCartera)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idCartera)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.Acreedor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Acreedor.nombre)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.esVencida)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Parametro.valor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.porcentajeGanancia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.porcentajeGanancia)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.detalles)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.detalles)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.cantidadDeudas)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cantidadDeudas)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

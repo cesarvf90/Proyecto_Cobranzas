@@ -1,0 +1,93 @@
+﻿@model IEnumerable<RecaudaSoft.Models.Deuda>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Id Deudor
+        </th>
+        <th>
+            Id Producto deuda
+        </th>
+        <th>
+            Id Cartera
+        </th>
+        <th>
+            Monto
+        </th>
+        <th>
+            Fecha inicio
+        </th>
+        <th>
+            Moneda
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Dificultad
+        </th>
+        <th>
+            Pagada
+        </th>
+        <th>
+            Monto pagado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idDeuda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idDeudor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idCartera)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parametro.valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esCuota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dificultad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pagada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.montoPagado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

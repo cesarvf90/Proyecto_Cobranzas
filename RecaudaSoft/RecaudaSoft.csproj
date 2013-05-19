@@ -70,7 +70,9 @@
     <Compile Include="Controllers\CarterasController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\ConfiguracionNivelesController.cs" />
+    <Compile Include="Controllers\ConsultaCarterasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegistroAvanceController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TiposActividadController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -370,6 +372,9 @@
     <Content Include="Views\CargaCarteras\SubirArchivo.cshtml" />
     <Content Include="Views\CargaCarteras\ProcesarArchivoExitoso.cshtml" />
     <None Include="UploadedExcelDocuments\Cartera.xlsx" />
+    <Content Include="Views\ConsultaCarteras\Index.cshtml" />
+    <Content Include="Views\ConsultaCarteras\Details.cshtml" />
+    <Content Include="Views\RegistroAvance\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
