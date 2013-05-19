@@ -27,9 +27,6 @@
             Fecha inicio
         </th>
         <th>
-            Moneda
-        </th>
-        <th>
             Tipo
         </th>
         <th>
@@ -50,22 +47,19 @@
             @Html.DisplayFor(modelItem => item.idDeuda)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.idDeudor)
+            @Html.DisplayFor(modelItem => item.Deudor.nombres)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.idProducto)
+            @Html.DisplayFor(modelItem => item.idProducto) <!--actualizar relacion y jalar nombre de producto deuda-->
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.idCartera)
+            @Html.DisplayFor(modelItem => item.Cartera.nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.monto)
+            @Html.DisplayFor(modelItem => item.Parametro.valor) @Html.DisplayFor(modelItem => item.monto)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.fechaInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Parametro.valor)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.esCuota)
@@ -80,7 +74,7 @@
             @Html.DisplayFor(modelItem => item.montoPagado)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.idDeuda }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.idDeuda })
         </td>
     </tr>
 }

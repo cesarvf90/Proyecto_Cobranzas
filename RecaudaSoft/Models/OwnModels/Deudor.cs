@@ -51,5 +51,11 @@ namespace RecaudaSoft.Models
         
         [DisplayName("Deudas")]
         public virtual ICollection<Deuda> Deudas { get; set; }
+        [DisplayName("Estado civil")]
+        public virtual Parametro Parametro { get; set; }
+        [DisplayName("Sexo")]
+        public virtual Parametro Parametro1 { get; set; }
+        [DisplayName("Tipo de documento")]
+        public virtual Parametro Parametro2 { get; set; }
     }
 }

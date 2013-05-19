@@ -16,7 +16,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                var listaDeudas = db.Deudas.Include("Parametro");
+                var listaDeudas = db.Deudas.Include("Parametro").Include("Deudor").Include("Cartera");
                 return View(listaDeudas.ToList());
             }
         }
@@ -28,7 +28,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                var listaDeudas = db.Deudas.Include("Parametro");
+                var listaDeudas = db.Deudas.Include("Parametro").Include("Deudor").Include("Cartera").Include("Deudor.Parametro").Include("Deudor.Parametro1").Include("Deudor.Parametro2");
                 Deuda deuda = listaDeudas.First(a => a.idDeuda == id);
 
                 ViewBag.moneda = new SelectList(db.Parametroes.Where(p => p.tipo == "MONEDA"), "idParametro", "valor", deuda.moneda).ToList();

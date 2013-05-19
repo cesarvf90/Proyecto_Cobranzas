@@ -1,0 +1,110 @@
+﻿@model RecaudaSoft.Models.Deudor
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<fieldset>
+    <legend>Deudor</legend>
+
+    <div class="display-label">idDeudor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idDeudor)
+    </div>
+
+    <div class="display-label">nombres</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombres)
+    </div>
+
+    <div class="display-label">apellidoPaterno</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellidoPaterno)
+    </div>
+
+    <div class="display-label">apellidoMaterno</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellidoMaterno)
+    </div>
+
+    <div class="display-label">tipoDocumento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tipoDocumento)
+    </div>
+
+    <div class="display-label">numeroDocumneto</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numeroDocumneto)
+    </div>
+
+    <div class="display-label">telefonoPersonal</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefonoPersonal)
+    </div>
+
+    <div class="display-label">telefonoDomicilio</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefonoDomicilio)
+    </div>
+
+    <div class="display-label">telefonoTrabajo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefonoTrabajo)
+    </div>
+
+    <div class="display-label">correo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.correo)
+    </div>
+
+    <div class="display-label">direccion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.direccion)
+    </div>
+
+    <div class="display-label">poseeTrabajo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.poseeTrabajo)
+    </div>
+
+    <div class="display-label">fechaNacimiento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fechaNacimiento)
+    </div>
+
+    <div class="display-label">numeroTotalDeudas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numeroTotalDeudas)
+    </div>
+
+    <div class="display-label">totalAdeudado</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.totalAdeudado)
+    </div>
+
+    <div class="display-label">estadoCivil</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.estadoCivil)
+    </div>
+
+    <div class="display-label">numeroHijos</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numeroHijos)
+    </div>
+
+    <div class="display-label">sexo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sexo)
+    </div>
+
+    <div class="display-label">detalles</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.detalles)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
