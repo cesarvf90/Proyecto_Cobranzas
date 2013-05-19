@@ -1,0 +1,92 @@
+﻿@model RecaudaSoft.Models.Deuda
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Deuda</legend>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idDeuda)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idDeuda)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idDeudor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idDeudor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idProducto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idProducto)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idCartera)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idCartera)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.monto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.monto)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.fechaInicio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fechaInicio)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.moneda)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Parametro.valor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.esCuota)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.esCuota)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.dificultad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dificultad)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.pagada)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pagada)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.montoPagado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.montoPagado)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Registrar actividad", "RegistrarActividad", new { id=Model.idDeuda }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

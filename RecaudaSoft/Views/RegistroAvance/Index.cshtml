@@ -4,12 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Registrar avance</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
     <tr>
         <th>
             Id
@@ -83,9 +80,7 @@
             @Html.DisplayFor(modelItem => item.montoPagado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Details", "Details", new { id=item.idDeuda }) |
         </td>
     </tr>
 }
