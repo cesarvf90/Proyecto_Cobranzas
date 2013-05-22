@@ -9,6 +9,9 @@ namespace RecaudaSoft.Controllers
 {
     public class ConfiguracionPoliticaCobranzaController : Controller
     {
+
+        public static int idPoliticaCobranzaSeleccionada { get; set; }
+
         //
         // GET: /ConfiguracionPoliticaCobranza/
 
@@ -44,19 +47,88 @@ namespace RecaudaSoft.Controllers
 
         public ActionResult RegistrarPolitica()
         {
-            return View();
+            using (var db = new CobranzasEntities())
+            {
+                ViewBag.idTipoActividad = new SelectList(db.TipoActividads, "idTipoActividad", "nombre").ToList();
+                return View();
+            }
         }
 
         //
         // POST: /ConfiguracionPoliticaCobranza/RegistrarPolitica
 
         [HttpPost]
-        public ActionResult RegistrarPolitica(FormCollection collection)
+        public ActionResult RegistrarPolitica(List<PoliticaCobranzaXTipoActividad> listaActividades)
         {
             try
             {
                 // TODO: Add insert logic here
 
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //
+        // GET: /ConfiguracionPoliticaCobranza/RegistrarActividadesPolitica
+
+        public ActionResult RegistrarActividadesPolitica()
+        {
+            using (var db = new CobranzasEntities())
+            {
+                ViewBag.idTipoActividad = new SelectList(db.TipoActividads, "idTipoActividad", "nombre").ToList();
+                return View();
+            }
+        }
+
+        //
+        // POST: /ConfiguracionPoliticaCobranza/RegistrarActividadesPolitica
+
+        [HttpPost]
+        public ActionResult RegistrarActividadesPolitica(List<PoliticaCobranzaXTipoActividad> listaActividades)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //
+        // GET: /ConfiguracionPoliticaCobranza/RegistrarPasoPolitica
+
+        public ActionResult RegistrarPasoPolitica()
+        {
+            using (var db = new CobranzasEntities())
+            {
+                ViewBag.idTipoActividad = new SelectList(db.TipoActividads, "idTipoActividad", "nombre").ToList();
+                return View();
+            }
+        }
+
+        //
+        // POST: /ConfiguracionPoliticaCobranza/RegistrarPasoPolitica
+
+        [HttpPost]
+        public ActionResult RegistrarPasoPolitica(PoliticaCobranzaXTipoActividad pasoPolitica)
+        {
+            try
+            {
+                using (var db = new CobranzasEntities())
+                {
+                    // TODO asignarle idpoliticacobranza al paso
+                    //pasoPolitica.idPoliticaCobranza;
+                    db.PoliticaCobranzaXTipoActividads.Add(pasoPolitica);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

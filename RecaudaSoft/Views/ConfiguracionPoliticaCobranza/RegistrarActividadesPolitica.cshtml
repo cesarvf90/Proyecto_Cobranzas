@@ -1,0 +1,119 @@
+﻿@model IEnumerable<RecaudaSoft.Models.PoliticaCobranzaXTipoActividad>
+
+@{
+    ViewBag.Title = "RegistrarActividadesPolitica";
+}
+
+<h2>Registrar Actividades Politica</h2>
+
+<script language="javascript">
+    function addRow(tableID) {
+
+        var table = document.getElementById(tableID);
+
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        var colCount = table.rows[0].cells.length;
+
+        for (var i = 0; i < colCount; i++) {
+
+            var newcell = row.insertCell(i);
+
+            newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+            //alert(newcell.childNodes);
+            switch(newcell.childNodes[0].type) {
+                    case "text":
+                            newcell.childNodes[0].value = "";
+                            break;
+                    case "checkbox":
+                            newcell.childNodes[0].checked = false;
+                            break;
+                    case "select-one":
+                            newcell.childNodes[0].selectedIndex = 0;
+                            break;
+            }
+        }
+    }
+
+    function deleteRow(tableID) {
+        try {
+            var table = document.getElementById(tableID);
+            var rowCount = table.rows.length;
+
+            for (var i = 0; i < rowCount; i++) {
+                var row = table.rows[i];
+                var chkbox = row.cells[0].childNodes[0];
+                if (null != chkbox && true == chkbox.checked) {
+                    if (rowCount <= 1) {
+                        alert("Cannot delete all the rows.");
+                        break;
+                    }
+                    table.deleteRow(i);
+                    rowCount--;
+                    i--;
+                }
+
+
+            }
+        } catch (e) {
+            alert(e);
+        }
+    }
+ 
+</script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script>
+      $(function () {
+          $("#datepicker").datepicker();
+      });
+  </script>
+
+@using (Html.BeginForm())
+{
+<fieldset>
+    <legend>Actividades</legend>
+
+    <input type="button" value="Agregar Tipo de actividad" onclick="addRow('dataTable')" />
+    <input type="button" value="Eliminar Tipo de actividad" onclick="deleteRow('dataTable')" />
+ 
+    <table id="dataTable" rules="all" style="border-color: Gray; width: 750px; margin-bottom: 0px; margin-top: 25px" border="1">
+    <tr>
+        <th>
+        </th>
+        <th>
+            Orden
+        </th>
+        <th>
+            Tipo de actividad
+        </th>
+        <th>
+            Fecha inicio
+        </th>
+        <th>
+            Fecha fin
+        </th>
+        </tr>
+    <tr>
+        <td>
+            <input type="checkbox" name="chk"/>
+        </td>
+        <td>
+            <input type="text" name="txt" id="orden"/>
+        </td>
+        <td>
+            @Html.DropDownList("idTipoActividad", "Seleccione")
+        </td>
+        <td>
+            <input type="text" id="datepicker" />
+        </td>
+        <td>
+            <input type="text" id="datepicker" />
+        </td>
+    </tr>
+    </table>
+</fieldset>
+}
