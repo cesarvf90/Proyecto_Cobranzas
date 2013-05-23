@@ -1,0 +1,14 @@
+﻿@model RecaudaSoft.Models.PoliticaCobranzaXTipoActividad
+
+@{
+    ViewBag.Title = "RegistroPasoPoliticaExitoso";
+}
+
+<h2>Se procesó el archivo con éxito ;D</h2>
+
+<p>
+    @Html.ActionLink("Continuar configurando política", "RegistrarPolitica", new { id = Model.idPoliticaCobranza })
+</p>
+<p>
+    @Html.ActionLink("Terminar configuración de política", "Index")
+</p>

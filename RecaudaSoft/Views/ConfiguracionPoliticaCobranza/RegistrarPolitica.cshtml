@@ -13,7 +13,9 @@
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Política de Cobranza</legend>
+
         @Html.HiddenFor(model => model.idCartera)
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.nombre)
         </div>

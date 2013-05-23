@@ -393,6 +393,7 @@
     <Content Include="Views\ConfiguracionPoliticaCobranza\RegistrarPolitica.cshtml" />
     <Content Include="Views\ConfiguracionPoliticaCobranza\RegistrarActividadesPolitica.cshtml" />
     <Content Include="Views\ConfiguracionPoliticaCobranza\RegistrarPasoPolitica.cshtml" />
+    <Content Include="Views\ConfiguracionPoliticaCobranza\RegistroPasoPoliticaExitoso.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

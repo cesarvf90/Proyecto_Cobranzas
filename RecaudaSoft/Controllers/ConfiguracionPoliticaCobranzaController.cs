@@ -152,7 +152,9 @@ namespace RecaudaSoft.Controllers
                     db.PoliticaCobranzaXTipoActividads.Add(pasoPolitica);
                     db.SaveChanges();
                 }
-                return RedirectToAction("Index");
+                //return RedirectToAction("RegistrarPolitica", idPoliticaCobranzaSeleccionada);
+                //return RegistrarPolitica(idPoliticaCobranzaSeleccionada);
+                return View("RegistroPasoPoliticaExitoso", pasoPolitica);
             }
             catch
             {
@@ -161,81 +163,11 @@ namespace RecaudaSoft.Controllers
         }
 
         //
-        // GET: /ConfiguracionPoliticaCobranza/Create
+        // GET: /ConfiguracionPoliticaCobranza/RegistroPasoPoliticaExitoso
 
-        public ActionResult Create()
+        public ActionResult RegistroPasoPoliticaExitoso()
         {
             return View();
         } 
-
-        //
-        // POST: /ConfiguracionPoliticaCobranza/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        //
-        // GET: /ConfiguracionPoliticaCobranza/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /ConfiguracionPoliticaCobranza/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /ConfiguracionPoliticaCobranza/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /ConfiguracionPoliticaCobranza/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
