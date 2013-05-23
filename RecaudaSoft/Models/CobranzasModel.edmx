@@ -15,40 +15,15 @@
           <EntitySet Name="Deuda" EntityType="ModeloCobranzas.Store.Deuda" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Deudor" EntityType="ModeloCobranzas.Store.Deudor" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Gestor" EntityType="ModeloCobranzas.Store.Gestor" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GestorXDeuda" EntityType="ModeloCobranzas.Store.GestorXDeuda" store:Type="Tables" store:Schema="dbo" store:Name="GestorXDeuda">
-            <DefiningQuery>SELECT 
-      [GestorXDeuda].[idGestor] AS [idGestor], 
-      [GestorXDeuda].[idDeuda] AS [idDeuda], 
-      [GestorXDeuda].[fechaAsignacion] AS [fechaAsignacion], 
-      [GestorXDeuda].[exito] AS [exito]
-      FROM [dbo].[GestorXDeuda] AS [GestorXDeuda]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="GestorXGestor" EntityType="ModeloCobranzas.Store.GestorXGestor" store:Type="Tables" store:Schema="dbo" store:Name="GestorXGestor">
-            <DefiningQuery>SELECT 
-      [GestorXGestor].[idGestorSupervisor] AS [idGestorSupervisor], 
-      [GestorXGestor].[idGestorSupervisado] AS [idGestorSupervisado]
-      FROM [dbo].[GestorXGestor] AS [GestorXGestor]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="GestorXDeuda" EntityType="ModeloCobranzas.Store.GestorXDeuda" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GestorXGestor" EntityType="ModeloCobranzas.Store.GestorXGestor" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Parametro" EntityType="ModeloCobranzas.Store.Parametro" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Permiso" EntityType="ModeloCobranzas.Store.Permiso" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PoliticaCobranza" EntityType="ModeloCobranzas.Store.PoliticaCobranza" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PoliticaCobranzaXTipoActividad" EntityType="ModeloCobranzas.Store.PoliticaCobranzaXTipoActividad" store:Type="Tables" store:Schema="dbo" store:Name="PoliticaCobranzaXTipoActividad">
-            <DefiningQuery>SELECT 
-      [PoliticaCobranzaXTipoActividad].[idPoliticaCobranza] AS [idPoliticaCobranza], 
-      [PoliticaCobranzaXTipoActividad].[idTipoActividad] AS [idTipoActividad], 
-      [PoliticaCobranzaXTipoActividad].[numeroPaso] AS [numeroPaso], 
-      [PoliticaCobranzaXTipoActividad].[fechaInicio] AS [fechaInicio], 
-      [PoliticaCobranzaXTipoActividad].[fechaFin] AS [fechaFin]
-      FROM [dbo].[PoliticaCobranzaXTipoActividad] AS [PoliticaCobranzaXTipoActividad]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="PoliticaCobranzaXTipoActividad" EntityType="ModeloCobranzas.Store.PoliticaCobranzaXTipoActividad" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Refinanciacion" EntityType="ModeloCobranzas.Store.Refinanciacion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Rol" EntityType="ModeloCobranzas.Store.Rol" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RolXPermiso" EntityType="ModeloCobranzas.Store.RolXPermiso" store:Type="Tables" store:Schema="dbo" store:Name="RolXPermiso">
-            <DefiningQuery>SELECT 
-      [RolXPermiso].[idRol] AS [idRol], 
-      [RolXPermiso].[idPermiso] AS [idPermiso]
-      FROM [dbo].[RolXPermiso] AS [RolXPermiso]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="RolXPermiso" EntityType="ModeloCobranzas.Store.RolXPermiso" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="ModeloCobranzas.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TipoActividad" EntityType="ModeloCobranzas.Store.TipoActividad" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Usuario" EntityType="ModeloCobranzas.Store.Usuario" store:Type="Tables" Schema="dbo" />
@@ -270,7 +245,7 @@
           <Property Name="apellidoPaterno" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="apellidoMaterno" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="tipoDocumento" Type="int" Nullable="false" />
-          <Property Name="numeroDocumneto" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="numeroDocumento" Type="nvarchar" Nullable="false" MaxLength="15" />
           <Property Name="telefonoPersonal" Type="nvarchar" MaxLength="15" />
           <Property Name="telefonoDomicilio" Type="nvarchar" MaxLength="15" />
           <Property Name="telefonoTrabajo" Type="nvarchar" MaxLength="15" />
@@ -301,29 +276,21 @@
           <Property Name="tipoDocumento" Type="int" Nullable="false" />
           <Property Name="numeroDocumento" Type="nvarchar" Nullable="false" MaxLength="15" />
         </EntityType>
-        <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'cobranzasdb.dbo.GestorXDeuda' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
         <EntityType Name="GestorXDeuda">
           <Key>
-            <PropertyRef Name="idGestor" />
-            <PropertyRef Name="idDeuda" />
-            <PropertyRef Name="fechaAsignacion" />
-            <PropertyRef Name="exito" />
+            <PropertyRef Name="idGestorXDeuda" />
           </Key>
+          <Property Name="idGestorXDeuda" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idGestor" Type="int" Nullable="false" />
           <Property Name="idDeuda" Type="int" Nullable="false" />
           <Property Name="fechaAsignacion" Type="datetime" Nullable="false" />
           <Property Name="exito" Type="int" Nullable="false" />
         </EntityType>
-        <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'cobranzasdb.dbo.GestorXGestor' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
         <EntityType Name="GestorXGestor">
           <Key>
-            <PropertyRef Name="idGestorSupervisor" />
-            <PropertyRef Name="idGestorSupervisado" />
+            <PropertyRef Name="idGestorXGestor" />
           </Key>
+          <Property Name="idGestorXGestor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idGestorSupervisor" Type="int" Nullable="false" />
           <Property Name="idGestorSupervisado" Type="int" Nullable="false" />
         </EntityType>
@@ -360,17 +327,11 @@
           <Property Name="maximoCuotasRefinanciacion" Type="int" />
           <Property Name="interesDiarioPropio" Type="decimal" Scale="2" />
         </EntityType>
-        <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'cobranzasdb.dbo.PoliticaCobranzaXTipoActividad' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
         <EntityType Name="PoliticaCobranzaXTipoActividad">
           <Key>
-            <PropertyRef Name="idPoliticaCobranza" />
-            <PropertyRef Name="idTipoActividad" />
-            <PropertyRef Name="numeroPaso" />
-            <PropertyRef Name="fechaInicio" />
-            <PropertyRef Name="fechaFin" />
+            <PropertyRef Name="idPoliticaCobranzaXTipoActividad" />
           </Key>
+          <Property Name="idPoliticaCobranzaXTipoActividad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idPoliticaCobranza" Type="int" Nullable="false" />
           <Property Name="idTipoActividad" Type="int" Nullable="false" />
           <Property Name="numeroPaso" Type="int" Nullable="false" />
@@ -400,14 +361,11 @@
           <Property Name="descripcion" Type="nvarchar" MaxLength="150" />
           <Property Name="estado" Type="int" Nullable="false" />
         </EntityType>
-        <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'cobranzasdb.dbo.RolXPermiso' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
         <EntityType Name="RolXPermiso">
           <Key>
-            <PropertyRef Name="idRol" />
-            <PropertyRef Name="idPermiso" />
+            <PropertyRef Name="idRolXPermiso" />
           </Key>
+          <Property Name="idRolXPermiso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idRol" Type="int" Nullable="false" />
           <Property Name="idPermiso" Type="int" Nullable="false" />
         </EntityType>
@@ -842,12 +800,14 @@
           <EntitySet Name="Deudors" EntityType="ModeloCobranzas.Deudor" />
           <EntitySet Name="Gestors" EntityType="ModeloCobranzas.Gestor" />
           <EntitySet Name="GestorXDeudas" EntityType="ModeloCobranzas.GestorXDeuda" />
+          <EntitySet Name="GestorXGestors" EntityType="ModeloCobranzas.GestorXGestor" />
           <EntitySet Name="Parametroes" EntityType="ModeloCobranzas.Parametro" />
           <EntitySet Name="Permisoes" EntityType="ModeloCobranzas.Permiso" />
           <EntitySet Name="PoliticaCobranzas" EntityType="ModeloCobranzas.PoliticaCobranza" />
           <EntitySet Name="PoliticaCobranzaXTipoActividads" EntityType="ModeloCobranzas.PoliticaCobranzaXTipoActividad" />
           <EntitySet Name="Refinanciacions" EntityType="ModeloCobranzas.Refinanciacion" />
           <EntitySet Name="Rols" EntityType="ModeloCobranzas.Rol" />
+          <EntitySet Name="RolXPermisoes" EntityType="ModeloCobranzas.RolXPermiso" />
           <EntitySet Name="sysdiagrams" EntityType="ModeloCobranzas.sysdiagram" />
           <EntitySet Name="TipoActividads" EntityType="ModeloCobranzas.TipoActividad" />
           <EntitySet Name="Usuarios" EntityType="ModeloCobranzas.Usuario" />
@@ -943,6 +903,14 @@
             <End Role="Gestor" EntitySet="Gestors" />
             <End Role="GestorXDeuda" EntitySet="GestorXDeudas" />
           </AssociationSet>
+          <AssociationSet Name="FK_GestorXGestor_Gestor" Association="ModeloCobranzas.FK_GestorXGestor_Gestor">
+            <End Role="Gestor" EntitySet="Gestors" />
+            <End Role="GestorXGestor" EntitySet="GestorXGestors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GestorXGestor_Gestor1" Association="ModeloCobranzas.FK_GestorXGestor_Gestor1">
+            <End Role="Gestor" EntitySet="Gestors" />
+            <End Role="GestorXGestor" EntitySet="GestorXGestors" />
+          </AssociationSet>
           <AssociationSet Name="FK_Usuario_Gestor" Association="ModeloCobranzas.FK_Usuario_Gestor">
             <End Role="Gestor" EntitySet="Gestors" />
             <End Role="Usuario" EntitySet="Usuarios" />
@@ -950,6 +918,10 @@
           <AssociationSet Name="FK_Refinanciacion_Moneda" Association="ModeloCobranzas.FK_Refinanciacion_Moneda">
             <End Role="Parametro" EntitySet="Parametroes" />
             <End Role="Refinanciacion" EntitySet="Refinanciacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolXPermiso_Permiso" Association="ModeloCobranzas.FK_RolXPermiso_Permiso">
+            <End Role="Permiso" EntitySet="Permisoes" />
+            <End Role="RolXPermiso" EntitySet="RolXPermisoes" />
           </AssociationSet>
           <AssociationSet Name="FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza" Association="ModeloCobranzas.FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza">
             <End Role="PoliticaCobranza" EntitySet="PoliticaCobranzas" />
@@ -959,17 +931,13 @@
             <End Role="TipoActividad" EntitySet="TipoActividads" />
             <End Role="PoliticaCobranzaXTipoActividad" EntitySet="PoliticaCobranzaXTipoActividads" />
           </AssociationSet>
+          <AssociationSet Name="FK_RolXPermiso_Rol" Association="ModeloCobranzas.FK_RolXPermiso_Rol">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="RolXPermiso" EntitySet="RolXPermisoes" />
+          </AssociationSet>
           <AssociationSet Name="FK_Usuario_Rol" Association="ModeloCobranzas.FK_Usuario_Rol">
             <End Role="Rol" EntitySet="Rols" />
             <End Role="Usuario" EntitySet="Usuarios" />
-          </AssociationSet>
-          <AssociationSet Name="GestorXGestor" Association="ModeloCobranzas.GestorXGestor">
-            <End Role="Gestor" EntitySet="Gestors" />
-            <End Role="Gestor1" EntitySet="Gestors" />
-          </AssociationSet>
-          <AssociationSet Name="RolXPermiso" Association="ModeloCobranzas.RolXPermiso">
-            <End Role="Permiso" EntitySet="Permisoes" />
-            <End Role="Rol" EntitySet="Rols" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Acreedor">
@@ -1081,7 +1049,7 @@
           <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="tipoDocumento" Nullable="false" />
-          <Property Type="String" Name="numeroDocumneto" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="numeroDocumento" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="telefonoPersonal" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="telefonoDomicilio" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="telefonoTrabajo" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -1119,23 +1087,31 @@
           <NavigationProperty Name="Parametro1" Relationship="ModeloCobranzas.FK_Gestor_TipoDocumento" FromRole="Gestor" ToRole="Parametro" />
           <NavigationProperty Name="Parametro2" Relationship="ModeloCobranzas.FK_Gestor_TipoGestor" FromRole="Gestor" ToRole="Parametro" />
           <NavigationProperty Name="GestorXDeudas" Relationship="ModeloCobranzas.FK_GestorXDeuda_Gestor" FromRole="Gestor" ToRole="GestorXDeuda" />
+          <NavigationProperty Name="GestorXGestors" Relationship="ModeloCobranzas.FK_GestorXGestor_Gestor" FromRole="Gestor" ToRole="GestorXGestor" />
+          <NavigationProperty Name="GestorXGestors1" Relationship="ModeloCobranzas.FK_GestorXGestor_Gestor1" FromRole="Gestor" ToRole="GestorXGestor" />
           <NavigationProperty Name="Usuarios" Relationship="ModeloCobranzas.FK_Usuario_Gestor" FromRole="Gestor" ToRole="Usuario" />
-          <NavigationProperty Name="Gestor1" Relationship="ModeloCobranzas.GestorXGestor" FromRole="Gestor" ToRole="Gestor1" />
-          <NavigationProperty Name="Gestors" Relationship="ModeloCobranzas.GestorXGestor" FromRole="Gestor1" ToRole="Gestor" />
         </EntityType>
         <EntityType Name="GestorXDeuda">
           <Key>
-            <PropertyRef Name="idGestor" />
-            <PropertyRef Name="idDeuda" />
-            <PropertyRef Name="fechaAsignacion" />
-            <PropertyRef Name="exito" />
+            <PropertyRef Name="idGestorXDeuda" />
           </Key>
+          <Property Type="Int32" Name="idGestorXDeuda" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="idGestor" Nullable="false" />
           <Property Type="Int32" Name="idDeuda" Nullable="false" />
           <Property Type="DateTime" Name="fechaAsignacion" Nullable="false" />
           <Property Type="Int32" Name="exito" Nullable="false" />
           <NavigationProperty Name="Deuda" Relationship="ModeloCobranzas.FK_GestorXDeuda_Deuda" FromRole="GestorXDeuda" ToRole="Deuda" />
           <NavigationProperty Name="Gestor" Relationship="ModeloCobranzas.FK_GestorXDeuda_Gestor" FromRole="GestorXDeuda" ToRole="Gestor" />
+        </EntityType>
+        <EntityType Name="GestorXGestor">
+          <Key>
+            <PropertyRef Name="idGestorXGestor" />
+          </Key>
+          <Property Type="Int32" Name="idGestorXGestor" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idGestorSupervisor" Nullable="false" />
+          <Property Type="Int32" Name="idGestorSupervisado" Nullable="false" />
+          <NavigationProperty Name="Gestor" Relationship="ModeloCobranzas.FK_GestorXGestor_Gestor" FromRole="GestorXGestor" ToRole="Gestor" />
+          <NavigationProperty Name="Gestor1" Relationship="ModeloCobranzas.FK_GestorXGestor_Gestor1" FromRole="GestorXGestor" ToRole="Gestor" />
         </EntityType>
         <EntityType Name="Parametro">
           <Key>
@@ -1167,7 +1143,7 @@
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="funcionalidad" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="descripcion" MaxLength="100" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Rols" Relationship="ModeloCobranzas.RolXPermiso" FromRole="Permiso" ToRole="Rol" />
+          <NavigationProperty Name="RolXPermisoes" Relationship="ModeloCobranzas.FK_RolXPermiso_Permiso" FromRole="Permiso" ToRole="RolXPermiso" />
         </EntityType>
         <EntityType Name="PoliticaCobranza">
           <Key>
@@ -1186,12 +1162,9 @@
         </EntityType>
         <EntityType Name="PoliticaCobranzaXTipoActividad">
           <Key>
-            <PropertyRef Name="idPoliticaCobranza" />
-            <PropertyRef Name="idTipoActividad" />
-            <PropertyRef Name="numeroPaso" />
-            <PropertyRef Name="fechaInicio" />
-            <PropertyRef Name="fechaFin" />
+            <PropertyRef Name="idPoliticaCobranzaXTipoActividad" />
           </Key>
+          <Property Type="Int32" Name="idPoliticaCobranzaXTipoActividad" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="idPoliticaCobranza" Nullable="false" />
           <Property Type="Int32" Name="idTipoActividad" Nullable="false" />
           <Property Type="Int32" Name="numeroPaso" Nullable="false" />
@@ -1226,8 +1199,18 @@
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="descripcion" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="estado" Nullable="false" />
+          <NavigationProperty Name="RolXPermisoes" Relationship="ModeloCobranzas.FK_RolXPermiso_Rol" FromRole="Rol" ToRole="RolXPermiso" />
           <NavigationProperty Name="Usuarios" Relationship="ModeloCobranzas.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
-          <NavigationProperty Name="Permisoes" Relationship="ModeloCobranzas.RolXPermiso" FromRole="Rol" ToRole="Permiso" />
+        </EntityType>
+        <EntityType Name="RolXPermiso">
+          <Key>
+            <PropertyRef Name="idRolXPermiso" />
+          </Key>
+          <Property Type="Int32" Name="idRolXPermiso" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idRol" Nullable="false" />
+          <Property Type="Int32" Name="idPermiso" Nullable="false" />
+          <NavigationProperty Name="Permiso" Relationship="ModeloCobranzas.FK_RolXPermiso_Permiso" FromRole="RolXPermiso" ToRole="Permiso" />
+          <NavigationProperty Name="Rol" Relationship="ModeloCobranzas.FK_RolXPermiso_Rol" FromRole="RolXPermiso" ToRole="Rol" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1542,6 +1525,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GestorXGestor_Gestor">
+          <End Type="ModeloCobranzas.Gestor" Role="Gestor" Multiplicity="1" />
+          <End Type="ModeloCobranzas.GestorXGestor" Role="GestorXGestor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestor">
+              <PropertyRef Name="idGestor" />
+            </Principal>
+            <Dependent Role="GestorXGestor">
+              <PropertyRef Name="idGestorSupervisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GestorXGestor_Gestor1">
+          <End Type="ModeloCobranzas.Gestor" Role="Gestor" Multiplicity="1" />
+          <End Type="ModeloCobranzas.GestorXGestor" Role="GestorXGestor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestor">
+              <PropertyRef Name="idGestor" />
+            </Principal>
+            <Dependent Role="GestorXGestor">
+              <PropertyRef Name="idGestorSupervisado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Usuario_Gestor">
           <End Type="ModeloCobranzas.Gestor" Role="Gestor" Multiplicity="0..1" />
           <End Type="ModeloCobranzas.Usuario" Role="Usuario" Multiplicity="*" />
@@ -1563,6 +1570,18 @@
             </Principal>
             <Dependent Role="Refinanciacion">
               <PropertyRef Name="moneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolXPermiso_Permiso">
+          <End Type="ModeloCobranzas.Permiso" Role="Permiso" Multiplicity="1" />
+          <End Type="ModeloCobranzas.RolXPermiso" Role="RolXPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="idPermiso" />
+            </Principal>
+            <Dependent Role="RolXPermiso">
+              <PropertyRef Name="idPermiso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1590,6 +1609,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RolXPermiso_Rol">
+          <End Type="ModeloCobranzas.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="ModeloCobranzas.RolXPermiso" Role="RolXPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="RolXPermiso">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Usuario_Rol">
           <End Type="ModeloCobranzas.Rol" Role="Rol" Multiplicity="1" />
           <End Type="ModeloCobranzas.Usuario" Role="Usuario" Multiplicity="*" />
@@ -1601,14 +1632,6 @@
               <PropertyRef Name="idRol" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="GestorXGestor">
-          <End Type="ModeloCobranzas.Gestor" Role="Gestor" Multiplicity="*" />
-          <End Type="ModeloCobranzas.Gestor" Role="Gestor1" Multiplicity="*" />
-        </Association>
-        <Association Name="RolXPermiso">
-          <End Type="ModeloCobranzas.Permiso" Role="Permiso" Multiplicity="*" />
-          <End Type="ModeloCobranzas.Rol" Role="Rol" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1719,7 +1742,7 @@
                 <ScalarProperty Name="telefonoTrabajo" ColumnName="telefonoTrabajo" />
                 <ScalarProperty Name="telefonoDomicilio" ColumnName="telefonoDomicilio" />
                 <ScalarProperty Name="telefonoPersonal" ColumnName="telefonoPersonal" />
-                <ScalarProperty Name="numeroDocumneto" ColumnName="numeroDocumneto" />
+                <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
                 <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
                 <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
                 <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
@@ -1752,6 +1775,16 @@
                 <ScalarProperty Name="fechaAsignacion" ColumnName="fechaAsignacion" />
                 <ScalarProperty Name="idDeuda" ColumnName="idDeuda" />
                 <ScalarProperty Name="idGestor" ColumnName="idGestor" />
+                <ScalarProperty Name="idGestorXDeuda" ColumnName="idGestorXDeuda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GestorXGestors">
+            <EntityTypeMapping TypeName="ModeloCobranzas.GestorXGestor">
+              <MappingFragment StoreEntitySet="GestorXGestor">
+                <ScalarProperty Name="idGestorSupervisado" ColumnName="idGestorSupervisado" />
+                <ScalarProperty Name="idGestorSupervisor" ColumnName="idGestorSupervisor" />
+                <ScalarProperty Name="idGestorXGestor" ColumnName="idGestorXGestor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1799,6 +1832,7 @@
                 <ScalarProperty Name="numeroPaso" ColumnName="numeroPaso" />
                 <ScalarProperty Name="idTipoActividad" ColumnName="idTipoActividad" />
                 <ScalarProperty Name="idPoliticaCobranza" ColumnName="idPoliticaCobranza" />
+                <ScalarProperty Name="idPoliticaCobranzaXTipoActividad" ColumnName="idPoliticaCobranzaXTipoActividad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1824,6 +1858,15 @@
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolXPermisoes">
+            <EntityTypeMapping TypeName="ModeloCobranzas.RolXPermiso">
+              <MappingFragment StoreEntitySet="RolXPermiso">
+                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idRolXPermiso" ColumnName="idRolXPermiso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1862,22 +1905,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="GestorXGestor" TypeName="ModeloCobranzas.GestorXGestor" StoreEntitySet="GestorXGestor">
-            <EndProperty Name="Gestor1">
-              <ScalarProperty Name="idGestor" ColumnName="idGestorSupervisado" />
-            </EndProperty>
-            <EndProperty Name="Gestor">
-              <ScalarProperty Name="idGestor" ColumnName="idGestorSupervisor" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="RolXPermiso" TypeName="ModeloCobranzas.RolXPermiso" StoreEntitySet="RolXPermiso">
-            <EndProperty Name="Rol">
-              <ScalarProperty Name="idRol" ColumnName="idRol" />
-            </EndProperty>
-            <EndProperty Name="Permiso">
-              <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1899,228 +1926,287 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="CobranzasModel" ZoomLevel="73">
-        <EntityTypeShape EntityType="ModeloCobranzas.Acreedor" Width="1.5" PointX="3" PointY="7.75" Height="2.9417936197916674" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Actividad" Width="1.5" PointX="9.75" PointY="12.375" Height="3.1340950520833317" />
+      <Diagram Name="CobranzasModel" ZoomLevel="48">
+        <EntityTypeShape EntityType="ModeloCobranzas.Acreedor" Width="1.5" PointX="3" PointY="7.875" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Actividad" Width="1.5" PointX="12.75" PointY="13" Height="3.1340950520833335" />
         <EntityTypeShape EntityType="ModeloCobranzas.CalificacionDato" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Cartera" Width="1.5" PointX="5.25" PointY="10.875" Height="3.1340950520833246" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Cuota" Width="1.5" PointX="14.25" PointY="11" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Cartera" Width="1.5" PointX="5.25" PointY="11" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Cuota" Width="1.5" PointX="17.25" PointY="13.5" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="ModeloCobranzas.Dato" Width="1.5" PointX="0.75" PointY="1.25" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Deuda" Width="1.5" PointX="7.5" PointY="10.75" Height="4.2879036458333246" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Deudor" Width="1.5" PointX="3" PointY="11.375" Height="5.4417122395833246" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Gestor" Width="1.5" PointX="3" PointY="17.625" Height="4.480205078124996" />
-        <EntityTypeShape EntityType="ModeloCobranzas.GestorXDeuda" Width="1.5" PointX="12.75" PointY="15.375" Height="2.1725878906250102" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Parametro" Width="1.5" PointX="0.75" PointY="12.75" Height="4.2879036458333406" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Permiso" Width="1.5" PointX="0.75" PointY="23.875" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="ModeloCobranzas.PoliticaCobranza" Width="1.5" PointX="7.5" PointY="16" Height="2.9417936197916674" />
-        <EntityTypeShape EntityType="ModeloCobranzas.PoliticaCobranzaXTipoActividad" Width="1.5" PointX="9.75" PointY="16.25" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Refinanciacion" Width="1.5" PointX="12" PointY="10.125" Height="3.5186979166666674" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Rol" Width="1.5" PointX="3" PointY="23.875" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Deuda" Width="1.5" PointX="10.5" PointY="11.875" Height="4.2879036458333246" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Deudor" Width="1.5" PointX="3" PointY="11.5" Height="5.4417122395833246" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Gestor" Width="1.5" PointX="3" PointY="17.75" Height="4.480205078124996" />
+        <EntityTypeShape EntityType="ModeloCobranzas.GestorXDeuda" Width="1.5" PointX="12.75" PointY="16.875" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="ModeloCobranzas.GestorXGestor" Width="1.5" PointX="5.25" PointY="19" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Parametro" Width="1.5" PointX="0.75" PointY="12.875" Height="4.2879036458333406" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Permiso" Width="1.5" PointX="6" PointY="8" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="ModeloCobranzas.PoliticaCobranza" Width="1.5" PointX="7.5" PointY="18.125" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="ModeloCobranzas.PoliticaCobranzaXTipoActividad" Width="1.5" PointX="9.75" PointY="18.25" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Refinanciacion" Width="1.5" PointX="15" PointY="12.75" Height="3.5186979166666656" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Rol" Width="1.5" PointX="6" PointY="15" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="ModeloCobranzas.RolXPermiso" Width="1.5" PointX="8.25" PointY="10" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="ModeloCobranzas.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="ModeloCobranzas.TipoActividad" Width="1.5" PointX="7.5" PointY="8" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="ModeloCobranzas.Usuario" Width="1.5" PointX="5.25" PointY="15.25" Height="3.3263964843750102" />
+        <EntityTypeShape EntityType="ModeloCobranzas.TipoActividad" Width="1.5" PointX="10.5" PointY="8.5" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="ModeloCobranzas.Usuario" Width="1.5" PointX="8.25" PointY="13.375" Height="3.3263964843750102" />
         <AssociationConnector Association="ModeloCobranzas.FK_Acreedor_RubroAcreedor" >
-          <ConnectorPoint PointX="1.5" PointY="12.75" />
-          <ConnectorPoint PointX="1.5" PointY="9.2208968098958337" />
-          <ConnectorPoint PointX="3" PointY="9.2208968098958337" />
+          <ConnectorPoint PointX="1.5" PointY="12.875" />
+          <ConnectorPoint PointX="1.5" PointY="9.3458968098958337" />
+          <ConnectorPoint PointX="3" PointY="9.3458968098958337" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Cartera_Acreedor" >
-          <ConnectorPoint PointX="4.5" PointY="9.2208968098958337" />
-          <ConnectorPoint PointX="6" PointY="9.2208968098958337" />
-          <ConnectorPoint PointX="6" PointY="10.875" />
+          <ConnectorPoint PointX="4.5" PointY="10.429790039062496" />
+          <ConnectorPoint PointX="5.59375" PointY="10.429790039062496" />
+          <ConnectorPoint PointX="5.59375" PointY="11" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Usuario_Acreedor" >
-          <ConnectorPoint PointX="4.5" PointY="10.691793619791667" />
-          <ConnectorPoint PointX="4.875" PointY="11.066793619791667" />
-          <ConnectorPoint PointX="4.875" PointY="16.913198242187505" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="16.913198242187505" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="16.913198242187505" />
-          <ConnectorPoint PointX="5.25" PointY="16.913198242187505" />
+          <ConnectorPoint PointX="4.5" PointY="9.1211430195312548" />
+          <ConnectorPoint PointX="5.75" PointY="9.1211430195312548" />
+          <ConnectorPoint PointX="5.75" PointY="10.230286458333325" />
+          <ConnectorPoint PointX="8" PointY="10.230286458333325" />
+          <ConnectorPoint PointX="8" PointY="12.230286458333339" />
+          <ConnectorPoint PointX="9" PointY="12.230286458333339" />
+          <ConnectorPoint PointX="9" PointY="13.375" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Actividad_Deuda" >
-          <ConnectorPoint PointX="9" PointY="13.706451822916662" />
-          <ConnectorPoint PointX="9.4791666666666661" PointY="13.706451822916662" />
-          <ConnectorPoint PointX="9.6458333333333339" PointY="13.706451822916662" />
-          <ConnectorPoint PointX="9.75" PointY="13.706451822916662" />
+          <ConnectorPoint PointX="12" PointY="14.567047526041666" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="14.567047526041666" />
+          <ConnectorPoint PointX="12.458333333333334" PointY="14.567047526041666" />
+          <ConnectorPoint PointX="12.75" PointY="14.567047526041666" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Actividad_ResultadoActividad" >
-          <ConnectorPoint PointX="1.5" PointY="17.037903645833339" />
-          <ConnectorPoint PointX="1.5" PointY="17.287903645833339" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="17.287903645833339" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="17.287903645833339" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="17.287903645833339" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="17.287903645833339" />
-          <ConnectorPoint PointX="5" PointY="17.287903645833339" />
-          <ConnectorPoint PointX="5" PointY="14.259095052083325" />
-          <ConnectorPoint PointX="6.916666666666667" PointY="14.259095052083325" />
-          <ConnectorPoint PointX="7.083333333333333" PointY="14.259095052083325" />
-          <ConnectorPoint PointX="7.25" PointY="14.259095052083325" />
-          <ConnectorPoint PointX="7.25" PointY="15.287903645833325" />
-          <ConnectorPoint PointX="8.1666666666666661" PointY="15.287903645833325" />
-          <ConnectorPoint PointX="8.3333333333333339" PointY="15.287903645833325" />
-          <ConnectorPoint PointX="9.375" PointY="15.287903645833325" />
-          <ConnectorPoint PointX="9.375" PointY="14.639025437499992" />
-          <ConnectorPoint PointX="9.4791666666666661" PointY="14.639025437499992" />
-          <ConnectorPoint PointX="9.6458333333333339" PointY="14.639025437499992" />
-          <ConnectorPoint PointX="9.75" PointY="14.639025437499992" />
+          <ConnectorPoint PointX="1.9062519999999998" PointY="12.875" />
+          <ConnectorPoint PointX="1.9062519999999998" PointY="12.625" />
+          <ConnectorPoint PointX="2.75" PointY="12.625" />
+          <ConnectorPoint PointX="2.75" PointY="17.191712239583325" />
+          <ConnectorPoint PointX="5.75" PointY="17.191712239583325" />
+          <ConnectorPoint PointX="5.75" PointY="14.75" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="14.75" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="14.75" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="14.75" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="14.75" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="14.75" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="14.75" />
+          <ConnectorPoint PointX="8.125" PointY="14.75" />
+          <ConnectorPoint PointX="8.125" PointY="13.125" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="13.125" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="13.125" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="13.125" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="13.125" />
+          <ConnectorPoint PointX="10.25" PointY="13.125" />
+          <ConnectorPoint PointX="10.25" PointY="16.412903645833325" />
+          <ConnectorPoint PointX="10.963539666666666" PointY="16.412903645833325" />
+          <ConnectorPoint PointX="11.130206333333334" PointY="16.412903645833325" />
+          <ConnectorPoint PointX="11.572916666666666" PointY="16.412903645833325" />
+          <ConnectorPoint PointX="11.739583333333334" PointY="16.412903645833325" />
+          <ConnectorPoint PointX="12.375" PointY="16.412903645833325" />
+          <ConnectorPoint PointX="12.375" PointY="13.75227176302084" />
+          <ConnectorPoint PointX="12.75" PointY="13.75227176302084" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Actividad_TipoActividad" >
-          <ConnectorPoint PointX="9" PointY="8.99014322916667" />
-          <ConnectorPoint PointX="10.5" PointY="8.99014322916667" />
-          <ConnectorPoint PointX="10.5" PointY="12.375" />
+          <ConnectorPoint PointX="12" PointY="9.49014322916667" />
+          <ConnectorPoint PointX="13.5" PointY="9.49014322916667" />
+          <ConnectorPoint PointX="13.5" PointY="13" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Refinanciacion_Actividad" >
-          <ConnectorPoint PointX="11.25" PointY="13.009348958333334" />
-          <ConnectorPoint PointX="12" PointY="13.009348958333334" />
+          <ConnectorPoint PointX="14.25" PointY="14.567047526041666" />
+          <ConnectorPoint PointX="15" PointY="14.567047526041666" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_CalificacionDato_Dato" >
           <ConnectorPoint PointX="2.25" PointY="2.1439925130208337" />
           <ConnectorPoint PointX="3" PointY="2.1439925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Cartera_TipoCartera" >
-          <ConnectorPoint PointX="1.9062525" PointY="12.75" />
-          <ConnectorPoint PointX="1.9062525" PointY="11.09375" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="11.09375" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="11.09375" />
-          <ConnectorPoint PointX="5.25" PointY="11.09375" />
+          <ConnectorPoint PointX="1.0937475" PointY="12.875" />
+          <ConnectorPoint PointX="1.0937475" PointY="11.21875" />
+          <ConnectorPoint PointX="1.4166666666666667" PointY="11.21875" />
+          <ConnectorPoint PointX="1.5833333333333333" PointY="11.21875" />
+          <ConnectorPoint PointX="5.25" PointY="11.21875" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Deuda_Cartera1" >
-          <ConnectorPoint PointX="6.75" PointY="12.442047526041662" />
-          <ConnectorPoint PointX="7.5" PointY="12.442047526041662" />
+          <ConnectorPoint PointX="6.75" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="10.5" PointY="12.833893229166669" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_PoliticaCobranza_Cartera" >
-          <ConnectorPoint PointX="6.75" PointY="14.009095052083325" />
-          <ConnectorPoint PointX="7.125" PointY="14.384095052083325" />
-          <ConnectorPoint PointX="7.125" PointY="17.470896809895834" />
-          <ConnectorPoint PointX="7.5" PointY="17.470896809895834" />
+          <ConnectorPoint PointX="6.75" PointY="12.50083734375001" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="12.50083734375001" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="12.50083734375001" />
+          <ConnectorPoint PointX="7.78125" PointY="12.50083734375001" />
+          <ConnectorPoint PointX="7.78125" PointY="18.125" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Cuota_Refinanciacion" >
-          <ConnectorPoint PointX="13.5" PointY="11.990143229166662" />
-          <ConnectorPoint PointX="14.25" PointY="11.990143229166662" />
+          <ConnectorPoint PointX="16.5" PointY="14.490143229166662" />
+          <ConnectorPoint PointX="17.25" PointY="14.490143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Deuda_Deudor" >
-          <ConnectorPoint PointX="4.5" PointY="14.710999348958325" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="14.710999348958323" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="14.710999348958325" />
-          <ConnectorPoint PointX="7.041666666666667" PointY="14.710999348958323" />
-          <ConnectorPoint PointX="7.333333333333333" PointY="14.710999348958325" />
-          <ConnectorPoint PointX="7.5" PointY="14.710999348958325" />
+          <ConnectorPoint PointX="4.5" PointY="14.220856119791662" />
+          <ConnectorPoint PointX="5" PointY="14.220856119791662" />
+          <ConnectorPoint PointX="5" PointY="14.384095052083325" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="14.384095052083325" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="14.384095052083325" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="14.384095052083323" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="14.384095052083325" />
+          <ConnectorPoint PointX="8" PointY="14.384095052083325" />
+          <ConnectorPoint PointX="8" PointY="16.95139648437501" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="16.95139648437501" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="16.95139648437501" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="16.95139648437501" />
+          <ConnectorPoint PointX="10.208333333333334" PointY="16.95139648437501" />
+          <ConnectorPoint PointX="11.046873" PointY="16.95139648437501" />
+          <ConnectorPoint PointX="11.046873" PointY="16.162903645833325" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Deuda_Moneda" >
-          <ConnectorPoint PointX="1.0937475" PointY="12.75" />
-          <ConnectorPoint PointX="1.0937475" PointY="10.78125" />
-          <ConnectorPoint PointX="1.4166666666666667" PointY="10.78125" />
-          <ConnectorPoint PointX="1.5833333333333333" PointY="10.78125" />
-          <ConnectorPoint PointX="4.5061230468749995" PointY="10.78125" />
-          <ConnectorPoint PointX="4.6727897135416656" PointY="10.78125" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="10.78125" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="10.78125" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="10.78125" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="10.78125" />
-          <ConnectorPoint PointX="7.5" PointY="10.78125" />
+          <ConnectorPoint PointX="1.3984367500000001" PointY="17.162903645833339" />
+          <ConnectorPoint PointX="1.3984367500000001" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="1.6197926666666667" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="1.7864593333333332" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="2.0260451666666666" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="2.1927118333333335" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="10.125" PointY="17.412903645833339" />
+          <ConnectorPoint PointX="10.125" PointY="14.643951322916662" />
+          <ConnectorPoint PointX="10.166666666666666" PointY="14.643951322916662" />
+          <ConnectorPoint PointX="10.333333333333334" PointY="14.643951322916662" />
+          <ConnectorPoint PointX="10.5" PointY="14.643951322916662" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_GestorXDeuda_Deuda" >
-          <ConnectorPoint PointX="8.25" PointY="15.037903645833325" />
-          <ConnectorPoint PointX="8.25" PointY="15.75" />
-          <ConnectorPoint PointX="9.4791666666666661" PointY="15.75" />
-          <ConnectorPoint PointX="9.6458333333333339" PointY="15.75" />
-          <ConnectorPoint PointX="12.375" PointY="15.75" />
-          <ConnectorPoint PointX="12.375" PointY="16.461293945312505" />
-          <ConnectorPoint PointX="12.75" PointY="16.461293945312505" />
+          <ConnectorPoint PointX="11.65625" PointY="16.162903645833325" />
+          <ConnectorPoint PointX="11.65625" PointY="17.800201822916669" />
+          <ConnectorPoint PointX="12.75" PointY="17.800201822916669" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Refinanciacion_Deuda" >
-          <ConnectorPoint PointX="9" PointY="11.53125" />
-          <ConnectorPoint PointX="9.4791666666666661" PointY="11.53125" />
-          <ConnectorPoint PointX="9.6458333333333339" PointY="11.53125" />
-          <ConnectorPoint PointX="10.416666666666666" PointY="11.53125" />
-          <ConnectorPoint PointX="10.583333333333334" PointY="11.53125" />
-          <ConnectorPoint PointX="11.541666666666666" PointY="11.53125" />
-          <ConnectorPoint PointX="11.708333333333334" PointY="11.53125" />
-          <ConnectorPoint PointX="12" PointY="11.53125" />
+          <ConnectorPoint PointX="12" PointY="12.84375" />
+          <ConnectorPoint PointX="13.416666666666666" PointY="12.84375" />
+          <ConnectorPoint PointX="13.583333333333334" PointY="12.84375" />
+          <ConnectorPoint PointX="15" PointY="12.84375" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Deudor_EstadoCivil" >
-          <ConnectorPoint PointX="2.25" PointY="14.783356119791662" />
-          <ConnectorPoint PointX="3" PointY="14.783356119791662" />
+          <ConnectorPoint PointX="2.25" PointY="14.908356119791662" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="14.908356119791662" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="14.908356119791662" />
+          <ConnectorPoint PointX="3" PointY="14.908356119791662" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Deudor_Sexo" >
-          <ConnectorPoint PointX="2.25" PointY="13.704178059895831" />
-          <ConnectorPoint PointX="3" PointY="13.704178059895831" />
+          <ConnectorPoint PointX="2.25" PointY="13.829178059895831" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="13.829178059895831" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="13.829178059895831" />
+          <ConnectorPoint PointX="3" PointY="13.829178059895831" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Deudor_TipoDocumento" >
-          <ConnectorPoint PointX="2.25" PointY="15.862534179687494" />
-          <ConnectorPoint PointX="3" PointY="15.862534179687494" />
+          <ConnectorPoint PointX="2.25" PointY="15.987534179687494" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="15.987534179687494" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="15.987534179687494" />
+          <ConnectorPoint PointX="3" PointY="15.987534179687494" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Gestor_NivelGestor" >
-          <ConnectorPoint PointX="1.9062525" PointY="17.037903645833339" />
-          <ConnectorPoint PointX="1.9062525" PointY="19.865102539062498" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="19.865102539062498" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="19.865102539062498" />
-          <ConnectorPoint PointX="3" PointY="19.865102539062498" />
+          <ConnectorPoint PointX="1.0937475" PointY="17.162903645833339" />
+          <ConnectorPoint PointX="1.0937475" PointY="19.990102539062498" />
+          <ConnectorPoint PointX="1.6197926666666667" PointY="19.990102539062498" />
+          <ConnectorPoint PointX="1.7864593333333332" PointY="19.990102539062498" />
+          <ConnectorPoint PointX="3" PointY="19.990102539062498" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Gestor_TipoDocumento" >
-          <ConnectorPoint PointX="1.0937475" PointY="17.037903645833339" />
-          <ConnectorPoint PointX="1.0937475" PointY="18.713798769531255" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="18.713798769531255" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="18.713798769531255" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="18.713798769531255" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="18.713798769531255" />
-          <ConnectorPoint PointX="3" PointY="18.713798769531255" />
+          <ConnectorPoint PointX="2.1093785" PointY="17.162903645833339" />
+          <ConnectorPoint PointX="2.1093785" PointY="18.838798769531255" />
+          <ConnectorPoint PointX="3" PointY="18.838798769531255" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Gestor_TipoGestor" >
-          <ConnectorPoint PointX="2.10937875" PointY="17.037903645833339" />
-          <ConnectorPoint PointX="2.10937875" PointY="21.016406308593741" />
-          <ConnectorPoint PointX="3" PointY="21.016406308593741" />
+          <ConnectorPoint PointX="1.703126" PointY="17.162903645833339" />
+          <ConnectorPoint PointX="1.703126" PointY="21.141406308593741" />
+          <ConnectorPoint PointX="3" PointY="21.141406308593741" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_GestorXDeuda_Gestor" >
-          <ConnectorPoint PointX="4.5" PointY="20.554749348958332" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="20.554749348958332" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="20.554749348958332" />
-          <ConnectorPoint PointX="13.5" PointY="20.554749348958332" />
-          <ConnectorPoint PointX="13.5" PointY="17.54758789062501" />
+          <ConnectorPoint PointX="4.5" PointY="17.993850911458335" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="17.993850911458335" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="17.993850911458335" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="17.993850911458335" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="17.993850911458335" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="17.993850911458335" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="17.993850911458335" />
+          <ConnectorPoint PointX="12.75" PointY="17.993850911458335" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloCobranzas.FK_GestorXGestor_Gestor" >
+          <ConnectorPoint PointX="4.5" PointY="19.990143229166669" />
+          <ConnectorPoint PointX="5.25" PointY="19.990143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloCobranzas.FK_GestorXGestor_Gestor1" >
+          <ConnectorPoint PointX="4.5" PointY="19.432571614583335" />
+          <ConnectorPoint PointX="5.25" PointY="19.432571614583335" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Usuario_Gestor" >
-          <ConnectorPoint PointX="4.5" PointY="18.100698242187505" />
-          <ConnectorPoint PointX="5.25" PointY="18.100698242187505" />
+          <ConnectorPoint PointX="4.5" PointY="21.679749348958332" />
+          <ConnectorPoint PointX="9.375" PointY="21.679749348958332" />
+          <ConnectorPoint PointX="9.375" PointY="16.70139648437501" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Refinanciacion_Moneda" >
-          <ConnectorPoint PointX="2.10937825" PointY="12.75" />
-          <ConnectorPoint PointX="2.10937825" PointY="11.25" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="11.25" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="11.25" />
-          <ConnectorPoint PointX="5" PointY="11.25" />
-          <ConnectorPoint PointX="5" PointY="10.5" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="10.5" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="10.5" />
-          <ConnectorPoint PointX="10.416666666666666" PointY="10.5" />
-          <ConnectorPoint PointX="10.583333333333334" PointY="10.5" />
-          <ConnectorPoint PointX="11.625" PointY="10.5" />
-          <ConnectorPoint PointX="11.625" PointY="12.270299479166667" />
-          <ConnectorPoint PointX="12" PointY="12.270299479166667" />
+          <ConnectorPoint PointX="2.109378" PointY="12.875" />
+          <ConnectorPoint PointX="2.109378" PointY="12.609375" />
+          <ConnectorPoint PointX="2.6875" PointY="12.609375" />
+          <ConnectorPoint PointX="2.6875" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="5.5" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="5.5" PointY="14.734375" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="14.734375" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="14.734375" />
+          <ConnectorPoint PointX="7.625" PointY="14.734375" />
+          <ConnectorPoint PointX="7.625" PointY="13.109375" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="13.109375" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="13.109375" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="13.109375" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="13.109375" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="13.109375" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="13.109375" />
+          <ConnectorPoint PointX="10.1875" PointY="13.109375" />
+          <ConnectorPoint PointX="10.1875" PointY="16.428528645833325" />
+          <ConnectorPoint PointX="10.963539666666666" PointY="16.428528645833325" />
+          <ConnectorPoint PointX="11.130206333333334" PointY="16.428528645833325" />
+          <ConnectorPoint PointX="11.572916666666666" PointY="16.428528645833325" />
+          <ConnectorPoint PointX="11.739583333333334" PointY="16.428528645833325" />
+          <ConnectorPoint PointX="14.625" PointY="16.428528645833325" />
+          <ConnectorPoint PointX="14.625" PointY="15.44912472135416" />
+          <ConnectorPoint PointX="15" PointY="15.44912472135416" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloCobranzas.FK_RolXPermiso_Permiso" >
+          <ConnectorPoint PointX="7.5" PointY="8.9901432291666623" />
+          <ConnectorPoint PointX="9" PointY="8.9901432291666623" />
+          <ConnectorPoint PointX="9" PointY="10" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_PoliticaCobranzaXTipoActividad_PoliticaCobranza" >
-          <ConnectorPoint PointX="9" PointY="17.432444661458334" />
-          <ConnectorPoint PointX="9.75" PointY="17.432444661458334" />
+          <ConnectorPoint PointX="9" PointY="19.528595377604169" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="19.528595377604169" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="19.528595377604169" />
+          <ConnectorPoint PointX="9.75" PointY="19.528595377604169" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_PoliticaCobranzaXTipoActividad_TipoActividad" >
-          <ConnectorPoint PointX="9" PointY="9.9179777660256487" />
-          <ConnectorPoint PointX="9.5625" PointY="10.480477766025649" />
-          <ConnectorPoint PointX="9.5625" PointY="16.809970330729172" />
-          <ConnectorPoint PointX="9.75" PointY="16.809970330729172" />
+          <ConnectorPoint PointX="10.5" PointY="9.49014322916667" />
+          <ConnectorPoint PointX="9.96875" PointY="9.49014322916667" />
+          <ConnectorPoint PointX="9.96875" PointY="18.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloCobranzas.FK_RolXPermiso_Rol" >
+          <ConnectorPoint PointX="7.15625" PointY="15" />
+          <ConnectorPoint PointX="7.15625" PointY="10.583893229166662" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="10.583893229166662" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="10.583893229166662" />
+          <ConnectorPoint PointX="8.25" PointY="10.583893229166662" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Usuario_Rol" >
-          <ConnectorPoint PointX="4.5" PointY="24.961293945312505" />
-          <ConnectorPoint PointX="6" PointY="24.961293945312505" />
-          <ConnectorPoint PointX="6" PointY="18.57639648437501" />
-        </AssociationConnector>
-        <AssociationConnector Association="ModeloCobranzas.GestorXGestor" >
-          <ConnectorPoint PointX="3.5319230769230767" PointY="22.105205078124996" />
-          <ConnectorPoint PointX="3.5319230769230767" PointY="22.355205078124996" />
-          <ConnectorPoint PointX="3.9784615384615383" PointY="22.355205078124996" />
-          <ConnectorPoint PointX="3.9784615384615383" PointY="22.105205078124996" />
-        </AssociationConnector>
-        <AssociationConnector Association="ModeloCobranzas.RolXPermiso" >
-          <ConnectorPoint PointX="2.25" PointY="24.865143229166662" />
-          <ConnectorPoint PointX="3" PointY="24.865143229166662" />
+          <ConnectorPoint PointX="7.5" PointY="15.850698242187505" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="15.850698242187505" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="15.850698242187505" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="15.850698242187505" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="15.850698242187505" />
+          <ConnectorPoint PointX="8.25" PointY="15.850698242187505" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

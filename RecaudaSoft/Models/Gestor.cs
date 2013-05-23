@@ -17,9 +17,9 @@ namespace RecaudaSoft.Models
         public Gestor()
         {
             this.GestorXDeudas = new HashSet<GestorXDeuda>();
+            this.GestorXGestors = new HashSet<GestorXGestor>();
+            this.GestorXGestors1 = new HashSet<GestorXGestor>();
             this.Usuarios = new HashSet<Usuario>();
-            this.Gestor1 = new HashSet<Gestor>();
-            this.Gestors = new HashSet<Gestor>();
         }
     
         public int idGestor { get; set; }
@@ -38,14 +38,8 @@ namespace RecaudaSoft.Models
         public virtual Parametro Parametro1 { get; set; }
         public virtual Parametro Parametro2 { get; set; }
         public virtual ICollection<GestorXDeuda> GestorXDeudas { get; set; }
+        public virtual ICollection<GestorXGestor> GestorXGestors { get; set; }
+        public virtual ICollection<GestorXGestor> GestorXGestors1 { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
-        public virtual ICollection<Gestor> Gestor1 { get; set; }
-        public virtual ICollection<Gestor> Gestors { get; set; }
-
-        /*
-        public virtual Parametro NivelGestor { get; set; }
-        public virtual Parametro TipoDocumento { get; set; }
-        public virtual Parametro TipoGestor { get; set; }
-         * */
     }
 }

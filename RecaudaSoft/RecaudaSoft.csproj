@@ -87,6 +87,9 @@
     <Compile Include="Models\Actividad.cs">
       <DependentUpon>ModeloCobranzas.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GestorXGestor.cs">
+      <DependentUpon>ModeloCobranzas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OwnModels\Acreedor.cs" />
     <Compile Include="Models\CalificacionDato.cs">
       <DependentUpon>ModeloCobranzas.tt</DependentUpon>
@@ -136,12 +139,14 @@
     <Compile Include="Models\OwnModels\Deudor.cs" />
     <Compile Include="Models\OwnModels\Gestor.cs" />
     <Compile Include="Models\OwnModels\GestorXDeuda.cs" />
+    <Compile Include="Models\OwnModels\GestorXGestor.cs" />
     <Compile Include="Models\OwnModels\Parametro.cs" />
     <Compile Include="Models\OwnModels\Permiso.cs" />
     <Compile Include="Models\OwnModels\PoliticaCobranza.cs" />
     <Compile Include="Models\OwnModels\PoliticaCobranzaXTipoActividad.cs" />
     <Compile Include="Models\OwnModels\Refinanciacion.cs" />
     <Compile Include="Models\OwnModels\Rol.cs" />
+    <Compile Include="Models\OwnModels\RolXPermiso.cs" />
     <Compile Include="Models\OwnModels\TipoActividad.cs" />
     <Compile Include="Models\OwnModels\Usuario.cs" />
     <Compile Include="Models\Parametro.cs">
@@ -160,6 +165,9 @@
       <DependentUpon>ModeloCobranzas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
+      <DependentUpon>ModeloCobranzas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RolXPermiso.cs">
       <DependentUpon>ModeloCobranzas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">

@@ -35,12 +35,14 @@ namespace RecaudaSoft.Models
         public DbSet<Deudor> Deudors { get; set; }
         public DbSet<Gestor> Gestors { get; set; }
         public DbSet<GestorXDeuda> GestorXDeudas { get; set; }
+        public DbSet<GestorXGestor> GestorXGestors { get; set; }
         public DbSet<Parametro> Parametroes { get; set; }
         public DbSet<Permiso> Permisoes { get; set; }
         public DbSet<PoliticaCobranza> PoliticaCobranzas { get; set; }
         public DbSet<PoliticaCobranzaXTipoActividad> PoliticaCobranzaXTipoActividads { get; set; }
         public DbSet<Refinanciacion> Refinanciacions { get; set; }
         public DbSet<Rol> Rols { get; set; }
+        public DbSet<RolXPermiso> RolXPermisoes { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<TipoActividad> TipoActividads { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }

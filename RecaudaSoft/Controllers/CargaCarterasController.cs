@@ -97,7 +97,7 @@ namespace RecaudaSoft.Controllers
                             deudor.apellidoMaterno = data.Rows[fila].Field<string>(FormatoDeudor.Apellido_Materno);
                             string cadenaTipoDocumento = data.Rows[fila].Field<string>(FormatoDeudor.Tipo_Documento);
                             deudor.tipoDocumento = db.Parametroes.First(p => p.tipo == "TIPO_DOCUMENTO" && p.valor == cadenaTipoDocumento).idParametro;
-                            deudor.numeroDocumneto = data.Rows[fila].Field<string>(FormatoDeudor.Numero_Documento);
+                            deudor.numeroDocumento = data.Rows[fila].Field<string>(FormatoDeudor.Numero_Documento);
                             deudor.telefonoPersonal = data.Rows[fila].Field<string>(FormatoDeudor.Telefono_Personal);
                             deudor.telefonoDomicilio = data.Rows[fila].Field<string>(FormatoDeudor.Telefono_Domicilio);
                             deudor.telefonoTrabajo = data.Rows[fila].Field<string>(FormatoDeudor.Telefono_Trabajo);
@@ -122,7 +122,7 @@ namespace RecaudaSoft.Controllers
                             deudor.detalles = data.Rows[fila].Field<string>(FormatoDeudor.Detalles);
 
                             // Se valida si el deudor ya existe en la BD
-                            Deudor deudorExistente = db.Deudors.FirstOrDefault(d => d.tipoDocumento == deudor.tipoDocumento && d.numeroDocumneto == deudor.numeroDocumneto);
+                            Deudor deudorExistente = db.Deudors.FirstOrDefault(d => d.tipoDocumento == deudor.tipoDocumento && d.numeroDocumento == deudor.numeroDocumento);
                             if (deudorExistente == null)
                             {
                                 deudorExiste = false;

@@ -16,8 +16,8 @@ namespace RecaudaSoft.Models
     {
         public Rol()
         {
+            this.RolXPermisoes = new HashSet<RolXPermiso>();
             this.Usuarios = new HashSet<Usuario>();
-            this.Permisoes = new HashSet<Permiso>();
         }
     
         public int idRol { get; set; }
@@ -25,7 +25,7 @@ namespace RecaudaSoft.Models
         public string descripcion { get; set; }
         public int estado { get; set; }
     
+        public virtual ICollection<RolXPermiso> RolXPermisoes { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
-        public virtual ICollection<Permiso> Permisoes { get; set; }
     }
 }

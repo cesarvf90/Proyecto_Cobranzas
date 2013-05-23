@@ -12,16 +12,13 @@ namespace RecaudaSoft.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PoliticaCobranzaXTipoActividad
+    public partial class RolXPermiso
     {
-        public int idPoliticaCobranzaXTipoActividad { get; set; }
-        public int idPoliticaCobranza { get; set; }
-        public int idTipoActividad { get; set; }
-        public int numeroPaso { get; set; }
-        public System.DateTime fechaInicio { get; set; }
-        public System.DateTime fechaFin { get; set; }
+        public int idRolXPermiso { get; set; }
+        public int idRol { get; set; }
+        public int idPermiso { get; set; }
     
-        public virtual PoliticaCobranza PoliticaCobranza { get; set; }
-        public virtual TipoActividad TipoActividad { get; set; }
+        public virtual Permiso Permiso { get; set; }
+        public virtual Rol Rol { get; set; }
     }
 }

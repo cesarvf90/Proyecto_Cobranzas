@@ -24,7 +24,7 @@ namespace RecaudaSoft.Models
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
         public int tipoDocumento { get; set; }
-        public string numeroDocumneto { get; set; }
+        public string numeroDocumento { get; set; }
         public string telefonoPersonal { get; set; }
         public string telefonoDomicilio { get; set; }
         public string telefonoTrabajo { get; set; }

@@ -21,7 +21,7 @@ namespace RecaudaSoft.Models
         [DisplayName("Tipo de documento")]
         public int tipoDocumento { get; set; }
         [DisplayName("Número de documento")]
-        public string numeroDocumneto { get; set; }
+        public string numeroDocumento { get; set; }
         [DisplayName("Teléfono personal")]
         public string telefonoPersonal { get; set; }
         [DisplayName("Teléfono de domicilio")]

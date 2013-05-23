@@ -11,7 +11,7 @@ namespace RecaudaSoft.Models
 
     public class RolMetaData
     {
-        [DisplayName("ID Rol")]
+        [DisplayName("Id Rol")]
         public int idRol { get; set; }
         [DisplayName("Nombre")]
         public string nombre { get; set; }
@@ -19,9 +19,9 @@ namespace RecaudaSoft.Models
         public string descripcion { get; set; }
         [DisplayName("Estado")]
         public int estado { get; set; }
+        [DisplayName("Permisos")]
+        public virtual ICollection<RolXPermiso> RolXPermisoes { get; set; }
         [DisplayName("Usuarios")]
         public virtual ICollection<Usuario> Usuarios { get; set; }
-        [DisplayName("Permisos")]
-        public virtual ICollection<Permiso> Permisoes { get; set; }
     }
 }

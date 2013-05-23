@@ -1,10 +1,9 @@
-using System.ComponentModel;
-
 namespace RecaudaSoft.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
  
     [MetadataType(typeof(AcreedorMetaData))]
     public partial class Acreedor { }

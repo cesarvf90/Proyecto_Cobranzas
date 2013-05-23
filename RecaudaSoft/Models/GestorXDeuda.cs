@@ -14,11 +14,12 @@ namespace RecaudaSoft.Models
     
     public partial class GestorXDeuda
     {
+        public int idGestorXDeuda { get; set; }
         public int idGestor { get; set; }
         public int idDeuda { get; set; }
         public System.DateTime fechaAsignacion { get; set; }
         public int exito { get; set; }
-    
+
         public virtual Deuda Deuda { get; set; }
         public virtual Gestor Gestor { get; set; }
     }
