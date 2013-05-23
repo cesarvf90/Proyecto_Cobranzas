@@ -19,6 +19,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
+                idPoliticaCobranzaSeleccionada = -1;
                 var listaCarteras = db.Carteras.Include("Acreedor");
                 listaCarteras = listaCarteras.Include("Parametro");
                 return View(listaCarteras.ToList());
@@ -45,12 +46,23 @@ namespace RecaudaSoft.Controllers
         //
         // GET: /ConfiguracionPoliticaCobranza/RegistrarPolitica
 
-        public ActionResult RegistrarPolitica()
+        public ActionResult RegistrarPolitica(int id)
         {
             using (var db = new CobranzasEntities())
             {
-                ViewBag.idTipoActividad = new SelectList(db.TipoActividads, "idTipoActividad", "nombre").ToList();
-                return View();
+                PoliticaCobranza politica;
+                if (idPoliticaCobranzaSeleccionada == -1)
+                {
+                    // Se crea la nueva politica de cobranza
+                    politica = new PoliticaCobranza();
+                    politica.idCartera = id;
+                }
+                else
+                {
+                    politica = db.PoliticaCobranzas.First(p => p.idPoliticaCobranza == idPoliticaCobranzaSeleccionada);
+                }
+
+                return View(politica);
             }
         }
 
@@ -58,13 +70,17 @@ namespace RecaudaSoft.Controllers
         // POST: /ConfiguracionPoliticaCobranza/RegistrarPolitica
 
         [HttpPost]
-        public ActionResult RegistrarPolitica(List<PoliticaCobranzaXTipoActividad> listaActividades)
+        public ActionResult RegistrarPolitica(PoliticaCobranza politica)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                using (var db = new CobranzasEntities())
+                {
+                    db.PoliticaCobranzas.Add(politica);
+                    db.SaveChanges();
+                    idPoliticaCobranzaSeleccionada = politica.idPoliticaCobranza;
+                }
+                return RedirectToAction("RegistrarPolitica", politica.idPoliticaCobranza);
             }
             catch
             {
@@ -80,7 +96,15 @@ namespace RecaudaSoft.Controllers
             using (var db = new CobranzasEntities())
             {
                 ViewBag.idTipoActividad = new SelectList(db.TipoActividads, "idTipoActividad", "nombre").ToList();
-                return View();
+                /*
+                var listaActividades = Enumerable.Empty<PoliticaCobranzaXTipoActividad>();
+                if (idPoliticaCobranzaSeleccionada != -1)
+                {
+                    listaActividades = db.PoliticaCobranzaXTipoActividads.Where(p => p.idPoliticaCobranza == idPoliticaCobranzaSeleccionada);
+                } 
+                 */
+                var listaActividades = db.PoliticaCobranzaXTipoActividads; 
+                return View(listaActividades.ToList());
             }
         }
 
@@ -88,7 +112,7 @@ namespace RecaudaSoft.Controllers
         // POST: /ConfiguracionPoliticaCobranza/RegistrarActividadesPolitica
 
         [HttpPost]
-        public ActionResult RegistrarActividadesPolitica(List<PoliticaCobranzaXTipoActividad> listaActividades)
+        public ActionResult RegistrarActividadesPolitica(PoliticaCobranzaXTipoActividad pasoPolitica)
         {
             try
             {
@@ -125,7 +149,7 @@ namespace RecaudaSoft.Controllers
                 using (var db = new CobranzasEntities())
                 {
                     // TODO asignarle idpoliticacobranza al paso
-                    //pasoPolitica.idPoliticaCobranza;
+                    pasoPolitica.idPoliticaCobranza = idPoliticaCobranzaSeleccionada;
                     db.PoliticaCobranzaXTipoActividads.Add(pasoPolitica);
                     db.SaveChanges();
                 }

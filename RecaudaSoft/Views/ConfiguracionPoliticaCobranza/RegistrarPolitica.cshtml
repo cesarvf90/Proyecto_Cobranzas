@@ -13,7 +13,7 @@
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Política de Cobranza</legend>
-
+        @Html.HiddenFor(model => model.idCartera)
         <div class="editor-label">
             @Html.LabelFor(model => model.nombre)
         </div>
@@ -61,11 +61,13 @@
             @Html.EditorFor(model => model.interesDiarioPropio)%
             @Html.ValidationMessageFor(model => model.interesDiarioPropio)
         </div>
-
+        <p>
+            <input type="submit" value="Registrar" />
+        </p>
     </fieldset>
     
-    @Html.Partial("RegistrarActividadesPolitica")
+    //@Html.Partial("RegistrarActividadesPolitica", Model.PoliticaCobranzaXTipoActividads)
     <p>
-        <input type="submit" value="Registrar" />
+         @Html.ActionLink("Registrar nuevo paso", "RegistrarPasoPolitica")
     </p>
 }

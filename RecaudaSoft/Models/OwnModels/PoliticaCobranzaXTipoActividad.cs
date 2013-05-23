@@ -10,7 +10,7 @@ namespace RecaudaSoft.Models
 
     public class PoliticaCobranzaXTipoActividadMetaData
     {
-        [DisplayName("Id")]
+        [DisplayName("Id Política de Cobranza")]
         public int idPoliticaCobranza { get; set; }
         [DisplayName("Id Tipo de actividad")]
         public int idTipoActividad { get; set; }

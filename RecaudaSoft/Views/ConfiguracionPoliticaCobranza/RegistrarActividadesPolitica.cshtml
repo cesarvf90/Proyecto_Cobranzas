@@ -76,44 +76,45 @@
 {
 <fieldset>
     <legend>Actividades</legend>
-
-    <input type="button" value="Agregar Tipo de actividad" onclick="addRow('dataTable')" />
-    <input type="button" value="Eliminar Tipo de actividad" onclick="deleteRow('dataTable')" />
  
     <table id="dataTable" rules="all" style="border-color: Gray; width: 750px; margin-bottom: 0px; margin-top: 25px" border="1">
     <tr>
         <th>
+            Id Política de Cobranza
         </th>
         <th>
-            Orden
+            Id Tipo de actividad
         </th>
         <th>
-            Tipo de actividad
+            Paso N°
         </th>
         <th>
-            Fecha inicio
+            Fecha de inicio
         </th>
         <th>
-            Fecha fin
+            Fecha de fin
         </th>
-        </tr>
+    </tr>
+
+    @foreach (var item in Model) {
     <tr>
         <td>
-            <input type="checkbox" name="chk"/>
+            @Html.DisplayFor(modelItem => item.idPoliticaCobranza)
         </td>
         <td>
-            <input type="text" name="txt" id="orden"/>
+            @Html.DisplayFor(modelItem => item.idTipoActividad)
         </td>
         <td>
-            @Html.DropDownList("idTipoActividad", "Seleccione")
+            @Html.DisplayFor(modelItem => item.numeroPaso)
         </td>
         <td>
-            <input type="text" id="datepicker" />
+            @Html.DisplayFor(modelItem => item.fechaInicio)
         </td>
         <td>
-            <input type="text" id="datepicker" />
+            @Html.DisplayFor(modelItem => item.fechaFin)
         </td>
     </tr>
+    }
     </table>
 </fieldset>
 }
