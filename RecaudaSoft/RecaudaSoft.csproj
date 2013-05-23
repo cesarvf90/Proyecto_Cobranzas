@@ -75,7 +75,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistroAvanceController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="obj\TiposActividadController.cs" />
+    <Compile Include="Controllers\TiposActividadController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
