@@ -1,0 +1,84 @@
+﻿@model IEnumerable<RecaudaSoft.Models.Gestor>
+
+@{
+    ViewBag.Title = "EleccionGestores";
+}
+
+<h2>Elección de Gestores</h2>
+
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nivel Gestor
+        </th>
+        <th>
+            Tipo Gestor
+        </th>
+        <th>
+            Nombres
+        </th>
+        <th>
+            Apellido Paterno
+        </th>
+        <th>
+            Apellido Materno
+        </th>
+        <th>
+            Fecha de Ingreso
+        </th>
+        <th>
+            Deudas recuperadas
+        </th>
+        <th>
+            Disponible
+        </th>
+        <th>
+            Tipo de documento
+        </th>
+        <th>
+            Número de documento
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idNivelGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idTipoGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidoPaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidoMaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deudasRecuperadas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disponible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numeroDocumento)
+        </td>
+    </tr>
+}
+
+</table>

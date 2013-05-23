@@ -1,0 +1,14 @@
+﻿@model RecaudaSoft.Utils.ModeloAsignacion
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Asignación de deudas</h2>
+
+<p>
+      @Html.Partial("EleccionCarteras", Model.carteras)
+</p>
+<p>
+      @Html.Partial("EleccionGestores", Model.gestores)
+</p>

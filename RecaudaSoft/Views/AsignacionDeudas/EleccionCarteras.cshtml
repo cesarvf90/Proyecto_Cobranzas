@@ -1,0 +1,60 @@
+﻿@model IEnumerable<RecaudaSoft.Models.Cartera>
+
+@{
+    ViewBag.Title = "EleccionCarteras";
+}
+
+<h2>Elección de Carteras</h2>
+
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Id Acreedor
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Porcentaje de ganancia
+        </th>
+        <th>
+            Detalles
+        </th>
+        <th>
+            Cantidad de Deudas
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idCartera)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idAcreedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esVencida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentajeGanancia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.detalles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadDeudas)
+        </td>
+    </tr>
+}
+
+</table>
