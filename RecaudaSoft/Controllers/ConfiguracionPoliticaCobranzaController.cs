@@ -59,7 +59,7 @@ namespace RecaudaSoft.Controllers
                 }
                 else
                 {
-                    politica = db.PoliticaCobranzas.First(p => p.idPoliticaCobranza == idPoliticaCobranzaSeleccionada);
+                    politica = db.PoliticaCobranzas.Include("PoliticaCobranzaXTipoActividads").First(p => p.idPoliticaCobranza == idPoliticaCobranzaSeleccionada);
                 }
 
                 return View(politica);
@@ -148,7 +148,6 @@ namespace RecaudaSoft.Controllers
             {
                 using (var db = new CobranzasEntities())
                 {
-                    // TODO asignarle idpoliticacobranza al paso
                     pasoPolitica.idPoliticaCobranza = idPoliticaCobranzaSeleccionada;
                     db.PoliticaCobranzaXTipoActividads.Add(pasoPolitica);
                     db.SaveChanges();
