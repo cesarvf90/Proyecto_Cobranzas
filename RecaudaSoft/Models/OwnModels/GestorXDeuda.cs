@@ -11,6 +11,8 @@ namespace RecaudaSoft.Models
     public class GestorXDeudaMetaData
     {
         [DisplayName("Id")]
+        public int idGestorXDeuda { get; set; }
+        [DisplayName("Id Gestor")]
         public int idGestor { get; set; }
         [DisplayName("Id deuda")]
         public int idDeuda { get; set; }

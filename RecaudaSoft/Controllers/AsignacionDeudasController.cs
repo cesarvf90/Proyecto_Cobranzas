@@ -52,5 +52,33 @@ namespace RecaudaSoft.Controllers
                 return View(listaGestores.ToList());
             }
         }
+
+        //
+        // GET: /AsignacionDeudas/AsignarTareas
+
+        public ActionResult AsignarTareas()
+        {
+            return AsignarTareasExitoso();
+        }
+
+
+        //
+        // POST: /AsignacionDeudas/AsignarTareas
+        /*
+        [HttpPost]
+        public ActionResult AsignarTareas(string button)
+        {
+
+        }
+         * */
+
+        //
+        // GET: /AsignacionDeudas/AsignarTareasExitoso
+
+        public ActionResult AsignarTareasExitoso()
+        {
+            return View();
+        } 
+
     }
 }

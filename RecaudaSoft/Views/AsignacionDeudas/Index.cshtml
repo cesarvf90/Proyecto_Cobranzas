@@ -12,3 +12,10 @@
 <p>
       @Html.Partial("EleccionGestores", Model.gestores)
 </p>
+<!--p>
+    <input type="button" value="Realizar asignación de tareas" onclick="location.href='<%: Url.Action("AsignarTareas", "AsignacionDeudas") %>'" />
+</p-->
+<!--form method="get" action="<%: Url.Action("AsignarTareas", "AsignacionDeudas") %>">
+   <input type="submit" value="Realizar asignación" />
+</form-->
+<input type="button" value="Asignar" onclick="location.href='@Url.Action("AsignarTareas", "AsignacionDeudas")'" />
