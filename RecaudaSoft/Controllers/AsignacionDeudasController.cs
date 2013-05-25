@@ -22,10 +22,25 @@ namespace RecaudaSoft.Controllers
                 ModeloAsignacion objetoModelo = new ModeloAsignacion();
                 objetoModelo.gestores = db.Gestors.Include("Parametro").Include("Parametro1").Include("Parametro2").ToList();
                 objetoModelo.carteras = db.Carteras.Include("Acreedor").Include("Parametro").ToList();
-                objetoModelo.valor = 5;
+                objetoModelo.valor = 7;
                 return View(objetoModelo);
             }
         }
+
+        //
+        // POST: /AsignacionDeudas/Index
+        /*
+        [HttpPost]
+        public ActionResult Index(ModeloAsignacion objeto)
+        {
+            using (var db = new CobranzasEntities())
+            {
+                var listaCarteras = db.Carteras.Include("Acreedor");
+                listaCarteras = listaCarteras.Include("Parametro");
+                return View(objeto);
+            }
+        }
+        */
 
         //
         // GET: /AsignacionDeudas/EleccionCarteras
@@ -55,13 +70,13 @@ namespace RecaudaSoft.Controllers
         //
         // GET: /AsignacionDeudas/AsignarTareas
 
-        public ActionResult AsignarTareas(ModeloAsignacion asignacion)
+        public ActionResult AsignarTareas(ModeloAsignacion objetoModelo)
         {
             using (var db = new CobranzasEntities())
             {
                 // Se procesan las carteras seleccionadas
                 List<Cartera> carterasSeleccionadas = new List<Cartera>();
-                foreach (var cartera in asignacion.carteras)
+                foreach (var cartera in objetoModelo.carteras)
                 {
                     if (cartera.Checked)
                     {
@@ -71,7 +86,7 @@ namespace RecaudaSoft.Controllers
 
                 // Se procesan los gestores seleccionados
                 List<Gestor> gestoresSeleccionados = new List<Gestor>();
-                foreach (var gestor in asignacion.gestores)
+                foreach (var gestor in objetoModelo.gestores)
                 {
                     if (gestor.Checked)
                     {
@@ -79,7 +94,7 @@ namespace RecaudaSoft.Controllers
                     }
                 }
 
-                return View(gestoresSeleccionados);
+                return View(objetoModelo);
             }
         }
 

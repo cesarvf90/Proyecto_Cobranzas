@@ -181,6 +181,7 @@
       <DependentUpon>ModeloCobranzas.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\AlgoritmoAsignacion.cs" />
     <Compile Include="Utils\FormatoDeuda.cs" />
     <Compile Include="Utils\FormatoDeudor.cs" />
     <Compile Include="ViewModels\ModeloAsignacion.cs" />
