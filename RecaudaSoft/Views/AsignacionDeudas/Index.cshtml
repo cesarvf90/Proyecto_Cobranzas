@@ -39,6 +39,9 @@
 @foreach (var item in Model.carteras) {
     <tr>
         <td>
+            @Html.EditorFor(modelItem => item.Checked)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.idCartera)
         </td>
         <td>
@@ -110,6 +113,9 @@
 @foreach (var item in Model.gestores) {
     <tr>
         <td>
+            @Html.EditorFor(modelItem => item.Checked)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.idGestor)
         </td>
         <td>
@@ -150,11 +156,3 @@
 <p>
     <input type="button" value="Asignar" onclick="location.href='@Url.Action("AsignarTareas", "AsignacionDeudas", Model)'" />
 </p>
-<p>
-    <a href = "/AsignacionDeudas/AsignarTareas?asignacion=@Model"><img border="0" src="@Href("~/Content/Images/edit.jpg")"></a>
-</p>
-
-
-@using (Html.BeginForm()) {
-    <input type="submit" value="Registrar" />
-}

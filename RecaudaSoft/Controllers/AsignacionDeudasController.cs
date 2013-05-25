@@ -76,6 +76,7 @@ namespace RecaudaSoft.Controllers
             {
                 // Se procesan las carteras seleccionadas
                 List<Cartera> carterasSeleccionadas = new List<Cartera>();
+                //foreach (var cartera in objetoModelo.carteras)
                 foreach (var cartera in objetoModelo.carteras)
                 {
                     if (cartera.Checked)
