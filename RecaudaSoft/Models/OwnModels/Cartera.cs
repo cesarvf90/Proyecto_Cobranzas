@@ -7,7 +7,9 @@ namespace RecaudaSoft.Models
     using System.Collections.Generic;
 
     [MetadataType(typeof(CarteraMetaData))]
-    public partial class Cartera { }
+    public partial class Cartera {
+        public bool Checked { get; set; }
+    }
 
     public class CarteraMetaData
     {

@@ -6,7 +6,9 @@ namespace RecaudaSoft.Models
     using System.ComponentModel.DataAnnotations;
 
     [MetadataType(typeof(GestorMetaData))]
-    public partial class Gestor { }
+    public partial class Gestor {
+        public bool Checked { get; set; }
+    }
 
     public class GestorMetaData
     {
@@ -41,13 +43,12 @@ namespace RecaudaSoft.Models
         public virtual Parametro Parametro2 { get; set; }
         [DisplayName("Deudas asignadas")]
         public virtual ICollection<GestorXDeuda> GestorXDeudas { get; set; }
+        [DisplayName("Jefe")]
+        public virtual ICollection<GestorXGestor> GestorXGestors1 { get; set; }
+        [DisplayName("Gestores asignados")]
+        public virtual ICollection<GestorXGestor> GestorXGestors { get; set; }
         [DisplayName("Usuarios")]
         public virtual ICollection<Usuario> Usuarios { get; set; }
-        [DisplayName("Jefe")]
-        public virtual ICollection<Gestor> Gestor1 { get; set; }
-        [DisplayName("Gestores asignados")]
-        public virtual ICollection<Gestor> Gestors { get; set; }
-
         /*
         [DisplayName("Nivel")]
         public virtual Parametro NivelGestor { 

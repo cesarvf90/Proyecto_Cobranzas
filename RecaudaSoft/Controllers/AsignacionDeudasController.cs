@@ -5,15 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using RecaudaSoft.Models;
 using RecaudaSoft.Utils;
+using RecaudaSoft.ViewModels;
 
 namespace RecaudaSoft.Controllers
 {
     public class AsignacionDeudasController : Controller
     {
                 
-        //public ArrayList carteras = new ArrayList() { get; set; }
-        //public ArrayList gestores = new ArrayList() { get; set; }
-
         //
         // GET: /AsignacionDeudas/Index
 
@@ -24,6 +22,7 @@ namespace RecaudaSoft.Controllers
                 ModeloAsignacion objetoModelo = new ModeloAsignacion();
                 objetoModelo.gestores = db.Gestors.Include("Parametro").Include("Parametro1").Include("Parametro2").ToList();
                 objetoModelo.carteras = db.Carteras.Include("Acreedor").Include("Parametro").ToList();
+                objetoModelo.valor = 5;
                 return View(objetoModelo);
             }
         }
@@ -56,9 +55,32 @@ namespace RecaudaSoft.Controllers
         //
         // GET: /AsignacionDeudas/AsignarTareas
 
-        public ActionResult AsignarTareas()
+        public ActionResult AsignarTareas(ModeloAsignacion asignacion)
         {
-            return AsignarTareasExitoso();
+            using (var db = new CobranzasEntities())
+            {
+                // Se procesan las carteras seleccionadas
+                List<Cartera> carterasSeleccionadas = new List<Cartera>();
+                foreach (var cartera in asignacion.carteras)
+                {
+                    if (cartera.Checked)
+                    {
+                        carterasSeleccionadas.Add(cartera);
+                    }
+                }
+
+                // Se procesan los gestores seleccionados
+                List<Gestor> gestoresSeleccionados = new List<Gestor>();
+                foreach (var gestor in asignacion.gestores)
+                {
+                    if (gestor.Checked)
+                    {
+                        gestoresSeleccionados.Add(gestor);
+                    }
+                }
+
+                return View(gestoresSeleccionados);
+            }
         }
 
 

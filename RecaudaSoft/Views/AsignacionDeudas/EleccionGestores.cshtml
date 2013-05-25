@@ -9,6 +9,9 @@
 <table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
     <tr>
         <th>
+            @Html.CheckBox("Todos")
+        </th>
+        <th>
             Id
         </th>
         <th>
@@ -46,13 +49,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.CheckBoxFor(modelItem => item.Checked)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.idGestor)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.idNivelGestor)
+            @Html.DisplayFor(modelItem => item.Parametro.valor)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.idTipoGestor)
+            @Html.DisplayFor(modelItem => item.Parametro2.valor)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.nombres)
@@ -73,7 +79,7 @@
             @Html.DisplayFor(modelItem => item.disponible)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tipoDocumento)
+            @Html.DisplayFor(modelItem => item.Parametro1.valor)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.numeroDocumento)
