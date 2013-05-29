@@ -34,6 +34,8 @@ namespace RecaudaSoft.Models
         public int tipoDocumento { get; set; }
         [DisplayName("Número de documento")]
         public string numeroDocumento { get; set; }
+        [DisplayName("Potencial")]
+        public Nullable<decimal> potencial { get; set; }
 
         [DisplayName("Nivel")]
         public virtual Parametro Parametro { get; set; }

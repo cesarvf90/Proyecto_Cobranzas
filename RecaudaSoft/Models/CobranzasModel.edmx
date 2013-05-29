@@ -71,6 +71,10 @@
             <End Role="Parametro" EntitySet="Parametro" />
             <End Role="Deuda" EntitySet="Deuda" />
           </AssociationSet>
+          <AssociationSet Name="FK_Deuda_ProductoDeuda" Association="ModeloCobranzas.Store.FK_Deuda_ProductoDeuda">
+            <End Role="Parametro" EntitySet="Parametro" />
+            <End Role="Deuda" EntitySet="Deuda" />
+          </AssociationSet>
           <AssociationSet Name="FK_Deudor_EstadoCivil" Association="ModeloCobranzas.Store.FK_Deudor_EstadoCivil">
             <End Role="Parametro" EntitySet="Parametro" />
             <End Role="Deudor" EntitySet="Deudor" />
@@ -275,6 +279,7 @@
           <Property Name="disponible" Type="int" Nullable="false" />
           <Property Name="tipoDocumento" Type="int" Nullable="false" />
           <Property Name="numeroDocumento" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="potencial" Type="decimal" Scale="2" />
         </EntityType>
         <EntityType Name="GestorXDeuda">
           <Key>
@@ -530,6 +535,18 @@
             </Principal>
             <Dependent Role="Deuda">
               <PropertyRef Name="moneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deuda_ProductoDeuda">
+          <End Role="Parametro" Type="ModeloCobranzas.Store.Parametro" Multiplicity="1" />
+          <End Role="Deuda" Type="ModeloCobranzas.Store.Deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parametro">
+              <PropertyRef Name="idParametro" />
+            </Principal>
+            <Dependent Role="Deuda">
+              <PropertyRef Name="idProducto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -939,6 +956,10 @@
             <End Role="Rol" EntitySet="Rols" />
             <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
+          <AssociationSet Name="FK_Deuda_ProductoDeuda" Association="ModeloCobranzas.FK_Deuda_ProductoDeuda">
+            <End Role="Parametro" EntitySet="Parametroes" />
+            <End Role="Deuda" EntitySet="Deudas" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Acreedor">
           <Key>
@@ -1039,6 +1060,7 @@
           <NavigationProperty Name="Parametro" Relationship="ModeloCobranzas.FK_Deuda_Moneda" FromRole="Deuda" ToRole="Parametro" />
           <NavigationProperty Name="GestorXDeudas" Relationship="ModeloCobranzas.FK_GestorXDeuda_Deuda" FromRole="Deuda" ToRole="GestorXDeuda" />
           <NavigationProperty Name="Refinanciacions" Relationship="ModeloCobranzas.FK_Refinanciacion_Deuda" FromRole="Deuda" ToRole="Refinanciacion" />
+          <NavigationProperty Name="Parametro1" Relationship="ModeloCobranzas.FK_Deuda_ProductoDeuda" FromRole="Deuda" ToRole="Parametro" />
         </EntityType>
         <EntityType Name="Deudor">
           <Key>
@@ -1090,6 +1112,7 @@
           <NavigationProperty Name="GestorXGestors" Relationship="ModeloCobranzas.FK_GestorXGestor_Gestor" FromRole="Gestor" ToRole="GestorXGestor" />
           <NavigationProperty Name="GestorXGestors1" Relationship="ModeloCobranzas.FK_GestorXGestor_Gestor1" FromRole="Gestor" ToRole="GestorXGestor" />
           <NavigationProperty Name="Usuarios" Relationship="ModeloCobranzas.FK_Usuario_Gestor" FromRole="Gestor" ToRole="Usuario" />
+          <Property Type="Decimal" Name="potencial" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="GestorXDeuda">
           <Key>
@@ -1134,6 +1157,7 @@
           <NavigationProperty Name="Gestors1" Relationship="ModeloCobranzas.FK_Gestor_TipoDocumento" FromRole="Parametro" ToRole="Gestor" />
           <NavigationProperty Name="Gestors2" Relationship="ModeloCobranzas.FK_Gestor_TipoGestor" FromRole="Parametro" ToRole="Gestor" />
           <NavigationProperty Name="Refinanciacions" Relationship="ModeloCobranzas.FK_Refinanciacion_Moneda" FromRole="Parametro" ToRole="Refinanciacion" />
+          <NavigationProperty Name="Deudas1" Relationship="ModeloCobranzas.FK_Deuda_ProductoDeuda" FromRole="Parametro" ToRole="Deuda" />
         </EntityType>
         <EntityType Name="Permiso">
           <Key>
@@ -1633,6 +1657,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Deuda_ProductoDeuda">
+          <End Type="ModeloCobranzas.Parametro" Role="Parametro" Multiplicity="1" />
+          <End Type="ModeloCobranzas.Deuda" Role="Deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parametro">
+              <PropertyRef Name="idParametro" />
+            </Principal>
+            <Dependent Role="Deuda">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1754,6 +1790,7 @@
           <EntitySetMapping Name="Gestors">
             <EntityTypeMapping TypeName="ModeloCobranzas.Gestor">
               <MappingFragment StoreEntitySet="Gestor">
+                <ScalarProperty Name="potencial" ColumnName="potencial" />
                 <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
                 <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
                 <ScalarProperty Name="disponible" ColumnName="disponible" />
@@ -1926,7 +1963,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="CobranzasModel" ZoomLevel="48">
+      <Diagram Name="CobranzasModel" ZoomLevel="72">
         <EntityTypeShape EntityType="ModeloCobranzas.Acreedor" Width="1.5" PointX="3" PointY="7.875" Height="2.9417936197916674" />
         <EntityTypeShape EntityType="ModeloCobranzas.Actividad" Width="1.5" PointX="12.75" PointY="13" Height="3.1340950520833335" />
         <EntityTypeShape EntityType="ModeloCobranzas.CalificacionDato" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166674" />
@@ -1949,8 +1986,8 @@
         <EntityTypeShape EntityType="ModeloCobranzas.TipoActividad" Width="1.5" PointX="10.5" PointY="8.5" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="ModeloCobranzas.Usuario" Width="1.5" PointX="8.25" PointY="13.375" Height="3.3263964843750102" />
         <AssociationConnector Association="ModeloCobranzas.FK_Acreedor_RubroAcreedor" >
-          <ConnectorPoint PointX="1.5" PointY="12.875" />
-          <ConnectorPoint PointX="1.5" PointY="9.3458968098958337" />
+          <ConnectorPoint PointX="1.49999975" PointY="12.875" />
+          <ConnectorPoint PointX="1.49999975" PointY="9.3458968098958337" />
           <ConnectorPoint PointX="3" PointY="9.3458968098958337" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Cartera_Acreedor" >
@@ -1968,39 +2005,45 @@
           <ConnectorPoint PointX="9" PointY="13.375" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Actividad_Deuda" >
-          <ConnectorPoint PointX="12" PointY="14.567047526041666" />
-          <ConnectorPoint PointX="12.291666666666666" PointY="14.567047526041666" />
-          <ConnectorPoint PointX="12.458333333333334" PointY="14.567047526041666" />
-          <ConnectorPoint PointX="12.75" PointY="14.567047526041666" />
+          <ConnectorPoint PointX="12" PointY="15.005683407552086" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="15.005683407552086" />
+          <ConnectorPoint PointX="12.458333333333334" PointY="15.005683407552086" />
+          <ConnectorPoint PointX="12.75" PointY="15.005683407552086" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Actividad_ResultadoActividad" >
-          <ConnectorPoint PointX="1.9062519999999998" PointY="12.875" />
-          <ConnectorPoint PointX="1.9062519999999998" PointY="12.625" />
+          <ConnectorPoint PointX="1.8046888749999999" PointY="12.875" />
+          <ConnectorPoint PointX="1.8046888749999999" PointY="12.625" />
           <ConnectorPoint PointX="2.75" PointY="12.625" />
           <ConnectorPoint PointX="2.75" PointY="17.191712239583325" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="17.191712239583325" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="17.191712239583325" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="17.191712239583325" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="17.191712239583325" />
+          <ConnectorPoint PointX="5.291666666666667" PointY="17.191712239583325" />
+          <ConnectorPoint PointX="5.458333333333333" PointY="17.191712239583325" />
           <ConnectorPoint PointX="5.75" PointY="17.191712239583325" />
           <ConnectorPoint PointX="5.75" PointY="14.75" />
           <ConnectorPoint PointX="7.072916666666667" PointY="14.75" />
           <ConnectorPoint PointX="7.239583333333333" PointY="14.75" />
           <ConnectorPoint PointX="7.697916666666667" PointY="14.75" />
           <ConnectorPoint PointX="7.864583333333333" PointY="14.75" />
-          <ConnectorPoint PointX="7.916666666666667" PointY="14.75" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="14.75" />
           <ConnectorPoint PointX="8.125" PointY="14.75" />
-          <ConnectorPoint PointX="8.125" PointY="13.125" />
-          <ConnectorPoint PointX="8.9166666666666661" PointY="13.125" />
-          <ConnectorPoint PointX="9.0833333333333339" PointY="13.125" />
-          <ConnectorPoint PointX="9.8854166666666661" PointY="13.125" />
-          <ConnectorPoint PointX="10.052083333333334" PointY="13.125" />
-          <ConnectorPoint PointX="10.25" PointY="13.125" />
-          <ConnectorPoint PointX="10.25" PointY="16.412903645833325" />
-          <ConnectorPoint PointX="10.963539666666666" PointY="16.412903645833325" />
-          <ConnectorPoint PointX="11.130206333333334" PointY="16.412903645833325" />
-          <ConnectorPoint PointX="11.572916666666666" PointY="16.412903645833325" />
-          <ConnectorPoint PointX="11.739583333333334" PointY="16.412903645833325" />
-          <ConnectorPoint PointX="12.375" PointY="16.412903645833325" />
-          <ConnectorPoint PointX="12.375" PointY="13.75227176302084" />
-          <ConnectorPoint PointX="12.75" PointY="13.75227176302084" />
+          <ConnectorPoint PointX="8.125" PointY="13.124999999999998" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="13.124999999999998" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="13.124999999999998" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="13.124999999999998" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="13.124999999999998" />
+          <ConnectorPoint PointX="10.25" PointY="13.124999999999998" />
+          <ConnectorPoint PointX="10.25" PointY="16.605205078125003" />
+          <ConnectorPoint PointX="10.674476666666665" PointY="16.605205078125003" />
+          <ConnectorPoint PointX="10.841143333333333" PointY="16.605205078125003" />
+          <ConnectorPoint PointX="10.994791666666666" PointY="16.605205078125003" />
+          <ConnectorPoint PointX="11.161458333333334" PointY="16.605205078125003" />
+          <ConnectorPoint PointX="11.572916666666666" PointY="16.605205078125003" />
+          <ConnectorPoint PointX="11.739583333333334" PointY="16.605205078125003" />
+          <ConnectorPoint PointX="12.375" PointY="16.605205078125003" />
+          <ConnectorPoint PointX="12.375" PointY="13.97158970377604" />
+          <ConnectorPoint PointX="12.75" PointY="13.97158970377604" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Actividad_TipoActividad" >
           <ConnectorPoint PointX="12" PointY="9.49014322916667" />
@@ -2016,23 +2059,25 @@
           <ConnectorPoint PointX="3" PointY="2.1439925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Cartera_TipoCartera" >
-          <ConnectorPoint PointX="1.0937475" PointY="12.875" />
-          <ConnectorPoint PointX="1.0937475" PointY="11.21875" />
-          <ConnectorPoint PointX="1.4166666666666667" PointY="11.21875" />
-          <ConnectorPoint PointX="1.5833333333333333" PointY="11.21875" />
-          <ConnectorPoint PointX="5.25" PointY="11.21875" />
+          <ConnectorPoint PointX="2.25" PointY="17.295146484375007" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="17.295146484375007" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="17.295146484375007" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="17.295146484375007" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="17.295146484375007" />
+          <ConnectorPoint PointX="5.375" PointY="17.295146484375007" />
+          <ConnectorPoint PointX="5.375" PointY="14.134095052083325" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Deuda_Cartera1" >
-          <ConnectorPoint PointX="6.75" PointY="12.833893229166669" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="12.833893229166669" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="12.833893229166669" />
-          <ConnectorPoint PointX="7.697916666666667" PointY="12.833893229166669" />
-          <ConnectorPoint PointX="7.864583333333333" PointY="12.833893229166669" />
-          <ConnectorPoint PointX="8.9166666666666661" PointY="12.833893229166669" />
-          <ConnectorPoint PointX="9.0833333333333339" PointY="12.833893229166669" />
-          <ConnectorPoint PointX="9.8854166666666661" PointY="12.833893229166669" />
-          <ConnectorPoint PointX="10.052083333333334" PointY="12.833893229166669" />
-          <ConnectorPoint PointX="10.5" PointY="12.833893229166669" />
+          <ConnectorPoint PointX="6.75" PointY="12.805106171875005" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="12.805106171875005" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="12.805106171875005" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="12.805106171875005" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="12.805106171875005" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="12.805106171875005" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="12.805106171875005" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="12.805106171875005" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="12.805106171875005" />
+          <ConnectorPoint PointX="10.5" PointY="12.805106171875005" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_PoliticaCobranza_Cartera" >
           <ConnectorPoint PointX="6.75" PointY="12.50083734375001" />
@@ -2046,45 +2091,47 @@
           <ConnectorPoint PointX="17.25" PointY="14.490143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Deuda_Deudor" >
-          <ConnectorPoint PointX="4.5" PointY="14.220856119791662" />
-          <ConnectorPoint PointX="5" PointY="14.220856119791662" />
+          <ConnectorPoint PointX="3.75" PointY="16.941712239583325" />
+          <ConnectorPoint PointX="3.75" PointY="17.566712239583325" />
+          <ConnectorPoint PointX="5" PointY="17.566712239583325" />
           <ConnectorPoint PointX="5" PointY="14.384095052083325" />
+          <ConnectorPoint PointX="5.291666666666667" PointY="14.384095052083325" />
+          <ConnectorPoint PointX="5.458333333333333" PointY="14.384095052083325" />
           <ConnectorPoint PointX="7.072916666666667" PointY="14.384095052083325" />
           <ConnectorPoint PointX="7.239583333333333" PointY="14.384095052083325" />
           <ConnectorPoint PointX="7.541666666666667" PointY="14.384095052083323" />
           <ConnectorPoint PointX="7.864583333333333" PointY="14.384095052083325" />
           <ConnectorPoint PointX="8" PointY="14.384095052083325" />
-          <ConnectorPoint PointX="8" PointY="16.95139648437501" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="16.95139648437501" />
-          <ConnectorPoint PointX="9.4583333333333339" PointY="16.95139648437501" />
-          <ConnectorPoint PointX="9.8854166666666661" PointY="16.95139648437501" />
-          <ConnectorPoint PointX="10.208333333333334" PointY="16.95139648437501" />
-          <ConnectorPoint PointX="11.046873" PointY="16.95139648437501" />
-          <ConnectorPoint PointX="11.046873" PointY="16.162903645833325" />
+          <ConnectorPoint PointX="8" PointY="13.093749999999998" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="13.093749999999998" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="13.093749999999998" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="13.093749999999998" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="13.093749999999998" />
+          <ConnectorPoint PointX="10.0625" PointY="13.093749999999998" />
+          <ConnectorPoint PointX="10.0625" PointY="15.544845009266403" />
+          <ConnectorPoint PointX="10.104166666666666" PointY="15.544845009266403" />
+          <ConnectorPoint PointX="10.333333333333334" PointY="15.544845009266403" />
+          <ConnectorPoint PointX="10.5" PointY="15.544845009266403" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Deuda_Moneda" >
-          <ConnectorPoint PointX="1.3984367500000001" PointY="17.162903645833339" />
-          <ConnectorPoint PointX="1.3984367500000001" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="1.6197926666666667" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="1.7864593333333332" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="2.0260451666666666" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="2.1927118333333335" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="7.697916666666667" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="7.864583333333333" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="9.4583333333333339" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="9.8854166666666661" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="10.052083333333334" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="10.125" PointY="17.412903645833339" />
-          <ConnectorPoint PointX="10.125" PointY="14.643951322916662" />
-          <ConnectorPoint PointX="10.166666666666666" PointY="14.643951322916662" />
-          <ConnectorPoint PointX="10.333333333333334" PointY="14.643951322916662" />
-          <ConnectorPoint PointX="10.5" PointY="14.643951322916662" />
+          <ConnectorPoint PointX="2.25" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="11.078125" PointY="17.26511718750001" />
+          <ConnectorPoint PointX="11.078125" PointY="16.355205078125003" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_GestorXDeuda_Deuda" >
-          <ConnectorPoint PointX="11.65625" PointY="16.162903645833325" />
-          <ConnectorPoint PointX="11.65625" PointY="17.800201822916669" />
-          <ConnectorPoint PointX="12.75" PointY="17.800201822916669" />
+          <ConnectorPoint PointX="11.65625" PointY="16.355205078125003" />
+          <ConnectorPoint PointX="11.65625" PointY="17.598231549479173" />
+          <ConnectorPoint PointX="12.75" PointY="17.598231549479173" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Refinanciacion_Deuda" >
           <ConnectorPoint PointX="12" PointY="12.84375" />
@@ -2111,71 +2158,83 @@
           <ConnectorPoint PointX="3" PointY="15.987534179687494" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Gestor_NivelGestor" >
-          <ConnectorPoint PointX="1.0937475" PointY="17.162903645833339" />
-          <ConnectorPoint PointX="1.0937475" PointY="19.990102539062498" />
-          <ConnectorPoint PointX="1.6197926666666667" PointY="19.990102539062498" />
-          <ConnectorPoint PointX="1.7864593333333332" PointY="19.990102539062498" />
+          <ConnectorPoint PointX="1.226563" PointY="17.355205078125003" />
+          <ConnectorPoint PointX="1.226563" PointY="19.990102539062498" />
+          <ConnectorPoint PointX="1.5182296666666668" PointY="19.990102539062498" />
+          <ConnectorPoint PointX="1.6848963333333333" PointY="19.990102539062498" />
           <ConnectorPoint PointX="3" PointY="19.990102539062498" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Gestor_TipoDocumento" >
-          <ConnectorPoint PointX="2.1093785" PointY="17.162903645833339" />
-          <ConnectorPoint PointX="2.1093785" PointY="18.838798769531255" />
+          <ConnectorPoint PointX="1.976563" PointY="17.355205078125003" />
+          <ConnectorPoint PointX="1.976563" PointY="18.838798769531255" />
           <ConnectorPoint PointX="3" PointY="18.838798769531255" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Gestor_TipoGestor" >
-          <ConnectorPoint PointX="1.703126" PointY="17.162903645833339" />
-          <ConnectorPoint PointX="1.703126" PointY="21.141406308593741" />
-          <ConnectorPoint PointX="3" PointY="21.141406308593741" />
+          <ConnectorPoint PointX="1.601563" PointY="17.355205078125003" />
+          <ConnectorPoint PointX="1.601563" PointY="21.237557024739576" />
+          <ConnectorPoint PointX="3" PointY="21.237557024739576" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_GestorXDeuda_Gestor" >
-          <ConnectorPoint PointX="4.5" PointY="17.993850911458335" />
-          <ConnectorPoint PointX="7.697916666666667" PointY="17.993850911458335" />
-          <ConnectorPoint PointX="7.864583333333333" PointY="17.993850911458335" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="17.993850911458335" />
-          <ConnectorPoint PointX="9.4583333333333339" PointY="17.993850911458335" />
-          <ConnectorPoint PointX="9.8854166666666661" PointY="17.993850911458335" />
-          <ConnectorPoint PointX="10.052083333333334" PointY="17.993850911458335" />
-          <ConnectorPoint PointX="12.75" PointY="17.993850911458335" />
+          <ConnectorPoint PointX="4.5" PointY="17.90625" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="17.90625" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="17.90625" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="17.90625" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="17.90625" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="17.90625" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="17.90625" />
+          <ConnectorPoint PointX="12.75" PointY="17.90625" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_GestorXGestor_Gestor" >
-          <ConnectorPoint PointX="4.5" PointY="19.990143229166669" />
-          <ConnectorPoint PointX="5.25" PointY="19.990143229166669" />
+          <ConnectorPoint PointX="4.5" PointY="20.268929036458339" />
+          <ConnectorPoint PointX="5.25" PointY="20.268929036458339" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_GestorXGestor_Gestor1" >
-          <ConnectorPoint PointX="4.5" PointY="19.432571614583335" />
-          <ConnectorPoint PointX="5.25" PointY="19.432571614583335" />
+          <ConnectorPoint PointX="4.5" PointY="19.571964518229169" />
+          <ConnectorPoint PointX="5.25" PointY="19.571964518229169" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Usuario_Gestor" >
-          <ConnectorPoint PointX="4.5" PointY="21.679749348958332" />
-          <ConnectorPoint PointX="9.375" PointY="21.679749348958332" />
+          <ConnectorPoint PointX="4.5" PointY="21.775900065104167" />
+          <ConnectorPoint PointX="9.375" PointY="21.775900065104167" />
           <ConnectorPoint PointX="9.375" PointY="16.70139648437501" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_Refinanciacion_Moneda" >
-          <ConnectorPoint PointX="2.109378" PointY="12.875" />
-          <ConnectorPoint PointX="2.109378" PointY="12.609375" />
+          <ConnectorPoint PointX="1.093747875" PointY="12.875" />
+          <ConnectorPoint PointX="1.093747875" PointY="12.609375" />
+          <ConnectorPoint PointX="1.4166664166666667" PointY="12.609375" />
+          <ConnectorPoint PointX="1.5833330833333332" PointY="12.609375" />
           <ConnectorPoint PointX="2.6875" PointY="12.609375" />
           <ConnectorPoint PointX="2.6875" PointY="17.066712239583325" />
-          <ConnectorPoint PointX="5.5" PointY="17.066712239583325" />
-          <ConnectorPoint PointX="5.5" PointY="14.734375" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="5.291666666666667" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="5.458333333333333" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="5.666666666666667" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="5.833333333333333" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="5.875" PointY="17.066712239583325" />
+          <ConnectorPoint PointX="5.875" PointY="14.734375" />
           <ConnectorPoint PointX="7.072916666666667" PointY="14.734375" />
           <ConnectorPoint PointX="7.239583333333333" PointY="14.734375" />
           <ConnectorPoint PointX="7.625" PointY="14.734375" />
-          <ConnectorPoint PointX="7.625" PointY="13.109375" />
-          <ConnectorPoint PointX="7.697916666666667" PointY="13.109375" />
-          <ConnectorPoint PointX="7.864583333333333" PointY="13.109375" />
-          <ConnectorPoint PointX="8.9166666666666661" PointY="13.109375" />
-          <ConnectorPoint PointX="9.0833333333333339" PointY="13.109375" />
-          <ConnectorPoint PointX="9.8854166666666661" PointY="13.109375" />
-          <ConnectorPoint PointX="10.052083333333334" PointY="13.109375" />
-          <ConnectorPoint PointX="10.1875" PointY="13.109375" />
-          <ConnectorPoint PointX="10.1875" PointY="16.428528645833325" />
-          <ConnectorPoint PointX="10.963539666666666" PointY="16.428528645833325" />
-          <ConnectorPoint PointX="11.130206333333334" PointY="16.428528645833325" />
-          <ConnectorPoint PointX="11.572916666666666" PointY="16.428528645833325" />
-          <ConnectorPoint PointX="11.739583333333334" PointY="16.428528645833325" />
-          <ConnectorPoint PointX="14.625" PointY="16.428528645833325" />
-          <ConnectorPoint PointX="14.625" PointY="15.44912472135416" />
-          <ConnectorPoint PointX="15" PointY="15.44912472135416" />
+          <ConnectorPoint PointX="7.625" PointY="13.109374999999998" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="13.109374999999998" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="13.109374999999998" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="13.109374999999998" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="13.109374999999998" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="13.109374999999998" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="13.109374999999998" />
+          <ConnectorPoint PointX="10.1875" PointY="13.109374999999998" />
+          <ConnectorPoint PointX="10.1875" PointY="16.730205078125003" />
+          <ConnectorPoint PointX="10.674476666666665" PointY="16.730205078125003" />
+          <ConnectorPoint PointX="10.841143333333333" PointY="16.730205078125003" />
+          <ConnectorPoint PointX="10.994791666666666" PointY="16.730205078125003" />
+          <ConnectorPoint PointX="11.161458333333334" PointY="16.730205078125003" />
+          <ConnectorPoint PointX="11.572916666666666" PointY="16.730205078125003" />
+          <ConnectorPoint PointX="11.739583333333334" PointY="16.730205078125003" />
+          <ConnectorPoint PointX="14.625" PointY="16.730205078125003" />
+          <ConnectorPoint PointX="14.625" PointY="14.587475958333327" />
+          <ConnectorPoint PointX="15" PointY="14.587475958333327" />
         </AssociationConnector>
         <AssociationConnector Association="ModeloCobranzas.FK_RolXPermiso_Permiso" >
           <ConnectorPoint PointX="7.5" PointY="8.9901432291666623" />
@@ -2204,9 +2263,22 @@
           <ConnectorPoint PointX="7.5" PointY="15.850698242187505" />
           <ConnectorPoint PointX="7.697916666666667" PointY="15.850698242187505" />
           <ConnectorPoint PointX="7.864583333333333" PointY="15.850698242187505" />
-          <ConnectorPoint PointX="7.916666666666667" PointY="15.850698242187505" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="15.850698242187505" />
           <ConnectorPoint PointX="8.25" PointY="15.850698242187505" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloCobranzas.FK_Deuda_ProductoDeuda" >
+          <ConnectorPoint PointX="2.25" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="7.697916666666667" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="7.864583333333333" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="9.8854166666666661" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="10.052083333333334" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="10.75781" PointY="17.325175781250003" />
+          <ConnectorPoint PointX="10.75781" PointY="16.355205078125003" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

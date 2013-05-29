@@ -27,7 +27,7 @@ namespace RecaudaSoft.Models
         [DisplayName("Tipo")]
         public int esCuota { get; set; }
         [DisplayName("Dificultad")]
-        public Nullable<int> dificultad { get; set; }
+        public Nullable<decimal> dificultad { get; set; }
         [DisplayName("Pagada")]
         public int pagada { get; set; }
         [DisplayName("Monto pagado")]
@@ -45,5 +45,7 @@ namespace RecaudaSoft.Models
         public virtual ICollection<GestorXDeuda> GestorXDeudas { get; set; }
         [DisplayName("Refinanciaciones")]
         public virtual ICollection<Refinanciacion> Refinanciacions { get; set; }
+        [DisplayName("Producto deuda")]
+        public virtual Parametro Parametro1 { get; set; }
     }
 }

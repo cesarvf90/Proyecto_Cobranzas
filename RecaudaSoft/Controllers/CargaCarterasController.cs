@@ -157,6 +157,7 @@ namespace RecaudaSoft.Controllers
                             }
 
                             // Se aniaden los datos propios de todas las deudas de la cartera procesada
+                            // TODO cvasquez: mejorar y leer tambien la fecha de inicio desde el archivo excel
                             deuda.fechaInicio = DateTime.Today;
                             deuda.idCartera = idCarteraSeleccionada;
 

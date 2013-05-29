@@ -33,6 +33,7 @@ namespace RecaudaSoft.Models
         public int disponible { get; set; }
         public int tipoDocumento { get; set; }
         public string numeroDocumento { get; set; }
+        public Nullable<decimal> potencial { get; set; }
     
         public virtual Parametro Parametro { get; set; }
         public virtual Parametro Parametro1 { get; set; }

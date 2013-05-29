@@ -27,6 +27,7 @@ namespace RecaudaSoft.Models
             this.Gestors1 = new HashSet<Gestor>();
             this.Gestors2 = new HashSet<Gestor>();
             this.Refinanciacions = new HashSet<Refinanciacion>();
+            this.Deudas1 = new HashSet<Deuda>();
         }
     
         public int idParametro { get; set; }
@@ -47,5 +48,6 @@ namespace RecaudaSoft.Models
         public virtual ICollection<Gestor> Gestors1 { get; set; }
         public virtual ICollection<Gestor> Gestors2 { get; set; }
         public virtual ICollection<Refinanciacion> Refinanciacions { get; set; }
+        public virtual ICollection<Deuda> Deudas1 { get; set; }
     }
 }

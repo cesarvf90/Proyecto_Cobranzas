@@ -23,5 +23,18 @@ namespace RecaudaSoft.Models
         public Nullable<int> idPadre { get; set; }
         [DisplayName("Código único")]   
         public string codUnico { get; set; }
+
+        public virtual ICollection<Acreedor> Acreedors { get; set; }
+        public virtual ICollection<Actividad> Actividads { get; set; }
+        public virtual ICollection<Cartera> Carteras { get; set; }
+        public virtual ICollection<Deuda> Deudas { get; set; }
+        public virtual ICollection<Deudor> Deudors { get; set; }
+        public virtual ICollection<Deudor> Deudors1 { get; set; }
+        public virtual ICollection<Deudor> Deudors2 { get; set; }
+        public virtual ICollection<Gestor> Gestors { get; set; }
+        public virtual ICollection<Gestor> Gestors1 { get; set; }
+        public virtual ICollection<Gestor> Gestors2 { get; set; }
+        public virtual ICollection<Refinanciacion> Refinanciacions { get; set; }
+        public virtual ICollection<Deuda> Deudas1 { get; set; }
     }
 }

@@ -39,5 +39,6 @@ namespace RecaudaSoft.Models
         public virtual Parametro Parametro { get; set; }
         public virtual ICollection<GestorXDeuda> GestorXDeudas { get; set; }
         public virtual ICollection<Refinanciacion> Refinanciacions { get; set; }
+        public virtual Parametro Parametro1 { get; set; }
     }
 }

@@ -37,36 +37,62 @@ namespace RecaudaSoft.Utils
 
         public void calificarDeuda(Deuda deuda)
         {
-            double dificultad = 1;
+            decimal dificultad = 1;
             using (var db = new CobranzasEntities())
             {
                 List<Dato> parametrosDeuda = db.Datoes.Include("CalificacionDatoes").Where(p => p.tipo == "Deudor").ToList();
                 foreach (Dato parametroDeuda in parametrosDeuda)
                 {
-                    // Se califica si el deudor tiene otras deudas
+                    // Se califica la deuda respecto a si el deudor posee trabajo
+                    if (parametroDeuda.nombre == "TIENE_TRABAJO")
+                    {
+                        if (deuda.Deudor.poseeTrabajo == 1)
+                        {
+                            dificultad = dificultad * parametroDeuda.CalificacionDatoes.First(c => c.valorDato == "Sí" && c.idDato == parametroDeuda.idDato).valorCalificacion;
+                        }
+                        else
+                        {
+                            dificultad = dificultad * parametroDeuda.CalificacionDatoes.First(c => c.valorDato == "No" && c.idDato == parametroDeuda.idDato).valorCalificacion;
+                        }
+                    }
+
+                    // Se califica la deuda respecto a si el deudor posee otras deudas
                     if (parametroDeuda.nombre == "OTRAS_DEUDAS")
                     {
                         if (deuda.Deudor.numeroTotalDeudas > 1)
                         {
-                            //dificultad *= parametroDeuda.CalificacionDatoes.First(c => c.valorDato == "Sí").valorCalificacion;
+                            dificultad = dificultad * parametroDeuda.CalificacionDatoes.First(c => c.valorDato == "Sí" && c.idDato == parametroDeuda.idDato).valorCalificacion;
                         }
                         else
                         {
-                            //dificultad *= parametroDeuda.CalificacionDatoes.First(c => c.valorDato == "No").valorCalificacion;
+                            dificultad = dificultad * parametroDeuda.CalificacionDatoes.First(c => c.valorDato == "No" && c.idDato == parametroDeuda.idDato).valorCalificacion;
                         }
                     }
 
-                    // Se califica si el deudor tiene trabajo
-                    if (parametroDeuda.nombre == "TIENE_TRABAJO")
+                    // Se califica la deuda en base al producto de la misma
+                    if (parametroDeuda.nombre == "PRODUCTO_DEUDA")
                     {
-                        if (deuda.Deudor.numeroTotalDeudas > 1)
-                        {
-                            //dificultad *= parametroDeuda.CalificacionDatoes.First(c => c.valorDato == "Sí").valorCalificacion;
-                        }
-                        else
-                        {
-                            //dificultad *= parametroDeuda.CalificacionDatoes.First(c => c.valorDato == "No").valorCalificacion;
-                        }
+                        dificultad = dificultad * parametroDeuda.CalificacionDatoes.First(c => c.valorDato == deuda.Parametro1.valor && c.idDato == parametroDeuda.idDato).valorCalificacion;
+                    }
+
+                    // Se califica la deuda de acuerdo a la escala en que se encuentre el valor de su monto
+                    if (parametroDeuda.nombre == "MONTO")
+                    {
+                        dificultad = dificultad * parametroDeuda.CalificacionDatoes.First(c => c.valorDatoMinimo <= deuda.monto && c.valorDatoMaximo > deuda.monto && c.idDato == parametroDeuda.idDato).valorCalificacion;
+                    }
+
+                    // Se califica la deuda de acuerdo a la antiguedad de la misma
+                    if (parametroDeuda.nombre == "ANTIGUEDAD_DIAS")
+                    {
+                        TimeSpan timeSpan = (TimeSpan) (DateTime.Today - deuda.fechaInicio);
+                        int antiguedad = timeSpan.Days;
+                        dificultad = dificultad * parametroDeuda.CalificacionDatoes.First(c => c.valorDatoMinimo <= antiguedad && c.valorDatoMaximo > antiguedad && c.idDato == parametroDeuda.idDato).valorCalificacion;
+                    }
+
+                    // Se califica la deuda de acuerdo a la antiguedad de la misma
+                    if (parametroDeuda.nombre == "ESTADO_CIVIL")
+                    {
+                        dificultad = dificultad * parametroDeuda.CalificacionDatoes.First(c => c.valorDato == deuda.Deudor.Parametro.valor && c.idDato == parametroDeuda.idDato).valorCalificacion;
                     }
                 }
             }
