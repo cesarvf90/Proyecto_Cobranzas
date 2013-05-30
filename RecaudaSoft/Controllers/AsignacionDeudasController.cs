@@ -75,25 +75,28 @@ namespace RecaudaSoft.Controllers
             using (var db = new CobranzasEntities())
             {
                 // Se procesan las carteras seleccionadas
-                List<Cartera> carterasSeleccionadas = new List<Cartera>();
-                //foreach (var cartera in objetoModelo.carteras)
-                foreach (var cartera in objetoModelo.carteras)
+                for (int i = 0; i < objetoModelo.carteras.Count; ++i)
                 {
-                    if (cartera.Checked)
+                    if (!objetoModelo.carteras.ElementAt(i).Checked)
                     {
-                        carterasSeleccionadas.Add(cartera);
+                        objetoModelo.carteras.RemoveAt(i);
                     }
                 }
 
                 // Se procesan los gestores seleccionados
-                List<Gestor> gestoresSeleccionados = new List<Gestor>();
-                foreach (var gestor in objetoModelo.gestores)
+                for (int i = 0; i < objetoModelo.gestores.Count; ++i)
                 {
-                    if (gestor.Checked)
+                    if (!objetoModelo.gestores.ElementAt(i).Checked)
                     {
-                        gestoresSeleccionados.Add(gestor);
+                        objetoModelo.gestores.RemoveAt(i);
                     }
                 }
+
+                objetoModelo.gestores = db.Gestors.Include("Parametro").Include("Parametro1").Include("Parametro2").ToList();
+                objetoModelo.carteras = db.Carteras.Include("Acreedor").Include("Parametro").ToList();
+
+                AlgoritmoAsignacion algoritmoAsignacion = new AlgoritmoAsignacion();
+                algoritmoAsignacion.asignarActividades(objetoModelo);
 
                 return View(objetoModelo);
             }
