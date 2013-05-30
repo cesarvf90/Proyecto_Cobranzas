@@ -27,7 +27,7 @@ namespace RecaudaSoft.Utils
                     // obtener politica de cobranza de la cartera
                     PoliticaCobranza politicaCobranza = cartera.PoliticaCobranzas.First();
                     // obtener tipo de actividad que corresponde a ejecutar segun la politica en la fecha actual
-                    TipoActividad tipoActividadCartera = db.PoliticaCobranzaXTipoActividads.Include("TipoActividad").Include("PoliticaCobranza").First(p => p.idPoliticaCobranza == politicaCobranza.idPoliticaCobranza && (DateTime.Compare(p.fechaInicio, DateTime.Today) <= 0) && (DateTime.Compare(DateTime.Today, p.fechaFin) <= 0)).TipoActividad;
+                    TipoActividad tipoActividadCartera = db.PoliticaCobranzaXTipoActividads.Include("TipoActividad").Include("PoliticaCobranza").First(p => p.idPoliticaCobranza == politicaCobranza.idPoliticaCobranza/* && (DateTime.Compare(p.fechaInicio, DateTime.Today) <= 0) && (DateTime.Compare(DateTime.Today, p.fechaFin) <= 0)*/).TipoActividad;
 
                     List<Deuda> deudasCarteraCalificadas = new List<Deuda>();
 
@@ -69,9 +69,9 @@ namespace RecaudaSoft.Utils
 
                 Dictionary<string, string> mapaTiposGestores = new Dictionary<string, string>();
                 mapaTiposGestores.Add("0", "Gestor Telefónico");
-                mapaTiposGestores.Add("1", "Gestor Correspondencia");
-                mapaTiposGestores.Add("2", "Gestor Visitador");
-                mapaTiposGestores.Add("3", "Gestor Correo");
+                mapaTiposGestores.Add("1", "Gestor Correo");
+                mapaTiposGestores.Add("2", "Gestor Correspondencia");
+                mapaTiposGestores.Add("3", "Gestor Visitador");
 
                 // Se ordena gestores en orden decreciente por potencial (del mas experimentado al menos experimentado)
                 asignacion.gestores = asignacion.gestores.OrderByDescending(g => g.potencial).ToList();
@@ -87,8 +87,6 @@ namespace RecaudaSoft.Utils
                 for (int i = 0; i < 4; i++)
                 {
                     List<Deuda> deudas = mapaDeudas[i.ToString()];
-                    foreach (Deuda deuda in deudas)
-                    {
                         gestoresPorTipo = asignacion.gestores.Where(g => g.Parametro2.valor == mapaTiposGestores[i.ToString()]).ToList();
                         deudasPorGestor = deudas.Count / gestoresPorTipo.Count;
 
@@ -131,7 +129,6 @@ namespace RecaudaSoft.Utils
                                 seAsignoSobrantes = true;
                             }
                         }
-                    }
                 }
 
                 asignacion.gestoresXdeudas = listaAsignaciones;
