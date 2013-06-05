@@ -387,7 +387,7 @@
     <Content Include="Views\CargaCarteras\ProcesarArchivoExitoso.cshtml" />
     <None Include="UploadedExcelDocuments\Cartera.xlsx" />
     <Content Include="Views\ConsultaCarteras\Index.cshtml" />
-    <Content Include="Views\ConsultaCarteras\Details.cshtml" />
+    <Content Include="Views\ConsultaCarteras\DetallarCartera.cshtml" />
     <Content Include="Views\RegistroAvance\Index.cshtml" />
     <Content Include="Views\RegistroAvance\Details.cshtml" />
     <Content Include="Views\RegistroAvance\RegistrarActividad.cshtml" />
@@ -403,6 +403,7 @@
     <Content Include="Views\AsignacionDeudas\EleccionGestores.cshtml" />
     <Content Include="Views\AsignacionDeudas\AsignarTareasExitoso.cshtml" />
     <Content Include="Views\AsignacionDeudas\AsignarTareas.cshtml" />
+    <Content Include="Views\ConsultaCarteras\DetallarDeuda.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

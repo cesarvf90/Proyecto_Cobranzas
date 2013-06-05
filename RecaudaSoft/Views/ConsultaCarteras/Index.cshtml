@@ -40,7 +40,7 @@
             @Html.DisplayFor(modelItem => item.Acreedor.nombre)
         </td>
         <td>
-            <a href = "/ConsultaCarteras/Details?id=@item.idCartera">@Html.DisplayFor(modelItem => item.nombre)</a>
+            <a href = "/ConsultaCarteras/DetallarCartera?idCartera=@item.idCartera">@Html.DisplayFor(modelItem => item.nombre)</a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Parametro.valor)

@@ -1,0 +1,139 @@
+﻿@model RecaudaSoft.Models.Cartera
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Información de la cartera</h2>
+
+<fieldset>
+    <legend>Cartera</legend>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idCartera)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idCartera)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.Acreedor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Acreedor.nombre)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.esVencida)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Parametro.valor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.porcentajeGanancia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.porcentajeGanancia)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.detalles)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.detalles)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.cantidadDeudas)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cantidadDeudas)
+    </div>
+
+    <h2>Deudas</h2>
+
+    <table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Deudor
+        </th>
+        <th>
+            Producto deuda
+        </th>
+        <th>
+            Cartera
+        </th>
+        <th>
+            Monto
+        </th>
+        <th>
+            Fecha inicio
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Dificultad
+        </th>
+        <th>
+            Pagada
+        </th>
+        <th>
+            Monto pagado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Deudas)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idDeuda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deudor.nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parametro1.valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cartera.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parametro.valor) @Html.DisplayFor(modelItem => item.monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esCuota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dificultad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pagada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.montoPagado)
+        </td>
+        <td>
+            @Html.ActionLink("Detalle", "DetallarDeuda", new { idDeuda = item.idDeuda })
+        </td>
+    </tr>
+}
+</fieldset>
+<p>
+    @Html.ActionLink("Regresar", "Index")
+</p>

@@ -23,14 +23,14 @@ namespace RecaudaSoft.Controllers
         }
 
         //
-        // GET: /ConsultaCarteras/Details/5
+        // GET: /ConsultaCarteras/DetallarCartera/5
 
-        public ActionResult Details(int id)
+        public ActionResult DetallarCartera(int idCartera)
         {
             using (var db = new CobranzasEntities())
             {
-                var listaCarteras = db.Carteras.Include("Parametro").Include("Acreedor");
-                Cartera cartera = listaCarteras.First(a => a.idCartera == id);
+                var listaCarteras = db.Carteras.Include("Parametro").Include("Acreedor").Include("Deudas").Include("Deudas.Deudor").Include("Deudas.GestorXDeudas").Include("Deudas.Parametro").Include("Deudas.Parametro1");
+                Cartera cartera = listaCarteras.First(a => a.idCartera == idCartera);
 
                 ViewBag.esVencida = new SelectList(db.Parametroes.Where(p => p.tipo == "TIPO_CARTERA"), "idParametro", "valor", cartera.esVencida).ToList();
                 ViewBag.idAcreedor = new SelectList(db.Acreedors, "idAcreedor", "nombre", cartera.idAcreedor).ToList();
@@ -40,80 +40,18 @@ namespace RecaudaSoft.Controllers
         }
 
         //
-        // GET: /ConsultaCarteras/Create
+        // GET: /ConsultaCarteras/DetallarDeuda/5
 
-        public ActionResult Create()
+        public ActionResult DetallarDeuda(int idDeuda)
         {
-            return View();
-        } 
-
-        //
-        // POST: /ConsultaCarteras/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            using (var db = new CobranzasEntities())
             {
-                // TODO: Add insert logic here
+                var listaDeudas = db.Deudas.Include("Parametro").Include("Deudor").Include("GestorXDeudas").Include("Cartera").Include("Parametro1").Include("Deudor.Parametro").Include("Deudor.Parametro1").Include("Deudor.Parametro2");
+                Deuda deuda = listaDeudas.First(a => a.idDeuda == idDeuda);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        //
-        // GET: /ConsultaCarteras/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+                ViewBag.moneda = new SelectList(db.Parametroes.Where(p => p.tipo == "MONEDA"), "idParametro", "valor", deuda.moneda).ToList();
 
-        //
-        // POST: /ConsultaCarteras/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /ConsultaCarteras/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /ConsultaCarteras/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                return View(deuda);
             }
         }
     }
