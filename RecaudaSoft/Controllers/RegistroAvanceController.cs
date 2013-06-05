@@ -9,6 +9,8 @@ namespace RecaudaSoft.Controllers
 {
     public class RegistroAvanceController : Controller
     {
+        public static Deuda deudaSeleccionada { get; set; }
+
         //
         // GET: /RegistroAvance/
 
@@ -16,7 +18,7 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                var listaDeudas = db.Deudas.Include("Parametro").Include("Deudor").Include("Cartera");
+                var listaDeudas = db.Deudas.Include("Parametro").Include("Deudor").Include("Cartera").Include("Parametro1");
                 return View(listaDeudas.ToList());
             }
         }
@@ -28,12 +30,12 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                var listaDeudas = db.Deudas.Include("Parametro").Include("Deudor").Include("Cartera").Include("Deudor.Parametro").Include("Deudor.Parametro1").Include("Deudor.Parametro2");
-                Deuda deuda = listaDeudas.First(a => a.idDeuda == id);
+                var listaDeudas = db.Deudas.Include("Parametro").Include("Deudor").Include("GestorXDeudas").Include("Cartera").Include("Parametro1").Include("Deudor.Parametro").Include("Deudor.Parametro1").Include("Deudor.Parametro2");
+                deudaSeleccionada = listaDeudas.First(a => a.idDeuda == id);
 
-                ViewBag.moneda = new SelectList(db.Parametroes.Where(p => p.tipo == "MONEDA"), "idParametro", "valor", deuda.moneda).ToList();
+                ViewBag.moneda = new SelectList(db.Parametroes.Where(p => p.tipo == "MONEDA"), "idParametro", "valor", deudaSeleccionada.moneda).ToList();
 
-                return View(deuda);
+                return View(deudaSeleccionada);
             }
         }
         
@@ -51,12 +53,19 @@ namespace RecaudaSoft.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegistrarActividad(int id, Actividad actividad)
+        public ActionResult RegistrarActividad(Actividad actividad)
         {
             try
             {
-                // TODO Registrar la actividad en la BD
+                actividad.idDeuda = deudaSeleccionada.idDeuda;
+                // TODO cvasquez: registrar la actividad con el deudor que la esta realizando
+                actividad.idGestor = deudaSeleccionada.GestorXDeudas.First().idGestor;
                 // Se le debe setear la deuda y el gestor a la actividad (se obtienen de la misma transaccion)
+                using (var db = new CobranzasEntities())
+                {
+                    db.Actividads.Add(actividad);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

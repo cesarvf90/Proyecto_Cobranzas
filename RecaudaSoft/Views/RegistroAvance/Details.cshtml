@@ -17,17 +17,10 @@
     </div>
 
     <div class="display-label">
-        @Html.LabelFor(model => model.idDeudor)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.idDeudor)
-    </div>
-
-    <div class="display-label">
         @Html.LabelFor(model => model.idProducto)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.idProducto)
+        @Html.DisplayFor(model => model.Parametro1.valor)
     </div>
 
     <div class="display-label">
@@ -125,10 +118,10 @@
     </div>
 
     <div class="display-label">
-        @Html.LabelFor(model => model.Deudor.numeroDocumneto)
+        @Html.LabelFor(model => model.Deudor.numeroDocumento)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Deudor.numeroDocumneto)
+        @Html.DisplayFor(model => model.Deudor.numeroDocumento)
     </div>
 
     <div class="display-label">

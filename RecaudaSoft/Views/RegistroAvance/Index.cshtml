@@ -12,13 +12,13 @@
             Id
         </th>
         <th>
-            Id Deudor
+            Deudor
         </th>
         <th>
-            Id Producto deuda
+            Producto deuda
         </th>
         <th>
-            Id Cartera
+            Cartera
         </th>
         <th>
             Monto
@@ -50,7 +50,7 @@
             @Html.DisplayFor(modelItem => item.Deudor.nombres)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.idProducto) <!--actualizar relacion y jalar nombre de producto deuda-->
+            @Html.DisplayFor(modelItem => item.Parametro1.valor)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Cartera.nombre)
