@@ -31,10 +31,6 @@ namespace RecaudaSoft.Controllers
             {
                 var listaCarteras = db.Carteras.Include("Parametro").Include("Acreedor").Include("Deudas").Include("Deudas.Deudor").Include("Deudas.GestorXDeudas").Include("Deudas.Parametro").Include("Deudas.Parametro1");
                 Cartera cartera = listaCarteras.First(a => a.idCartera == idCartera);
-
-                ViewBag.esVencida = new SelectList(db.Parametroes.Where(p => p.tipo == "TIPO_CARTERA"), "idParametro", "valor", cartera.esVencida).ToList();
-                ViewBag.idAcreedor = new SelectList(db.Acreedors, "idAcreedor", "nombre", cartera.idAcreedor).ToList();
-
                 return View(cartera);
             }
         }

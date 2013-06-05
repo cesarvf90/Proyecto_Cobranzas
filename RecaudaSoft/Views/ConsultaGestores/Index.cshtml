@@ -1,0 +1,84 @@
+﻿@model IEnumerable<RecaudaSoft.Models.Gestor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gestores</h2>
+
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px;" border="1">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nivel
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Nombres
+        </th>
+        <th>
+            Apellido Paterno
+        </th>
+        <th>
+            Apellido Materno
+        </th>
+        <th>
+            Fecha de ingreso
+        </th>
+        <th>
+            Deudas recuperadas
+        </th>
+        <th>
+            Disponible
+        </th>
+        <th>
+            Tipo Documento
+        </th>
+        <th>
+            Número Documento
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parametro.valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parametro2.valor)
+        </td>
+        <td>
+            <a href = "/ConsultaGestores/DetallarGestor?idGestor=@item.idGestor">@Html.DisplayFor(modelItem => item.nombres)</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidoPaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidoMaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deudasRecuperadas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disponible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parametro1.valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numeroDocumento)
+        </td>
+    </tr>
+}
+
+</table>

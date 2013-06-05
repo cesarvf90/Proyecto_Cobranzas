@@ -1,0 +1,98 @@
+﻿@model RecaudaSoft.Models.Gestor
+
+@{
+    ViewBag.Title = "DetallarGestor";
+}
+
+<h2>Información del Gestor</h2>
+
+<fieldset>
+    <legend>Gestor</legend>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idGestor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idGestor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idNivelGestor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idNivelGestor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idTipoGestor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idTipoGestor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.nombres)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombres)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.apellidoPaterno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellidoPaterno)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.apellidoMaterno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellidoMaterno)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.fechaIngreso)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fechaIngreso)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.deudasRecuperadas)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.deudasRecuperadas)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.disponible)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.disponible)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.tipoDocumento)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tipoDocumento)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.numeroDocumento)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numeroDocumento)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.potencial)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.potencial)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Regresar", "Index")
+</p>
