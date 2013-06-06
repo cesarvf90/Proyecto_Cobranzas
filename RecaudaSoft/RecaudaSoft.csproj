@@ -407,6 +407,7 @@
     <Content Include="Views\ConsultaCarteras\DetallarDeuda.cshtml" />
     <Content Include="Views\ConsultaGestores\Index.cshtml" />
     <Content Include="Views\ConsultaGestores\DetallarGestor.cshtml" />
+    <Content Include="Views\ConsultaGestores\DetallarDeuda.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

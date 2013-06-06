@@ -30,10 +30,26 @@ namespace RecaudaSoft.Controllers
         {
             using (var db = new CobranzasEntities())
             {
-                var listaGestores = db.Gestors.Include("Parametro").Include("Parametro1").Include("Parametro2");
+                var listaGestores = db.Gestors.Include("Parametro").Include("Parametro1").Include("Parametro2").Include("GestorXDeudas").Include("GestorXDeudas.Deuda").Include("GestorXDeudas.Deuda.Deudor").Include("GestorXDeudas.Deuda.Parametro").Include("GestorXDeudas.Deuda.Parametro1").Include("GestorXDeudas.Deuda.Cartera");
                 Gestor gestor = listaGestores.First(a => a.idGestor == idGestor);
 
                 return View(gestor);
+            }
+        }
+
+        //
+        // GET: /ConsultaGestores/DetallarDeuda/5
+
+        public ActionResult DetallarDeuda(int idDeuda)
+        {
+            using (var db = new CobranzasEntities())
+            {
+                var listaDeudas = db.Deudas.Include("Parametro").Include("Deudor").Include("GestorXDeudas").Include("Cartera").Include("Parametro1").Include("Deudor.Parametro").Include("Deudor.Parametro1").Include("Deudor.Parametro2");
+                Deuda deuda = listaDeudas.First(a => a.idDeuda == idDeuda);
+
+                ViewBag.moneda = new SelectList(db.Parametroes.Where(p => p.tipo == "MONEDA"), "idParametro", "valor", deuda.moneda).ToList();
+
+                return View(deuda);
             }
         }
 
