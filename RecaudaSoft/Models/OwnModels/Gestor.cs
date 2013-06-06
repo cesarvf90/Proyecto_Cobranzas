@@ -8,6 +8,15 @@ namespace RecaudaSoft.Models
     [MetadataType(typeof(GestorMetaData))]
     public partial class Gestor {
         public bool Checked { get; set; }
+
+        public string NombreCompleto
+        {
+            get
+            {
+                return nombres + " " + apellidoPaterno + " " + apellidoMaterno;
+            }
+            set{}
+        }
     }
 
     public class GestorMetaData
@@ -51,34 +60,5 @@ namespace RecaudaSoft.Models
         public virtual ICollection<GestorXGestor> GestorXGestors { get; set; }
         [DisplayName("Usuarios")]
         public virtual ICollection<Usuario> Usuarios { get; set; }
-        /*
-        [DisplayName("Nivel")]
-        public virtual Parametro NivelGestor { 
-        get {
-            return Parametro;
-            } 
-        set {
-            Parametro = value;
-            }
-        }
-        [DisplayName("Tipo de documento")]
-        public virtual Parametro TipoDocumento { 
-        get {
-            return Parametro1;
-            } 
-        set {
-            Parametro1 = value;
-            }
-        }
-        [DisplayName("Tipo")]
-        public virtual Parametro TipoGestor { 
-        get {
-            return Parametro2;
-            } 
-        set {
-            Parametro2 = value;
-            }
-        }
-         * */
     }
 }

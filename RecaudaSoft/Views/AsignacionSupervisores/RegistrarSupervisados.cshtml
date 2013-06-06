@@ -1,0 +1,72 @@
+﻿@model IEnumerable<RecaudaSoft.Models.Gestor>
+
+@{
+    ViewBag.Title = "RegistrarSupervisados";
+}
+
+<h2>Seleccionar gestores para supervisión de @ViewBag.nombreSupervisor</h2>
+
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px; margin-top: 25px" border="1">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nivel
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Fecha de ingreso
+        </th>
+        <th>
+            Deudas recuperadas
+        </th>
+        <th>
+            Disponible
+        </th>
+        <th>
+            Tipo Documento
+        </th>
+        <th>
+            Número Documento
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parametro.valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parametro2.valor)
+        </td>
+        <td>
+            <a href = "/AsignacionSupervisores/DetallarSupervisor?idGestor=@item.idGestor">@Html.DisplayFor(modelItem => item.NombreCompleto)</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deudasRecuperadas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disponible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parametro1.valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numeroDocumento)
+        </td>
+    </tr>
+}
+
+</table>

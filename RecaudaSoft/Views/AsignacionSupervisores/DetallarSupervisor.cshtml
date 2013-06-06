@@ -1,0 +1,164 @@
+﻿@model RecaudaSoft.Models.Gestor
+
+@{
+    ViewBag.Title = "DetallarSupervisor";
+}
+
+<h2>Información del Supervisor</h2>
+
+<fieldset>
+    <legend>Gestor</legend>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idGestor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idGestor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idNivelGestor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Parametro.valor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.idTipoGestor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Parametro2.valor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.nombres)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombres)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.apellidoPaterno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellidoPaterno)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.apellidoMaterno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellidoMaterno)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.fechaIngreso)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fechaIngreso)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.deudasRecuperadas)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.deudasRecuperadas)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.disponible)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.disponible)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.tipoDocumento)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Parametro1.valor)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.numeroDocumento)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numeroDocumento)
+    </div>
+
+    <div class="display-label">
+        @Html.LabelFor(model => model.potencial)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.potencial)
+    </div>
+
+    <h2>Gestores supervisados</h2>
+
+<table id="MainContent_Table2" rules="all" style="border-color: Gray; width: 900px; margin-bottom: 0px; margin-top: 25px" border="1">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nivel
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Fecha de ingreso
+        </th>
+        <th>
+            Deudas recuperadas
+        </th>
+        <th>
+            Disponible
+        </th>
+        <th>
+            Tipo Documento
+        </th>
+        <th>
+            Número Documento
+        </th>
+    </tr>
+
+@foreach (var item in Model.GestorXGestors) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gestor1.idGestor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gestor1.Parametro.valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gestor1.Parametro2.valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gestor1.NombreCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gestor1.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gestor1.deudasRecuperadas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gestor1.disponible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gestor1.Parametro1.valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gestor1.numeroDocumento)
+        </td>
+    </tr>
+}
+</fieldset>
+<p>
+    @Html.ActionLink("Registrar nuevos supervisados", "RegistrarSupervisados", new { idGestorSupervisor = Model.idGestor })
+    @Html.ActionLink("Regresar", "Index")
+</p>
