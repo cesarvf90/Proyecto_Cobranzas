@@ -77,6 +77,10 @@
     <Compile Include="Controllers\ConsultaGestoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistroAvanceController.cs" />
+    <Compile Include="Controllers\ReporteAcreedoresController.cs" />
+    <Compile Include="Controllers\ReporteActividadesController.cs" />
+    <Compile Include="Controllers\ReporteDesempenioGestoresController.cs" />
+    <Compile Include="Controllers\ReporteEstadoCarterasController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TiposActividadController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -186,6 +190,7 @@
     <Compile Include="Utils\AlgoritmoAsignacion.cs" />
     <Compile Include="Utils\FormatoDeuda.cs" />
     <Compile Include="Utils\FormatoDeudor.cs" />
+    <Compile Include="ViewModels\FiltroReporteActividad.cs" />
     <Compile Include="ViewModels\ModeloAsignacion.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -412,6 +417,8 @@
     <Content Include="Views\AsignacionSupervisores\Index.cshtml" />
     <Content Include="Views\AsignacionSupervisores\DetallarSupervisor.cshtml" />
     <Content Include="Views\AsignacionSupervisores\RegistrarSupervisados.cshtml" />
+    <Content Include="Views\ReporteActividades\Index.cshtml" />
+    <Content Include="Views\ReporteActividades\MostrarReporte.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

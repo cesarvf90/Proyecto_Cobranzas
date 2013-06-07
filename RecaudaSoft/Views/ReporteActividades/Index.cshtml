@@ -1,0 +1,60 @@
+﻿@model RecaudaSoft.ViewModels.FiltroReporteActividad
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Generar Reporte de Actividades</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Filtros del Reporte</legend>
+
+        <div class="editor-label">
+            Fecha desde
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fechaDesde)
+        </div>
+
+        <div class="editor-label">
+            Fecha hasta
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fechaHasta)
+        </div>
+
+        <div class="editor-label">
+            Tipo Gestor
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idTipoGestor", "Seleccione")
+        </div>
+
+        <div class="editor-label">
+            Nivel Gestor
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idNivelGestor", "Seleccione")
+        </div>
+
+        <div class="editor-label">
+            Tipo de actividad
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idTipoActividad", "Seleccione")
+        </div>
+
+        <div class="editor-label">
+            Resultado de actividad
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idResultado", "Seleccione")
+        </div>
+
+        <p>
+            <input type="submit" value="Registrar" />
+        </p>
+    </fieldset>
+}
