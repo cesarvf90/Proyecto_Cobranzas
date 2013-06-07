@@ -36,7 +36,7 @@ namespace RecaudaSoft.Controllers
         }
 
         //
-        // GET: /ReporteActividades/VerReporte
+        // GET: /ReporteActividades/MostrarReporte
 
         public ActionResult MostrarReporte()
         {

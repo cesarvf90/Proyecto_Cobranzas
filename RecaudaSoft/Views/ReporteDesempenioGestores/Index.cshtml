@@ -1,10 +1,10 @@
-﻿@model RecaudaSoft.ViewModels.FiltroReporteActividad
+﻿@model RecaudaSoft.ViewModels.FiltroReporteDesempenioGestores
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Generar Reporte de Actividades</h2>
+<h2>Generar Reporte de Desempeño de Gestores</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -12,24 +12,24 @@
         <legend>Filtros del Reporte</legend>
 
         <div class="editor-label">
-            Fecha desde
+            Id Gestor
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.fechaDesde)
+            @Html.EditorFor(model => model.idGestor)
         </div>
 
         <div class="editor-label">
-            Fecha hasta
+            Tipo documento
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.fechaHasta)
+            @Html.DropDownList("tipoDocumento", "Seleccione")
         </div>
 
         <div class="editor-label">
-            Tipo Gestor
+            Número documento
         </div>
         <div class="editor-field">
-            @Html.DropDownList("idTipoGestor", "Seleccione")
+            @Html.EditorFor(model => model.numeroDocumento)
         </div>
 
         <div class="editor-label">
@@ -40,17 +40,31 @@
         </div>
 
         <div class="editor-label">
-            Tipo de actividad
+            Tipo Gestor
         </div>
         <div class="editor-field">
-            @Html.DropDownList("idTipoActividad", "Seleccione")
+            @Html.DropDownList("idTipoGestor", "Seleccione")
         </div>
 
         <div class="editor-label">
-            Resultado de actividad
+            Nombre
         </div>
         <div class="editor-field">
-            @Html.DropDownList("idResultado", "Seleccione")
+            @Html.EditorFor(model => model.nombreGestor)
+        </div>
+
+        <div class="editor-label">
+            Apellido paterno
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.apellidoPaternoGestor)
+        </div>
+
+        <div class="editor-label">
+            Apellido Materno
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.apellidoMaternoGestor)
         </div>
 
         <p>

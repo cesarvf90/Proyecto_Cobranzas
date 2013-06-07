@@ -1,0 +1,25 @@
+﻿@model RecaudaSoft.ViewModels.FiltroReporteAcreedores
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Generar Reporte de Acreedores</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Filtros del Reporte</legend>
+
+        <div class="editor-label">
+            Acreedor
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idAcreedor", "Seleccione")
+        </div>
+
+        <p>
+            <input type="submit" value="Generar" />
+        </p>
+    </fieldset>
+}
