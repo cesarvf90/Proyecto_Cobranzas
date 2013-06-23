@@ -18,6 +18,7 @@ namespace RecaudaSoft.Models
         [DisplayName("Descripción")]
         public string descripcion { get; set; }
         [DisplayName("Estado")]
+        /* 0: Inactivo, 1: Activo */
         public int estado { get; set; }
         [DisplayName("Permisos")]
         public virtual ICollection<RolXPermiso> RolXPermisoes { get; set; }

@@ -33,7 +33,13 @@ namespace RecaudaSoft.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            using (var db = new CobranzasEntities())
+            {
+                ViewBag.idGestor = new SelectList(db.Gestors, "idGestor", "nombres").ToList();
+                ViewBag.idAcreedor = new SelectList(db.Acreedors, "idAcreedor", "nombre").ToList();
+                ViewBag.idRol = new SelectList(db.Rols, "idRol", "nombre").ToList();
+                return View();
+            }
         } 
 
         //
