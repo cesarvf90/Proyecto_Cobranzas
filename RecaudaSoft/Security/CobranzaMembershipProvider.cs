@@ -16,7 +16,7 @@ using System.Data.Entity;
 using System.Linq;
 
 
-namespace RecaudaSoft.Scripts
+namespace RecaudaSoft.Security
 {
     public class CobranzaMembershipProvider : MembershipProvider
     {

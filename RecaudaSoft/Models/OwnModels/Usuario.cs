@@ -23,9 +23,11 @@ namespace RecaudaSoft.Models
         public string nombreUsuario { get; set; }
         [DisplayName("Contraseña")]
         public string contrasena { get; set; }
+        /* 1: Gestor, 2: Acreedor*/
         [DisplayName("Tipo")]
         public int tipoUsuario { get; set; }
         [DisplayName("Estado")]
+        /* 0: Inactivo, 1: Activo */
         public int estado { get; set; }
         [DisplayName("Correo electrónico")]
         public string correo { get; set; }

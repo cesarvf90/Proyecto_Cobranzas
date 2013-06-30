@@ -17,8 +17,7 @@ namespace RecaudaSoft.Controllers
 
         public ActionResult LogOn()
         {
-            return View();
-            //return View("LogOn", "_LayoutLogin");
+            return View("LogOn", "_LayoutLogin");
         }
 
         //
@@ -44,7 +43,7 @@ namespace RecaudaSoft.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "La combinación de usuario y contraseña son incorrectas.");
                 }
             }
 
