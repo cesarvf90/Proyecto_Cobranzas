@@ -57,8 +57,7 @@ namespace RecaudaSoft.Controllers
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("LogOn", "Account");
         }
 
         //

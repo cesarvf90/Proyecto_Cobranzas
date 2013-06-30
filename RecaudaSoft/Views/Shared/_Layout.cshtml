@@ -26,47 +26,68 @@
 						<li class="has-popup static" aria-haspopup="NavigationMenu:submenu:2" role="menuitem" style="position: relative; float: left; ">
 							@Html.ActionLink("Administración", "About", "Home")
 							<ul class="level2 dynamic" id="NavigationMenu:submenu:2" style="display: none; position: absolute; top: 100%; left: 0px; ">
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Carteras", "Index", "Carteras")</li>
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Acredores", "Index", "Acreedores")</li>
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Colaboradores", "Index", "Colaboradores")</li>
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Niveles de deuda y gestores", "About", "ConfiguracionNiveles")</li>
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Configuración de actividades", "Index", "ConfiguracionPoliticaCobranza")</li>
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Tipos de actividades", "Index", "TiposActividad")</li>
+								@if (Request.IsAuthenticated && User.IsInRole("Carteras"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Carteras", "Index", "Carteras")</li>}
+                                @if (Request.IsAuthenticated && User.IsInRole("Acreedores"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Acredores", "Index", "Acreedores")</li>}
+                                @if (Request.IsAuthenticated && User.IsInRole("Gestores"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Colaboradores", "Index", "Colaboradores")</li>}
+                                @if (Request.IsAuthenticated && User.IsInRole("Niveles de deudas y gestores"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Niveles de deuda y gestores", "About", "ConfiguracionNiveles")</li>}
+                                @if (Request.IsAuthenticated && User.IsInRole("Configuración de actividades"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Configuración de actividades", "Index", "ConfiguracionPoliticaCobranza")</li>}
+                                @if (Request.IsAuthenticated && User.IsInRole("Tipos de actividades"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Tipos de actividades", "Index", "TiposActividad")</li>}
 							</ul>
 						</li>
 						<li class="has-popup static" aria-haspopup="NavigationMenu:submenu:19" role="menuitem" style="position: relative; float: left; ">
                             @Html.ActionLink("Seguridad", "About", "Home")
 							<ul class="level2 dynamic" id="NavigationMenu:submenu:19" style="display: none; position: absolute; top: 100%; left: 0px; ">
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Accesos", "About", "Home")</li>
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Modificar contraseña", "About", "Home")</li>
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Roles", "Index", "Roles")</li>
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+                                @if (Request.IsAuthenticated && User.IsInRole("Accesos"))
+								{<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Accesos", "About", "Home")</li>}
+								@if (Request.IsAuthenticated && User.IsInRole("Modificar contraseña"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Modificar contraseña", "About", "Home")</li>}
+								@if (Request.IsAuthenticated && User.IsInRole("Roles"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Roles", "Index", "Roles")</li>}
+                                @if (Request.IsAuthenticated && User.IsInRole("Usuarios"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>}
 							</ul>
 						</li>				
 						<li class="has-popup static" aria-haspopup="NavigationMenu:submenu:29" role="menuitem" style="position: relative; float: left; ">
                             @Html.ActionLink("Recaudación", "About", "Home")
 							<ul class="level2 dynamic" id="NavigationMenu:submenu:29" style="display: none; position: absolute; top: 100%; left: 0px; ">
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Asignar deudas", "Index", "AsignacionDeudas")</li>
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Registrar avance", "Index", "RegistroAvance")</li>
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Consultar carteras", "Index", "ConsultaCarteras")</li>
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Consultar carga de gestores", "Index", "ConsultaGestores")</li>
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Asignar supervisrores", "Index", "AsignacionSupervisores")</li>
+								@if (Request.IsAuthenticated && User.IsInRole("Asignar deudas"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Asignar deudas", "Index", "AsignacionDeudas")</li>}
+								@if (Request.IsAuthenticated && User.IsInRole("Registrar avance"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Registrar avance", "Index", "RegistroAvance")</li>}
+								@if (Request.IsAuthenticated && User.IsInRole("Consultar carteras"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Consultar carteras", "Index", "ConsultaCarteras")</li>}
+                                @if (Request.IsAuthenticated && User.IsInRole("Consultar carga de gestores"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Consultar carga de gestores", "Index", "ConsultaGestores")</li>}
+                                @if (Request.IsAuthenticated && User.IsInRole("Asignar supervisores"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Asignar supervisrores", "Index", "AsignacionSupervisores")</li>}
 							</ul>
 						</li>
 						<li class="has-popup static" aria-haspopup="NavigationMenu:submenu:41" role="menuitem" style="position: relative; float: left; ">
                             @Html.ActionLink("Reportes", "About", "Home")
 							<ul class="level2 dynamic" id="NavigationMenu:submenu:41" style="display: none; position: absolute; top: 100%; left: 0px; ">
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Actividades", "Index", "ReporteActividades")</li>
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Estado de las carteras", "Index", "ReporteEstadoCarteras")</li>
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Desempeño de los gestores", "Index", "ReporteDesempenioGestores")</li>
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Acreedores", "Index", "ReporteAcreedores")</li>
+                                @if (Request.IsAuthenticated && User.IsInRole("Actividades"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Actividades", "Index", "ReporteActividades")</li>}
+								@if (Request.IsAuthenticated && User.IsInRole("Estado de las carteras"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Estado de las carteras", "Index", "ReporteEstadoCarteras")</li>}
+								@if (Request.IsAuthenticated && User.IsInRole("Desempeño de los gestores"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Desempeño de los gestores", "Index", "ReporteDesempenioGestores")</li>}
+                                @if (Request.IsAuthenticated && User.IsInRole("Acreedores"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Acreedores", "Index", "ReporteAcreedores")</li>}
 							</ul>
 						</li>
 						<li class="has-popup static" aria-haspopup="NavigationMenu:submenu:43" role="menuitem" style="position: relative; float: left; ">
 							@Html.ActionLink("Acreedores", "About", "Home")
 							<ul class="level2 dynamic" id="NavigationMenu:submenu:37" style="display: none; position: absolute; top: 100%; left: 0px; ">
-                                <li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Cargar carteras", "Index", "CargaCarteras")</li>
-								<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Consultar avance de carteras", "About", "Home")</li>
+                                @if (Request.IsAuthenticated && User.IsInRole("Cargar carteras"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Cargar carteras", "Index", "CargaCarteras")</li>}
+								@if (Request.IsAuthenticated && User.IsInRole("Consultar avance de carteras"))
+                                {<li role="menuitem" class="dynamic" style="position: relative; ">@Html.ActionLink("Consultar avance de carteras", "About", "Home")</li>}
 							</ul>
 						</li>
 					</ul>

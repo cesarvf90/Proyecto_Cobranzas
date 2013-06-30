@@ -87,7 +87,36 @@ namespace RecaudaSoft.Security
 
         public override string[] GetRolesForUser(string username)
         {
-            throw new NotImplementedException();
+            using (var db = new CobranzasEntities())
+            {
+                /* Si se trabajara por roles el acceso a las vistas*/
+                /*var usuario = db.Usuarios.Include("Rol").Where(u => u.nombreUsuario.Equals(username, StringComparison.CurrentCulture)).First();
+
+                Rol rol = usuario.Rol;
+                List<string> roles = new List<string>();
+                if (rol != null)
+                {
+                    roles.Add(rol.nombre);
+                }
+                return roles.ToArray();
+                 * */
+
+                /* Si se trabaja por permisos el acceso a las vistas*/
+                var usuario = db.Usuarios.Include("Rol").Where(u => u.nombreUsuario.Equals(username, StringComparison.CurrentCulture)).First();
+
+                var permisos = from rp in db.RolXPermisoes
+                            where rp.idRol == usuario.idRol
+                            select rp.Permiso.funcionalidad;
+
+                if (permisos != null)
+                {
+                    return permisos.ToArray();
+                }
+                else
+                {
+                    return new string[] { }; ;
+                }
+            }
         }
 
         public override string[] GetUsersInRole(string roleName)
